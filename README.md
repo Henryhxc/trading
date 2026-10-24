@@ -29,6 +29,12 @@ MARKET_DATA_MODE=akshare docker compose -p ux-securities-hkex-trading-terminal -
 
 Upstream availability is not guaranteed. The application identifies unavailable data rather than claiming official HKEX real-time access.
 
+## Demo data
+
+The local demo account is `021021hxc@gmail.com`. Its current local watchlist contains Tencent (`00700`), Alibaba (`09988`) and Xiaomi (`01810`). The active development database has 125 public Tencent daily bars for each of Alibaba and Xiaomi covering `2026-04-24` through `2026-10-23`; the latest quote and bars are labeled `tencent` / `unofficial` and are not official HKEX real-time data. The collector defaults now include both `09988` and `01810` for subsequent updates.
+
+The demo password is intentionally not stored in this repository. Use the locally provisioned password supplied by the project owner, or set a local `DEMO_ACCOUNT_PASSWORD` in an ignored environment file. Do not put account passwords in README files, screenshots, logs or frontend bundles.
+
 ## Checks
 
 ```sh

@@ -38,7 +38,7 @@ class Config:
     webhook_secret: str = ""
     poll_interval_seconds: int = MIN_SPOT_INTERVAL_SECONDS
     request_timeout_seconds: float = 15.0
-    symbols: tuple[str, ...] = ("00700", "00005", "09988")
+    symbols: tuple[str, ...] = ("00700", "00005", "09988", "01810")
     history_start: str = ""
     history_end: str = ""
     minute_periods: tuple[str, ...] = ("1m", "5m", "15m", "30m", "60m")
@@ -57,7 +57,7 @@ class Config:
         interval = int(values.get("AKSHARE_POLL_INTERVAL", str(MIN_SPOT_INTERVAL_SECONDS)))
         if interval < MIN_SPOT_INTERVAL_SECONDS:
             raise ValueError("AKSHARE_POLL_INTERVAL cannot be shorter than 15 minutes")
-        symbols = tuple(normalize_symbol(item) for item in values.get("AKSHARE_SYMBOLS", "00700,00005,09988").split(",") if item.strip())
+        symbols = tuple(normalize_symbol(item) for item in values.get("AKSHARE_SYMBOLS", "00700,00005,09988,01810").split(",") if item.strip())
         periods = tuple(item.strip() for item in values.get("AKSHARE_MINUTE_PERIODS", "1m,5m,15m,30m,60m").split(",") if item.strip())
         if any(item not in ("1m", "5m", "15m", "30m", "60m") for item in periods):
             raise ValueError("unsupported minute period")
