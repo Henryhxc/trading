@@ -9,7 +9,13 @@ This is a development application for **simulated trading only**. It does not co
 Install Docker with Compose, then run from the project root:
 
 ```sh
-docker compose -p ux-securities-hkex-trading-terminal -f deploy/docker-compose.yml --profile admin up -d --build
+docker compose up
+```
+
+This root-level command starts MySQL, the backend, the frontend and the AkShare collector. Use `Ctrl+C` to stop the foreground stack, or add `-d` to run it in the background:
+
+```sh
+docker compose up -d
 ```
 
 - Frontend: http://localhost:3000
@@ -19,12 +25,16 @@ docker compose -p ux-securities-hkex-trading-terminal -f deploy/docker-compose.y
 
 The backend applies database migrations at startup. Register a local account through the frontend; existing local users and database volumes are not included in Git.
 
-Compose contains development-only fallback credentials. Set your own `DB_PASSWORD`, `MYSQL_ROOT_PASSWORD`, and `AKSHARE_WEBHOOK_SECRET` through environment variables or a local ignored environment file before exposing any service. Do not use the development defaults in production.
-
-Market data defaults to mock. To enable the optional AkShare collector:
+Compose contains development-only fallback credentials. Set your own `DB_PASSWORD`, `MYSQL_ROOT_PASSWORD`, and `AKSHARE_WEBHOOK_SECRET` through environment variables or a local ignored environment file before exposing any service. Do not use the development defaults in production. phpMyAdmin is intentionally opt-in because port 8081 is commonly occupied by other local projects:
 
 ```sh
-MARKET_DATA_MODE=akshare docker compose -p ux-securities-hkex-trading-terminal -f deploy/docker-compose.yml --profile admin --profile akshare up -d --build
+docker compose --profile admin up -d
+```
+
+The Compose entrypoint defaults to the AkShare ingestion mode. To use the mock provider instead:
+
+```sh
+MARKET_DATA_MODE=mock docker compose up -d
 ```
 
 Upstream availability is not guaranteed. The application identifies unavailable data rather than claiming official HKEX real-time access.

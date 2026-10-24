@@ -32,7 +32,9 @@ services:
       COOKIE_SECURE: ${COOKIE_SECURE:-false}
       SESSION_TTL: ${SESSION_TTL:-24h}
       INITIAL_CASH_HKD: ${INITIAL_CASH_HKD:-1000000.0000}
-      MARKET_DATA_MODE: ${MARKET_DATA_MODE:-mock}
+      # Compose runs the configured AkShare ingestion service by default.
+      # Non-Compose development keeps the Go config's mock-safe default.
+      MARKET_DATA_MODE: ${MARKET_DATA_MODE:-akshare}
       AKSHARE_WEBHOOK_SECRET: ${AKSHARE_WEBHOOK_SECRET:-local-akshare-dev-secret}
       AKSHARE_WEBHOOK_MAX_AGE: ${AKSHARE_WEBHOOK_MAX_AGE:-30s}
       MARKET_DATA_STALE_AFTER: ${MARKET_DATA_STALE_AFTER:-20m}
@@ -53,7 +55,6 @@ services:
     build:
       context: ..
       dockerfile: services/akshare/Dockerfile
-    profiles: ["akshare"]
     environment:
       AKSHARE_WEBHOOK_URL: http://backend:8080/api/v1/internal/market-data/akshare
       AKSHARE_WEBHOOK_SECRET: ${AKSHARE_WEBHOOK_SECRET:-local-akshare-dev-secret}
