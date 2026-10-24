@@ -46,11 +46,11 @@ type Account struct {
 }
 type Position struct {
 	Symbol            string   `json:"symbol"`
-	Name              string   `json:"name"`
+	Name              string   `json:"display_name"`
 	Quantity          int64    `json:"quantity"`
 	AvailableQuantity int64    `json:"available_quantity"`
 	AverageCost       float64  `json:"average_cost"`
-	CurrentPrice      *float64 `json:"current_price"`
+	CurrentPrice      *float64 `json:"market_price"`
 	MarketValue       *float64 `json:"market_value"`
 	UnrealizedPnL     *float64 `json:"unrealized_pnl"`
 	DataStatus        string   `json:"data_status"`

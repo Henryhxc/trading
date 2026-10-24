@@ -116,3 +116,36 @@ func TestAccountResponseIncludesInitialCashAndStatus(t *testing.T) {
 		}
 	}
 }
+
+func TestPositionsResponseUsesOpenAPIFieldNames(t *testing.T) {
+	fixture := positionResponseFixture{}
+	handler := NewWithTrading(tradingHandlerAuth{}, false, nil, nil, fixture)
+	request := httptest.NewRequest(http.MethodGet, "/api/v1/positions", nil)
+	request.AddCookie(&http.Cookie{Name: sessionCookie, Value: "session"})
+	response := httptest.NewRecorder()
+	handler.ServeHTTP(response, request)
+	if response.Code != http.StatusOK {
+		t.Fatalf("GET /positions status = %d body=%s, want 200", response.Code, response.Body.String())
+	}
+	var payload struct {
+		Items []map[string]json.RawMessage `json:"items"`
+	}
+	if err := json.Unmarshal(response.Body.Bytes(), &payload); err != nil {
+		t.Fatalf("decode positions response: %v", err)
+	}
+	if len(payload.Items) != 1 {
+		t.Fatalf("positions count = %d, want 1", len(payload.Items))
+	}
+	for _, field := range []string{"display_name", "market_price"} {
+		if _, exists := payload.Items[0][field]; !exists {
+			t.Errorf("GET /positions response missing %q: %s", field, response.Body.String())
+		}
+	}
+}
+
+type positionResponseFixture struct{ tradingHandlerFixture }
+
+func (positionResponseFixture) Positions(context.Context, auth.Actor) ([]trading.Position, error) {
+	price := 63.45
+	return []trading.Position{{Symbol: "00005", Name: "HSBC HOLDINGS", Quantity: 1000, AvailableQuantity: 1000, AverageCost: 60, CurrentPrice: &price, DataStatus: "simulated"}}, nil
+}
