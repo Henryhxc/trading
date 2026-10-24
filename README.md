@@ -55,6 +55,15 @@ Upstream availability is not guaranteed. The application identifies unavailable 
 
 The active development database has 125 public Tencent daily bars for each of Alibaba and Xiaomi covering `2026-04-24` through `2026-10-23`; the latest quote and bars are labeled `tencent` / `unofficial` and are not official HKEX real-time data. The collector defaults now include both `09988` and `01810` for subsequent updates.
 
+The demo account also has a repeatable paper-trading portfolio seed: four open positions (`00700`, `09988`, `01810`, `00005`) and twelve filled orders dated from June through October 2026. To apply it to the local demo account after the database is running, use:
+
+```sh
+MYSQL_CONTAINER="$(docker compose ps -q mysql)"
+docker exec -i "$MYSQL_CONTAINER" sh -c 'mysql -uroot -p"$MYSQL_ROOT_PASSWORD" --database="$MYSQL_DATABASE"' < tools/seed_demo_portfolio.sql
+```
+
+The seed is idempotent by `client_order_id`, recalculates the four demo positions, and keeps the account cash balance consistent with the seeded fills. It contains no credentials.
+
 ## Checks
 
 ```sh
