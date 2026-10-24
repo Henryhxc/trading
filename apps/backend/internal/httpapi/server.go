@@ -14,6 +14,7 @@ import (
 	"time"
 
 	domain "ux-securities/backend/internal/domain/auth"
+	cashmovement "ux-securities/backend/internal/domain/cashmovement"
 	market "ux-securities/backend/internal/domain/market"
 	watchlist "ux-securities/backend/internal/domain/watchlist"
 	"ux-securities/backend/internal/service/auth"
@@ -39,6 +40,7 @@ type server struct {
 	verifier     WebhookVerification
 	stream       http.Handler
 	trading      TradingAPI
+	cash         CashMovementsAPI
 }
 type actorKey struct{}
 type requestIDKey struct{}
@@ -64,6 +66,9 @@ type WatchlistAPI interface {
 	Add(context.Context, domain.Actor, string) (watchlist.Item, bool, error)
 	Delete(context.Context, domain.Actor, string) error
 	Reorder(context.Context, domain.Actor, []string) error
+}
+type CashMovementsAPI interface {
+	List(context.Context, domain.Actor) ([]cashmovement.Movement, error)
 }
 
 type IngestionAPI interface {
@@ -91,6 +96,11 @@ func NewWithRealtime(service AuthService, cookieSecure bool, markets MarketAPI, 
 
 func NewWithTradingRealtime(service AuthService, cookieSecure bool, markets MarketAPI, lists WatchlistAPI, trades TradingAPI, ingestion IngestionAPI, verifier WebhookVerification, stream http.Handler) http.Handler {
 	s := &server{auth: service, cookieSecure: cookieSecure, market: markets, watchlist: lists, trading: trades, ingestion: ingestion, verifier: verifier, stream: stream}
+	return s.routes()
+}
+
+func NewWithTradingRealtimeAndCash(service AuthService, cookieSecure bool, markets MarketAPI, lists WatchlistAPI, trades TradingAPI, cash CashMovementsAPI, ingestion IngestionAPI, verifier WebhookVerification, stream http.Handler) http.Handler {
+	s := &server{auth: service, cookieSecure: cookieSecure, market: markets, watchlist: lists, trading: trades, cash: cash, ingestion: ingestion, verifier: verifier, stream: stream}
 	return s.routes()
 }
 
@@ -125,6 +135,9 @@ func (s *server) routes() http.Handler {
 		mux.Handle("POST /api/v1/orders/{id}/cancel", s.requireAuth(http.HandlerFunc(s.cancelOrder)))
 		mux.Handle("GET /api/v1/account", s.requireAuth(http.HandlerFunc(s.account)))
 		mux.Handle("GET /api/v1/positions", s.requireAuth(http.HandlerFunc(s.positions)))
+	}
+	if s.cash != nil {
+		mux.Handle("GET /api/v1/cash-movements", s.requireAuth(http.HandlerFunc(s.cashMovements)))
 	}
 	return s.requestContext(mux)
 }

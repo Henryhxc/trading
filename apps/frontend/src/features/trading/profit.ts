@@ -15,19 +15,20 @@ export type ProfitRow = {
   returnPercent: number;
 };
 
-type Period = "day" | "month";
+export type ProfitPeriod = "day" | "month" | "year";
 type Lot = { quantity: number; cost: number };
 type Aggregate = { pnl: number; costBasis: number };
 
 const round = (value: number) => Math.round((value + Number.EPSILON) * 100) / 100;
 
-function periodFor(value: string, period: Period) {
+function periodFor(value: string, period: ProfitPeriod) {
   const date = new Date(value);
   if (Number.isNaN(date.getTime())) return "";
+  if (period === "year") return date.toISOString().slice(0, 4);
   return period === "month" ? date.toISOString().slice(0, 7) : date.toISOString().slice(0, 10);
 }
 
-export function aggregateProfit(orders: ProfitOrder[], period: Period): ProfitRow[] {
+export function aggregateProfit(orders: ProfitOrder[], period: ProfitPeriod): ProfitRow[] {
   const lots = new Map<string, Lot>();
   const aggregates = new Map<string, Aggregate>();
   const sorted = orders

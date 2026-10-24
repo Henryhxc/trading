@@ -5,10 +5,13 @@ import { marketApi, type Quote, type SymbolItem, type WatchlistItem } from "../s
 import { MarketSidebar } from "../features/market/MarketSidebar";
 import { QuotePanel } from "../features/market/QuotePanel";
 import { PortfolioPanel } from "../features/trading/PortfolioPanel";
+import { OrderHistoryPanel } from "../features/trading/OrderHistoryPanel";
+import { CashMovementsPanel } from "../features/funding/CashMovementsPanel";
 import { usePortfolio } from "../features/trading/usePortfolio";
+import { cashApi, type CashMovement } from "../shared/api/cash";
 import { TradingPanel } from "./TradingPanel";
 
-type WorkbenchView = "market" | "favorites" | "positions";
+type WorkbenchView = "market" | "favorites" | "positions" | "orders" | "cash" | "deposit" | "withdraw" | "cash-history" | "exchange";
 
 export function WorkbenchPage() {
   const session = useSession();
@@ -23,6 +26,9 @@ export function WorkbenchPage() {
   const [quote, setQuote] = useState<Quote | null>(null);
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState("");
+  const [cashMovements, setCashMovements] = useState<CashMovement[]>([]);
+  const [cashLoading, setCashLoading] = useState(false);
+  const [cashError, setCashError] = useState("");
   const [active, setActive] = useState(() => sessionStorage.getItem("ux_active_symbol") || "00700");
   const quoteRequest = useRef(0);
   const directoryRequest = useRef(0);
@@ -49,9 +55,15 @@ export function WorkbenchPage() {
     catch (error) { if (request === quoteRequest.current) setMessage(error instanceof Error ? error.message : "Market data is unavailable"); }
     finally { if (request === quoteRequest.current) setLoading(false); }
   }, []);
+  const loadCashMovements = useCallback(async () => {
+    setCashLoading(true); setCashError("");
+    try { const result = await cashApi.list(); setCashMovements(result?.items || []); }
+    catch (error) { setCashError(error instanceof Error ? error.message : "Cash mock data is unavailable"); }
+    finally { setCashLoading(false); }
+  }, []);
   useEffect(() => {
-    void loadDirectory(); void loadWatchlist();
-    const timer = setInterval(() => { void loadDirectory(); void loadWatchlist(); }, 60_000);
+    void loadDirectory(); void loadWatchlist(); void loadCashMovements();
+    const timer = setInterval(() => { void loadDirectory(); void loadWatchlist(); void loadCashMovements(); }, 60_000);
     return () => { clearInterval(timer); directoryRequest.current++; };
   }, [loadDirectory, loadWatchlist]);
   useEffect(() => {
@@ -66,7 +78,7 @@ export function WorkbenchPage() {
   }, [watchlist.length, view]);
   const owned = useMemo(() => new Set(portfolio.positions.map(item => item.symbol)), [portfolio.positions]);
   const isFavorite = watchlist.some(item => item.symbol === active);
-  function switchView(next: WorkbenchView) { setView(next); setQuery(""); if (next === "positions") void portfolio.refresh(); }
+  function switchView(next: WorkbenchView) { setView(next); setQuery(""); if (next === "positions" || next === "cash") void portfolio.refresh(); if (next === "cash" || next === "deposit" || next === "withdraw" || next === "cash-history") void loadCashMovements(); }
   function select(symbol: string) { setActive(symbol); }
   function onScroll() {
     if (view === "favorites" && watchlistRef.current) sessionStorage.setItem("ux_watchlist_scroll_anchor", String(watchlistRef.current.scrollTop));
@@ -97,10 +109,16 @@ export function WorkbenchPage() {
       <button role="tab" aria-selected={view === "market"} className={view === "market" ? "active" : ""} onClick={() => switchView("market")}>Market <span>{items.length.toLocaleString()}</span></button>
       <button role="tab" aria-selected={view === "favorites"} className={view === "favorites" ? "active" : ""} onClick={() => switchView("favorites")}>My favorites <span>{watchlist.length}</span></button>
       <button role="tab" aria-selected={view === "positions"} className={view === "positions" ? "active" : ""} onClick={() => switchView("positions")}>My positions <span>{portfolio.positions.length}</span></button>
+      <button role="tab" aria-selected={view === "orders"} className={view === "orders" ? "active" : ""} onClick={() => switchView("orders")}>Order history</button>
+      <button role="tab" aria-selected={view === "cash"} className={view === "cash" ? "active" : ""} onClick={() => switchView("cash")}>Cash overview</button>
+      <button role="tab" aria-selected={view === "deposit"} className={view === "deposit" ? "active" : ""} onClick={() => switchView("deposit")}>Deposit</button>
+      <button role="tab" aria-selected={view === "withdraw"} className={view === "withdraw" ? "active" : ""} onClick={() => switchView("withdraw")}>Withdraw</button>
+      <button role="tab" aria-selected={view === "cash-history"} className={view === "cash-history" ? "active" : ""} onClick={() => switchView("cash-history")}>Cash history</button>
+      <button role="tab" aria-selected={view === "exchange"} className={view === "exchange" ? "active" : ""} onClick={() => switchView("exchange")}>Exchange</button>
       <p className="navigation-note">HKD · Unofficial market data · Simulation only</p>
     </nav>
-    {view === "positions" ? <PortfolioPanel {...portfolio} onSelect={symbol => { select(symbol); switchView("market"); }} /> : <section className="workbench-grid">
-      <MarketSidebar view={view} query={query} setQuery={setQuery} items={items} watchlist={watchlist} owned={owned} active={active} loading={directoryLoading} error={directoryError || favoriteError} retry={() => { void loadDirectory(); void loadWatchlist(); }} select={select} move={(index, direction) => void moveFavorite(index, direction)} scrollRef={watchlistRef} onScroll={onScroll} />
+    {view === "positions" ? <PortfolioPanel {...portfolio} onSelect={symbol => { select(symbol); switchView("market"); }} /> : view === "orders" ? <OrderHistoryPanel /> : view === "cash" || view === "deposit" || view === "withdraw" || view === "cash-history" || view === "exchange" ? <CashMovementsPanel mode={view === "cash" ? "overview" : view === "cash-history" ? "history" : view} movements={cashMovements} account={portfolio.account} loading={cashLoading} error={cashError} /> : <section className="workbench-grid">
+      <MarketSidebar view={view === "favorites" ? "favorites" : "market"} query={query} setQuery={setQuery} items={items} watchlist={watchlist} owned={owned} active={active} loading={directoryLoading} error={directoryError || favoriteError} retry={() => { void loadDirectory(); void loadWatchlist(); }} select={select} move={(index, direction) => void moveFavorite(index, direction)} scrollRef={watchlistRef} onScroll={onScroll} />
       <QuotePanel active={active} item={items.find(item => item.symbol === active)} quote={quote} loading={loading} error={message} favorite={isFavorite} toggleFavorite={() => void toggleFavorite()} />
       <TradingPanel quote={quote} account={portfolio.account} accountError={portfolio.error} onRetry={() => void portfolio.refresh()} onOrderCreated={refreshAfterOrder} />
     </section>}

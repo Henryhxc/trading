@@ -20,6 +20,7 @@ import (
 	"ux-securities/backend/internal/migrations"
 	"ux-securities/backend/internal/repository/mysqlrepo"
 	"ux-securities/backend/internal/service/auth"
+	cashservice "ux-securities/backend/internal/service/cashmovement"
 	marketservice "ux-securities/backend/internal/service/market"
 	trading "ux-securities/backend/internal/service/trading"
 	watchlistservice "ux-securities/backend/internal/service/watchlist"
@@ -65,6 +66,8 @@ func main() {
 	watchlists := watchlistservice.NewService(marketRepo, markets)
 	tradingRepo := mysqlrepo.NewTradingRepository(db)
 	trades := trading.NewService(tradingRepo, markets)
+	cashRepo := mysqlrepo.NewCashMovementRepository(db)
+	cashMovements := cashservice.NewService(cashRepo)
 	stream := httpapi.NewMarketStreamHub(cfg.FrontendOrigin)
 	var ingestion httpapi.IngestionAPI
 	var verifier httpapi.WebhookVerification
@@ -74,7 +77,7 @@ func main() {
 	}
 	server := &http.Server{
 		Addr:              ":" + cfg.Port,
-		Handler:           httpapi.NewWithTradingRealtime(service, cfg.CookieSecure, markets, watchlists, trades, ingestion, verifier, stream),
+		Handler:           httpapi.NewWithTradingRealtimeAndCash(service, cfg.CookieSecure, markets, watchlists, trades, cashMovements, ingestion, verifier, stream),
 		ReadHeaderTimeout: 5 * time.Second,
 	}
 	go func() {

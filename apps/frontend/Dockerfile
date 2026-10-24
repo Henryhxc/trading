@@ -3,7 +3,6 @@ WORKDIR /app
 COPY apps/frontend/package.json apps/frontend/package-lock.json* ./
 RUN npm ci --no-audit --no-fund
 COPY apps/frontend/ ./
-COPY docs/assets/ux-securities-logo.png ./public/ux-securities-logo.png
 RUN chmod 644 ./public/ux-securities-logo.png
 RUN npm run build
 

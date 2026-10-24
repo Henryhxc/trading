@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { PortfolioPanel } from "./PortfolioPanel";
 import { tradingApi } from "../../shared/api/trading";
@@ -17,13 +17,35 @@ describe("PortfolioPanel analytics", () => {
     });
   });
 
-  it("shows daily and monthly realized profit tables", async () => {
+  it("switches realized profit calendar between day, month, and year", async () => {
     render(<PortfolioPanel account={{ currency: "HKD", cash_balance: 1000, available_cash: 1000, initial_cash: 1000, status: "active" }} positions={[]} loading={false} error="" refresh={vi.fn(async () => undefined)} onSelect={vi.fn()} />);
 
     expect(await screen.findByRole("heading", { name: "Daily P/L" })).toBeTruthy();
-    expect(screen.getByRole("heading", { name: "Monthly P/L" })).toBeTruthy();
-    expect(screen.getAllByText("2026-05-06").length).toBeGreaterThan(0);
+    expect(screen.getByRole("tab", { name: "日" }).getAttribute("aria-selected")).toBe("true");
+    expect(screen.getByRole("grid", { name: "Daily realized P/L calendar" })).toBeTruthy();
+    await waitFor(() => expect(screen.getByRole("gridcell", { name: /2026-05-06.*profit/i })).toBeTruthy());
     expect(screen.getAllByText("+HKD 500.00").length).toBeGreaterThan(0);
     expect(screen.getAllByText("+10.00%").length).toBeGreaterThan(0);
+
+    screen.getByRole("tab", { name: "月" }).click();
+    expect(await screen.findByRole("heading", { name: "Monthly P/L" })).toBeTruthy();
+    expect(screen.getByRole("grid", { name: "Monthly realized P/L calendar" })).toBeTruthy();
+    screen.getByRole("tab", { name: "年" }).click();
+    expect(await screen.findByRole("heading", { name: "Yearly P/L" })).toBeTruthy();
+    expect(screen.getByRole("grid", { name: "Yearly realized P/L calendar" })).toBeTruthy();
+  });
+
+  it("shows an accessible portfolio allocation pie chart", async () => {
+    render(<PortfolioPanel account={{ currency: "HKD", cash_balance: 1000, available_cash: 1000, initial_cash: 1000, status: "active" }} positions={[{ symbol: "00700", display_name: "Tencent Holdings", quantity: 100, available_quantity: 100, average_cost: 300, market_price: 320, market_value: 32000, unrealized_pnl: 2000, data_status: "simulated" }]} loading={false} error="" refresh={vi.fn(async () => undefined)} onSelect={vi.fn()} />);
+
+    expect(await screen.findByRole("img", { name: /portfolio allocation/i })).toBeTruthy();
+    expect(screen.getAllByText("Tencent Holdings")[1]?.parentElement?.textContent).toMatch(/97%/);
+  });
+
+  it("keeps order history out of the positions page", async () => {
+    render(<PortfolioPanel account={{ currency: "HKD", cash_balance: 1000, available_cash: 1000, initial_cash: 1000, status: "active" }} positions={[]} loading={false} error="" refresh={vi.fn(async () => undefined)} onSelect={vi.fn()} />);
+
+    expect(await screen.findByRole("heading", { name: "My positions" })).toBeTruthy();
+    expect(screen.queryByRole("heading", { name: "Order history" })).toBeNull();
   });
 });

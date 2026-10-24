@@ -5,6 +5,7 @@ const files = {
   api: new URL("shared/api/trading.ts", root),
   page: new URL("pages/TradingPanel.tsx", root),
   portfolio: new URL("features/trading/PortfolioPanel.tsx", root),
+  orders: new URL("features/trading/OrderHistoryPanel.tsx", root),
 };
 
 const sources = Object.fromEntries(
@@ -22,7 +23,7 @@ const assertions = [
   ["trading API exposes idempotent order submission", sources.api.includes("Idempotency-Key")],
   ["trading API sends the same idempotency key in the JSON body", sources.api.includes("client_order_id")],
   ["trading panel renders order form", sources.page.includes("Place paper order")],
-  ["portfolio page renders positions and orders", sources.portfolio.includes("Open positions") && sources.portfolio.includes("Order history")],
+  ["portfolio and order history pages stay separate", sources.portfolio.includes("Open positions") && sources.orders.includes("Order history")],
   ["trading panel refreshes after submit", sources.page.includes("onOrderCreated")],
 ];
 

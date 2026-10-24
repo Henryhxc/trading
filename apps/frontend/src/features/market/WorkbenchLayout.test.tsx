@@ -3,6 +3,7 @@ import { beforeEach, expect, it, vi } from "vitest";
 import { WorkbenchPage } from "../../pages/WorkbenchPage";
 import { marketApi, type Quote } from "../../shared/api/market";
 import { tradingApi } from "../../shared/api/trading";
+import { cashApi } from "../../shared/api/cash";
 
 // Canvas has no rendering context in jsdom; keep all workspace and trading components real.
 vi.mock("lightweight-charts", () => ({
@@ -13,6 +14,7 @@ vi.mock("lightweight-charts", () => ({
 vi.mock("../../app/SessionProvider", () => ({ useSession: () => ({ user: { username: "Layout tester" }, clearUser: vi.fn() }) }));
 vi.mock("../../shared/api/market", () => ({ marketApi: { search: vi.fn(), quote: vi.fn(), candles: vi.fn(), watchlist: vi.fn(), addWatchlist: vi.fn(), removeWatchlist: vi.fn(), reorderWatchlist: vi.fn() } }));
 vi.mock("../../shared/api/trading", () => ({ tradingApi: { account: vi.fn(), positions: vi.fn(), orders: vi.fn(), createOrder: vi.fn(), cancelOrder: vi.fn() } }));
+vi.mock("../../shared/api/cash", () => ({ cashApi: { list: vi.fn() } }));
 const quote: Quote = { symbol: "00700", display_name: "Tencent Holdings", last_price: 11, bid: 10, ask: 12, change: 1, change_percent: 10, volume: 100, turnover: 1100, as_of: "2026-10-24T00:00:00Z", source: "akshare", data_status: "stale" };
 
 beforeEach(() => {
@@ -24,9 +26,10 @@ beforeEach(() => {
   vi.mocked(marketApi.quote).mockResolvedValue(quote);
   vi.mocked(marketApi.watchlist).mockResolvedValue({ items: [{ symbol: "00700", display_name: "Tencent Holdings", sort_order: 0, quote }] });
   vi.mocked(marketApi.candles).mockResolvedValue({ symbol: "00700", interval: "1d", items: [], source: "none", data_status: "unavailable", as_of: null });
-  vi.mocked(tradingApi.account).mockResolvedValue({ currency: "HKD", cash_balance: 1000, available_cash: 1000, initial_cash: 1000, status: "active" });
+  vi.mocked(tradingApi.account).mockResolvedValue({ currency: "HKD", cash_balance: 1200, available_cash: 1200, initial_cash: 1200, status: "active" });
   vi.mocked(tradingApi.positions).mockResolvedValue({ items: [{ symbol: "00005", display_name: "HSBC Holdings", quantity: 400, available_quantity: 400, average_cost: 10, market_price: 11, market_value: 4400, unrealized_pnl: 400, data_status: "stale" }] });
   vi.mocked(tradingApi.orders).mockResolvedValue({ items: [] });
+  vi.mocked(cashApi.list).mockResolvedValue({ items: [{ id: 1, type: "deposit", amount: 10000, currency: "HKD", method: "Bank transfer (mock)", status: "completed", created_at: "2026-05-01T08:00:00.000Z", prototype: true }] });
 });
 
 it("shows the market without a search and distinguishes favorites from owned securities", async () => {
@@ -41,7 +44,7 @@ it("shows the market without a search and distinguishes favorites from owned sec
   expect(within(list).getByText("+10.00%")).toBeTruthy();
 });
 
-it("keeps the order ticket beside the chart and full portfolio only in My positions", async () => {
+it("keeps the order ticket beside the chart and separates positions from order history", async () => {
   render(<WorkbenchPage />);
   const ticket = await screen.findByRole("complementary", { name: "Order ticket" });
   expect(within(ticket).getByRole("heading", { name: "Place paper order" })).toBeTruthy();
@@ -49,8 +52,29 @@ it("keeps the order ticket beside the chart and full portfolio only in My positi
   expect(screen.queryByRole("heading", { name: "Order history" })).toBeNull();
   fireEvent.click(screen.getByRole("tab", { name: /My positions/ }));
   expect(await screen.findByRole("heading", { name: "Open positions" })).toBeTruthy();
-  expect(screen.getByRole("heading", { name: "Order history" })).toBeTruthy();
+  expect(screen.queryByRole("heading", { name: "Order history" })).toBeNull();
   expect(screen.queryByRole("complementary", { name: "Order ticket" })).toBeNull();
+  fireEvent.click(screen.getByRole("tab", { name: /Order history/ }));
+  expect(await screen.findByRole("heading", { name: "Order history" })).toBeTruthy();
+  expect(screen.queryByRole("heading", { name: "Open positions" })).toBeNull();
+});
+
+it("provides separate navigation pages for cash overview, deposits, withdrawals, and history", async () => {
+  render(<WorkbenchPage />);
+  await screen.findByRole("region", { name: "Securities directory" });
+
+  fireEvent.click(screen.getByRole("tab", { name: "Cash overview" }));
+  expect(await screen.findByRole("heading", { name: "Cash overview" })).toBeTruthy();
+  expect(screen.queryByRole("complementary", { name: "Order ticket" })).toBeNull();
+
+  fireEvent.click(screen.getByRole("tab", { name: "Deposit" }));
+  expect(await screen.findByRole("heading", { name: "Deposit funds", level: 1 })).toBeTruthy();
+  fireEvent.click(screen.getByRole("tab", { name: "Withdraw" }));
+  expect(await screen.findByRole("heading", { name: "Withdraw funds", level: 1 })).toBeTruthy();
+  fireEvent.click(screen.getByRole("tab", { name: "Cash history" }));
+  expect(await screen.findByRole("heading", { name: "Cash movement history", level: 1 })).toBeTruthy();
+  fireEvent.click(screen.getByRole("tab", { name: "Exchange" }));
+  expect(await screen.findByRole("heading", { name: "Exchange currencies", level: 1 })).toBeTruthy();
 });
 
 it("filters the visible list and restores all securities when cleared", async () => {
@@ -77,7 +101,7 @@ it("refreshes cash and ownership markers after submitting an editable paper orde
   vi.mocked(tradingApi.createOrder).mockResolvedValue({ id: 42, symbol: "00700", side: "buy", order_type: "limit", quantity: 100, limit_price: 11, filled_quantity: 100, filled_price: 11, status: "filled", reject_reason: null, quote_as_of: quote.as_of, created_at: quote.as_of, filled_at: quote.as_of });
   render(<WorkbenchPage />);
   const ticket = await screen.findByRole("complementary", { name: "Order ticket" });
-  await within(ticket).findByText("HKD 1,000.00");
+  await within(ticket).findByText("HKD 1,200.00");
   vi.mocked(tradingApi.account).mockResolvedValue({ currency: "HKD", cash_balance: 900, available_cash: 900, initial_cash: 1000, status: "active" });
   vi.mocked(tradingApi.positions).mockResolvedValue({ items: [{ symbol: "00700", display_name: "Tencent Holdings", quantity: 100, available_quantity: 100, average_cost: 11, market_price: 11, market_value: 1100, unrealized_pnl: 0, data_status: "stale" }] });
   fireEvent.change(within(ticket).getByLabelText("Quantity"), { target: { value: "100" } });
