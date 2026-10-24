@@ -1,0 +1,4 @@
+=== RUN   TestOrderMapsMissingStorageRowToNotFound
+--- PASS: TestOrderMapsMissingStorageRowToNotFound (0.00s)
+PASS
+ok  	ux-securities/backend/internal/service/trading	0.423s

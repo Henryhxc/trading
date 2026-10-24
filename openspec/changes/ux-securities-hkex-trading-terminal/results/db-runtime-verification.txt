@@ -1,0 +1,23 @@
+Tables_in_ux_securities
+accounts
+orders
+positions
+schema_migrations
+sessions
+stock_daily_quotes
+stocks
+users
+watchlists
+version	applied_at
+001_users_sessions_accounts.sql	2026-10-23 18:15:58.268
+002_stocks_daily_quotes_watchlists.sql	2026-10-24 04:49:39.676
+002_webhook_market_provenance.sql	2026-10-24 04:49:40.459
+003_paper_trading_orders_positions.sql	2026-10-24 04:49:40.690
+users
+20
+accounts
+20
+orders
+0
+positions
+0

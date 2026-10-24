@@ -1,0 +1,6 @@
+NAME                                               IMAGE                                          COMMAND                  SERVICE      CREATED             STATUS                       PORTS
+ux-securities-hkex-trading-terminal-akshare-1      ux-securities-hkex-trading-terminal-akshare    "python -m services.…"   akshare      2 hours ago         Up 2 hours (healthy)         
+ux-securities-hkex-trading-terminal-backend-1      ux-securities-hkex-trading-terminal-backend    "/app/ux-api"            backend      4 minutes ago       Up 4 minutes (healthy)       0.0.0.0:8080->8080/tcp, [::]:8080->8080/tcp
+ux-securities-hkex-trading-terminal-frontend-1     ux-securities-hkex-trading-terminal-frontend   "/docker-entrypoint.…"   frontend     About an hour ago   Up About an hour (healthy)   0.0.0.0:3000->80/tcp, [::]:3000->80/tcp
+ux-securities-hkex-trading-terminal-mysql-1        mysql:8.4                                      "docker-entrypoint.s…"   mysql        11 hours ago        Up 11 hours (healthy)        0.0.0.0:3306->3306/tcp, [::]:3306->3306/tcp
+ux-securities-hkex-trading-terminal-phpmyadmin-1   phpmyadmin:5.2-apache                          "/docker-entrypoint.…"   phpmyadmin   11 hours ago        Up 11 hours                  0.0.0.0:8081->80/tcp, [::]:8081->80/tcp

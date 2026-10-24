@@ -1,0 +1,13 @@
+=== RUN   TestNativeHistoryChunkCompletesWithinDeliveryDeadline
+    market_ingestion_deadline_integration_test.go:49: 400-bar insert and idempotent replay completed in 245.842792ms
+--- PASS: TestNativeHistoryChunkCompletesWithinDeliveryDeadline (2.21s)
+=== RUN   TestMixedHistoryGroupsAreAtomicAndEmitOncePerPeriod
+--- PASS: TestMixedHistoryGroupsAreAtomicAndEmitOncePerPeriod (5.05s)
+=== RUN   TestUpsertMarketBatchCommitsProvenanceAndRejectsOlderOverwrite
+--- PASS: TestUpsertMarketBatchCommitsProvenanceAndRejectsOlderOverwrite (3.92s)
+=== RUN   TestUpsertMarketBatchRollsBackQuoteWhenCandleWriteFails
+--- PASS: TestUpsertMarketBatchRollsBackQuoteWhenCandleWriteFails (3.40s)
+=== RUN   TestNativeMinuteStorageProvenanceUniquenessAndOlderOverwrite
+--- PASS: TestNativeMinuteStorageProvenanceUniquenessAndOlderOverwrite (1.94s)
+PASS
+ok  	ux-securities/backend/internal/repository/mysqlrepo	17.703s

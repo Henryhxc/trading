@@ -1,0 +1,4 @@
+=== RUN   TestDirectoryListsBeyondFiftyAndAllowsMissingQuote
+--- PASS: TestDirectoryListsBeyondFiftyAndAllowsMissingQuote (40.77s)
+PASS
+ok  	ux-securities/backend/internal/repository/mysqlrepo	41.804s

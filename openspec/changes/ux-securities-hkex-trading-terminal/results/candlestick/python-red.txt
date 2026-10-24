@@ -1,0 +1,49 @@
+FFpoll delivery failed error=upstream disconnected
+EF
+======================================================================
+ERROR: test_failed_spot_does_not_discard_successful_history (test_candlesticks.CandlestickTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/hongxincong/project/UX Security/services/akshare/tests/test_candlesticks.py", line 14, in test_failed_spot_does_not_discard_successful_history
+    service.run_once()
+  File "/Users/hongxincong/project/UX Security/services/akshare/scheduler.py", line 167, in run_once
+    quotes = normalize_spot_rows(self.fetch_spot(), now)
+  File "/Users/hongxincong/project/UX Security/services/akshare/tests/test_candlesticks.py", line 11, in failed_spot
+    raise ConnectionError("upstream disconnected")
+ConnectionError: upstream disconnected
+
+======================================================================
+FAIL: test_default_history_covers_previous_six_calendar_months (test_candlesticks.CandlestickTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/hongxincong/project/UX Security/services/akshare/tests/test_candlesticks.py", line 21, in test_default_history_covers_previous_six_calendar_months
+    self.assertEqual(bounds(datetime(2026, 10, 24, tzinfo=timezone.utc)), ("20260424", "20261024"))
+AssertionError: Tuples differ: ('', '') != ('20260424', '20261024')
+
+First differing element 0:
+''
+'20260424'
+
+- ('', '')
++ ('20260424', '20261024')
+
+======================================================================
+FAIL: test_duplicate_minutes_keep_most_recent_row_and_sort (test_candlesticks.CandlestickTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/hongxincong/project/UX Security/services/akshare/tests/test_candlesticks.py", line 40, in test_duplicate_minutes_keep_most_recent_row_and_sort
+    self.assertEqual(len(bars), 1)
+AssertionError: 0 != 1
+
+======================================================================
+FAIL: test_minute_normalization_retains_actual_time_and_native_period (test_candlesticks.CandlestickTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/hongxincong/project/UX Security/services/akshare/tests/test_candlesticks.py", line 29, in test_minute_normalization_retains_actual_time_and_native_period
+    self.assertEqual(len(bars), 1)
+AssertionError: 0 != 1
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.010s
+
+FAILED (failures=3, errors=1)

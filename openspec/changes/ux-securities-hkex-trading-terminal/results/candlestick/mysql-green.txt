@@ -1,0 +1,8 @@
+=== RUN   TestUpsertMarketBatchCommitsProvenanceAndRejectsOlderOverwrite
+--- PASS: TestUpsertMarketBatchCommitsProvenanceAndRejectsOlderOverwrite (21.20s)
+=== RUN   TestUpsertMarketBatchRollsBackQuoteWhenCandleWriteFails
+--- PASS: TestUpsertMarketBatchRollsBackQuoteWhenCandleWriteFails (26.92s)
+=== RUN   TestNativeMinuteStorageProvenanceUniquenessAndOlderOverwrite
+--- PASS: TestNativeMinuteStorageProvenanceUniquenessAndOlderOverwrite (20.48s)
+PASS
+ok  	ux-securities/backend/internal/repository/mysqlrepo	69.814s

@@ -1,0 +1,5 @@
+--- FAIL: TestDirectoryQuoteFreshnessMatchesDetail (0.00s)
+    service_test.go:85: directory status=delayed, want stale
+FAIL
+FAIL	ux-securities/backend/internal/service/market	1.429s
+FAIL

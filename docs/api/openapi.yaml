@@ -1,0 +1,660 @@
+openapi: 3.1.0
+info:
+  title: UX Securities HKEX Paper Trading API
+  version: 1.0.0
+  description: Internal API for a Hong Kong securities market-data and paper-trading terminal. No real execution venue is connected.
+servers:
+  - url: http://localhost:8080
+    description: Default local backend port; override with BACKEND_PORT when occupied.
+security:
+  - sessionCookie: []
+paths:
+  /health:
+    get:
+      operationId: health
+      security: []
+      responses:
+        '200':
+          description: Backend and database readiness.
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [status]
+                properties:
+                  status: { type: string, const: ok }
+        '503':
+          description: Backend cannot reach its database dependency.
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [status]
+                properties:
+                  status: { type: string, const: unavailable }
+  /api/v1/auth/register:
+    post:
+      operationId: register
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [username, email, password]
+              properties:
+                username: { type: string, minLength: 3, maxLength: 64 }
+                email: { type: string, format: email, maxLength: 128 }
+                password: { $ref: '#/components/schemas/Password' }
+      responses:
+        '201':
+          description: User and default paper account created; session cookie issued.
+          headers:
+            Set-Cookie: { $ref: '#/components/headers/SessionCookie' }
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/AuthResponse' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '409': { $ref: '#/components/responses/Conflict' }
+        '500': { $ref: '#/components/responses/InternalServerError' }
+  /api/v1/auth/login:
+    post:
+      operationId: login
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [identity, password]
+              properties:
+                identity: { type: string, description: Username or email }
+                password: { $ref: '#/components/schemas/Password' }
+      responses:
+        '200':
+          description: Authenticated user; session cookie issued.
+          headers:
+            Set-Cookie: { $ref: '#/components/headers/SessionCookie' }
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/AuthResponse' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '500': { $ref: '#/components/responses/InternalServerError' }
+  /api/v1/auth/logout:
+    post:
+      operationId: logout
+      security: []
+      responses:
+        '204':
+          description: Any supplied session is revoked and the session cookie is expired; missing sessions are accepted.
+          headers:
+            Set-Cookie: { $ref: '#/components/headers/SessionCookie' }
+  /api/v1/me:
+    get:
+      operationId: getCurrentUser
+      responses:
+        '200':
+          description: Current session actor.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/AuthResponse' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+  /api/v1/markets/symbols:
+    get:
+      operationId: searchSymbols
+      parameters:
+        - in: query
+          name: query
+          required: false
+          description: Optional code or company filter. Empty or omitted returns the full imported HKD equity directory, sorted by symbol.
+          schema: { type: string, maxLength: 80 }
+      responses:
+        '200':
+          description: Imported Hong Kong equity directory, optionally filtered. Static directory membership does not imply quote availability.
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [items]
+                properties:
+                  items:
+                    type: array
+                    items: { $ref: '#/components/schemas/MarketSymbol' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '503': { $ref: '#/components/responses/Unavailable' }
+  /api/v1/markets/quotes/{symbol}:
+    get:
+      operationId: getQuote
+      parameters:
+        - $ref: '#/components/parameters/Symbol'
+      responses:
+        '200':
+          description: Normalized quote with source, timestamp and status.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Quote' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '404': { $ref: '#/components/responses/NotFound' }
+        '503': { $ref: '#/components/responses/Unavailable' }
+  /api/v1/markets/candles/{symbol}:
+    get:
+      operationId: getCandles
+      parameters:
+        - $ref: '#/components/parameters/Symbol'
+        - in: query
+          name: interval
+          schema: { type: string, enum: [1m, 5m, 15m, 30m, 60m, 1d, 1w, 1M, 1y], default: 1d }
+          description: Native minutes; Hong Kong calendar aggregation for week/month/year. Missing interval preserves legacy daily limits.
+        - in: query
+          name: from
+          schema: { type: string, format: date }
+        - in: query
+          name: to
+          schema: { type: string, format: date }
+        - in: query
+          name: limit
+          schema: { type: integer, minimum: 1, maximum: 5000, default: 5000 }
+          description: Legacy requests without interval retain maximum 365/default 90; explicit intervals allow up to 5000. Date window at most 366 days.
+      responses:
+        '200':
+          description: OHLCV series with actual provenance; empty means no imported history, never substituted daily or synthetic minute bars.
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [symbol, interval, items]
+                oneOf:
+                  - title: Explicit interval series with provenance
+                    required: [source, data_status, as_of]
+                  - title: Legacy daily response when interval is omitted
+                    properties:
+                      interval: { const: 1d }
+                    not:
+                      anyOf:
+                        - required: [source]
+                        - required: [data_status]
+                        - required: [as_of]
+                properties:
+                  symbol: { $ref: '#/components/schemas/Symbol' }
+                  interval: { type: string, enum: [1m, 5m, 15m, 30m, 60m, 1d, 1w, 1M, 1y] }
+                  source: { type: string }
+                  data_status: { type: string, enum: [unofficial, delayed, stale, unavailable, simulated] }
+                  as_of: { type: [string, 'null'], format: date-time }
+                  items:
+                    type: array
+                    items: { $ref: '#/components/schemas/Candle' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '404': { $ref: '#/components/responses/NotFound' }
+        '503': { $ref: '#/components/responses/Unavailable' }
+  /api/v1/internal/market-data/akshare:
+    post:
+      operationId: ingestMarketData
+      security: []
+      description: >-
+        Trusted scheduler only; legacy route name does not relabel candle provenance.
+        Maximum body 2 MiB. HMAC-SHA256 hex signs timestamp.deliveryId.rawBody using
+        AKSHARE_WEBHOOK_SECRET. Timestamp must be within the configured acceptance window
+        (default 30s); delivery IDs are protected against replay within that window.
+        Entire batch commits atomically; events publish only after commit. Older
+        collected_at never overwrites newer rows. Scheduler chunks at 400 records.
+      parameters:
+        - in: header
+          name: X-UX-Timestamp
+          required: true
+          schema: { type: string, pattern: '^[0-9]+$' }
+        - in: header
+          name: X-UX-Delivery-ID
+          required: true
+          schema: { type: string }
+        - in: header
+          name: X-UX-Signature
+          required: true
+          schema: { type: string, pattern: '^[a-f0-9]{64}$' }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              required: [version, quotes, candles]
+              properties:
+                version: { type: integer, const: 1 }
+                quotes: { type: array, items: { $ref: '#/components/schemas/QuoteUpdate' } }
+                candles: { type: array, items: { $ref: '#/components/schemas/CandleUpdate' } }
+      responses:
+        '200':
+          description: Committed input counts; upserts are idempotent by symbol/period/time.
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [quote_count, candle_count]
+                properties:
+                  quote_count: { type: integer }
+                  candle_count: { type: integer }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '409': { $ref: '#/components/responses/Conflict' }
+        '413': { description: Body exceeds 2 MiB. }
+        '422': { description: Invalid OHLC, provenance, date, number, or duplicate candle key. }
+        '503': { $ref: '#/components/responses/Unavailable' }
+  /api/v1/markets/stream:
+    get:
+      operationId: streamMarketData
+      description: >-
+        Authenticated WebSocket with configured frontend Origin validation. Server sends
+        quote.updated and candles.updated JSON events after database commit. Candle events
+        identify interval. No durable outbox or replay; reconnecting clients recover via REST.
+      responses:
+        '101':
+          description: WebSocket upgraded; each text frame is a MarketEvent.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/MarketEvent' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { description: WebSocket origin rejected. }
+  /api/v1/watchlist:
+    get:
+      operationId: listWatchlist
+      responses:
+        '200':
+          description: Current user's watchlist, ordered by sort_order.
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [items]
+                properties:
+                  items:
+                    type: array
+                    items: { $ref: '#/components/schemas/WatchlistItem' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '500': { $ref: '#/components/responses/InternalServerError' }
+    post:
+      operationId: addWatchlistItem
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [symbol]
+              properties:
+                symbol: { $ref: '#/components/schemas/Symbol' }
+      responses:
+        '200': { description: Existing relationship returned idempotently. }
+        '201': { description: Watchlist relationship created. }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '404': { $ref: '#/components/responses/NotFound' }
+  /api/v1/watchlist/order:
+    put:
+      operationId: reorderWatchlist
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [symbols]
+              properties:
+                symbols:
+                  type: array
+                  uniqueItems: true
+                  items: { $ref: '#/components/schemas/Symbol' }
+      responses:
+        '204': { description: Order updated for the current user. }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '500': { $ref: '#/components/responses/InternalServerError' }
+  /api/v1/watchlist/{symbol}:
+    delete:
+      operationId: removeWatchlistItem
+      parameters:
+        - $ref: '#/components/parameters/Symbol'
+      responses:
+        '204': { description: Relationship removed; repeated deletion is idempotent. }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '500': { $ref: '#/components/responses/InternalServerError' }
+  /api/v1/orders:
+    get:
+      operationId: listOrders
+      parameters:
+        - in: query
+          name: symbol
+          schema: { $ref: '#/components/schemas/Symbol' }
+        - in: query
+          name: side
+          schema: { $ref: '#/components/schemas/OrderSide' }
+        - in: query
+          name: status
+          schema: { $ref: '#/components/schemas/OrderStatus' }
+        - in: query
+          name: from
+          schema: { type: string, format: date-time }
+        - in: query
+          name: to
+          schema: { type: string, format: date-time }
+      responses:
+        '200':
+          description: Current user's order history.
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [items]
+                properties:
+                  items:
+                    type: array
+                    items: { $ref: '#/components/schemas/Order' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+    post:
+      operationId: createPaperOrder
+      parameters:
+        - in: header
+          name: Idempotency-Key
+          required: true
+          schema: { type: string, minLength: 16, maxLength: 128 }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [symbol, side, order_type, quantity, limit_price]
+              properties:
+                symbol: { $ref: '#/components/schemas/Symbol' }
+                side: { $ref: '#/components/schemas/OrderSide' }
+                order_type: { type: string, const: limit }
+                quantity: { type: integer, minimum: 1 }
+                limit_price: { type: number, exclusiveMinimum: 0 }
+      responses:
+        '201':
+          description: Paper order accepted, filled, or the original order returned for an idempotent replay.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Order' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '409': { $ref: '#/components/responses/Conflict' }
+  /api/v1/orders/{id}/cancel:
+    post:
+      operationId: cancelPaperOrder
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: integer, format: int64, minimum: 1 }
+      responses:
+        '200':
+          description: Owned pending order cancelled.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Order' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '404': { $ref: '#/components/responses/NotFound' }
+        '409': { $ref: '#/components/responses/Conflict' }
+  /api/v1/positions:
+    get:
+      operationId: listPositions
+      responses:
+        '200':
+          description: Current user's aggregated paper positions.
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [items]
+                properties:
+                  items:
+                    type: array
+                    items: { $ref: '#/components/schemas/Position' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+  /api/v1/account:
+    get:
+      operationId: getPaperAccount
+      responses:
+        '200':
+          description: Current user's paper account.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Account' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+components:
+  securitySchemes:
+    sessionCookie:
+      type: apiKey
+      in: cookie
+      name: ux_session
+  headers:
+    SessionCookie:
+      description: Opaque session cookie; HttpOnly, SameSite=Lax, Path=/, Secure when configured.
+      schema: { type: string }
+  parameters:
+    Symbol:
+      in: path
+      name: symbol
+      required: true
+      schema: { $ref: '#/components/schemas/Symbol' }
+  responses:
+    BadRequest:
+      description: Invalid request or field.
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/ApiError' }
+    Unauthorized:
+      description: Missing, invalid, expired or revoked session.
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/ApiError' }
+    NotFound:
+      description: Resource not found or not owned by this user.
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/ApiError' }
+    Conflict:
+      description: Identity conflict, idempotency conflict or illegal state transition.
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/ApiError' }
+    InternalServerError:
+      description: Unexpected storage or dependency failure; no internal details are exposed.
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/ApiError' }
+    Unavailable:
+      description: No usable quote is available.
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/ApiError' }
+  schemas:
+    ApiError:
+      type: object
+      required: [code, message, request_id]
+      properties:
+        code: { type: string }
+        message: { type: string }
+        details: { type: object, additionalProperties: true }
+        request_id: { type: string }
+    Password:
+      type: string
+      minLength: 12
+      maxLength: 72
+      writeOnly: true
+      description: >-
+        UTF-8 password. The server enforces 12-72 UTF-8 bytes to match bcrypt's
+        72-byte input limit. JSON Schema minLength/maxLength count Unicode
+        characters, so non-ASCII input is additionally validated by the server;
+        registration rejects an out-of-range value with 400 and login treats it
+        as invalid credentials (401).
+    User:
+      type: object
+      required: [id, username, email]
+      properties:
+        id: { type: integer, format: int64, minimum: 1 }
+        username: { type: string, maxLength: 64 }
+        email: { type: string, format: email, maxLength: 128 }
+    AuthResponse:
+      type: object
+      required: [user]
+      properties:
+        user: { $ref: '#/components/schemas/User' }
+    Symbol:
+      type: string
+      pattern: '^[0-9]{5}$'
+      description: Internal Hong Kong security code, normalized to five digits, matching the established API and database.
+      example: '00700'
+    MarketSymbol:
+      type: object
+      required: [symbol, display_name]
+      properties:
+        symbol: { $ref: '#/components/schemas/Symbol' }
+        display_name: { type: string }
+        quote:
+          description: Present only when a cached quote exists; source and data_status remain authoritative.
+          $ref: '#/components/schemas/Quote'
+    Quote:
+      type: object
+      required: [symbol, display_name, last_price, bid, ask, change, change_percent, volume, turnover, as_of, source, data_status]
+      properties:
+        symbol: { $ref: '#/components/schemas/Symbol' }
+        display_name: { type: string }
+        last_price: { type: [number, 'null'] }
+        bid: { type: [number, 'null'] }
+        ask: { type: [number, 'null'] }
+        change: { type: [number, 'null'] }
+        change_percent: { type: [number, 'null'] }
+        volume: { type: integer, minimum: 0 }
+        turnover: { type: number, minimum: 0 }
+        as_of: { type: string, format: date-time }
+        source: { type: string }
+        data_status:
+          type: string
+          enum: [simulated, unofficial, delayed, stale, unavailable, live]
+          description: Public free sources must never be labeled live; live requires an authorized provider.
+    Candle:
+      type: object
+      required: [trade_date, open, high, low, close, volume, turnover, source, data_status, collected_at]
+      properties:
+        trade_date: { type: string, format: date-time, description: Exchange calendar label. Daily date uses UTC midnight for compatibility; aggregated bucket dates use Hong Kong midnight. Preserve its calendar date rather than shifting time zones. }
+        timestamp: { type: string, format: date-time, description: UTC minute bar timestamp; absent for calendar bars. }
+        source: { type: string }
+        data_status: { type: string }
+        collected_at: { type: string, format: date-time }
+        open: { type: number, minimum: 0 }
+        high: { type: number, minimum: 0 }
+        low: { type: number, minimum: 0 }
+        close: { type: number, minimum: 0 }
+        volume: { type: integer, minimum: 0 }
+        turnover: { type: [number, 'null'], minimum: 0, description: Unknown for Tencent daily and Yahoo native minutes; any missing component propagates through aggregation. Never an estimated zero. }
+    IngestionDecimal:
+      type: string
+      pattern: '^-?[0-9]+(?:\.[0-9]{1,4})?$'
+    QuoteUpdate:
+      type: object
+      additionalProperties: false
+      required: [symbol, display_name, last_price, change, change_percent, volume, turnover, source, data_status, collected_at]
+      properties:
+        symbol: { $ref: '#/components/schemas/Symbol' }
+        display_name: { type: string }
+        last_price: { $ref: '#/components/schemas/IngestionDecimal' }
+        bid: { type: [string, 'null'] }
+        ask: { type: [string, 'null'] }
+        change: { $ref: '#/components/schemas/IngestionDecimal' }
+        change_percent: { $ref: '#/components/schemas/IngestionDecimal' }
+        volume: { $ref: '#/components/schemas/IngestionDecimal' }
+        turnover: { $ref: '#/components/schemas/IngestionDecimal' }
+        source: { type: string, const: akshare }
+        data_status: { type: string, const: delayed }
+        collected_at: { type: string, format: date-time }
+    CandleUpdate:
+      type: object
+      additionalProperties: false
+      required: [symbol, trade_date, open, high, low, close, volume, turnover, source, data_status, collected_at, adjustment]
+      properties:
+        symbol: { $ref: '#/components/schemas/Symbol' }
+        trade_date: { type: string, format: date }
+        interval: { type: string, enum: [1d, 1m, 5m, 15m, 30m, 60m], default: 1d }
+        timestamp: { type: string, format: date-time, description: Required for minutes; Hong Kong date must equal trade_date. Forbidden for daily. }
+        open: { $ref: '#/components/schemas/IngestionDecimal' }
+        high: { $ref: '#/components/schemas/IngestionDecimal' }
+        low: { $ref: '#/components/schemas/IngestionDecimal' }
+        close: { $ref: '#/components/schemas/IngestionDecimal' }
+        volume: { $ref: '#/components/schemas/IngestionDecimal' }
+        turnover: { type: [string, 'null'], description: Null permitted for Tencent daily or Yahoo bars; other sources require a nonnegative decimal string. }
+        source: { type: string, enum: [akshare, tencent, eastmoney, yahoo] }
+        data_status: { type: string, const: unofficial }
+        collected_at: { type: string, format: date-time }
+        adjustment: { type: string, const: none }
+    MarketEvent:
+      type: object
+      required: [type, symbol, source, data_status, as_of]
+      properties:
+        type: { type: string, enum: [quote.updated, candles.updated] }
+        symbol: { $ref: '#/components/schemas/Symbol' }
+        interval: { type: string }
+        source: { type: string }
+        data_status: { type: string }
+        as_of: { type: string, format: date-time }
+        quote: { $ref: '#/components/schemas/Quote' }
+    WatchlistItem:
+      allOf:
+        - $ref: '#/components/schemas/MarketSymbol'
+        - type: object
+          required: [sort_order, quote]
+          properties:
+            sort_order: { type: integer, minimum: 0 }
+            quote: { $ref: '#/components/schemas/Quote' }
+    OrderSide:
+      type: string
+      enum: [buy, sell]
+    OrderStatus:
+      type: string
+      enum: [pending, filled, cancelled, rejected]
+    Order:
+      type: object
+      required: [id, symbol, side, order_type, quantity, limit_price, filled_quantity, status, created_at]
+      properties:
+        id: { type: integer, format: int64, minimum: 1 }
+        client_order_id: { type: string }
+        symbol: { $ref: '#/components/schemas/Symbol' }
+        side: { $ref: '#/components/schemas/OrderSide' }
+        order_type: { type: string, const: limit }
+        quantity: { type: integer, minimum: 1 }
+        limit_price: { type: number, exclusiveMinimum: 0 }
+        estimated_amount: { type: number, minimum: 0 }
+        filled_quantity: { type: integer, minimum: 0 }
+        filled_price: { type: [number, 'null'] }
+        status: { $ref: '#/components/schemas/OrderStatus' }
+        reject_reason: { type: [string, 'null'] }
+        quote_as_of: { type: [string, 'null'], format: date-time }
+        created_at: { type: string, format: date-time }
+        filled_at: { type: [string, 'null'], format: date-time }
+    Position:
+      type: object
+      required: [symbol, display_name, quantity, available_quantity, average_cost, market_price, unrealized_pnl, market_value, data_status]
+      properties:
+        symbol: { $ref: '#/components/schemas/Symbol' }
+        display_name: { type: string }
+        quantity: { type: integer, minimum: 0 }
+        available_quantity: { type: integer, minimum: 0 }
+        average_cost: { type: number, minimum: 0 }
+        market_price: { type: [number, 'null'] }
+        unrealized_pnl: { type: [number, 'null'] }
+        market_value: { type: [number, 'null'] }
+        data_status: { type: string, enum: [simulated, unofficial, delayed, stale, unavailable, live] }
+    Account:
+      type: object
+      required: [currency, cash_balance, available_cash, initial_cash, status]
+      properties:
+        currency: { type: string, const: HKD }
+        cash_balance: { type: number, minimum: 0 }
+        available_cash: { type: number, minimum: 0 }
+        initial_cash: { type: number, minimum: 0 }
+        status: { type: string, enum: [active, locked] }

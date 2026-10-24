@@ -1,0 +1,14 @@
+F
+======================================================================
+FAIL: test_sparse_cells_and_shared_names_filter_only_hkd_equities (test_import_hk_directory.DirectoryImportTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/hongxincong/project/UX Security/tools/test_import_hk_directory.py", line 21, in test_sparse_cells_and_shared_names_filter_only_hkd_equities
+    self.assertEqual(declared_date, "2026-10-26")
+AssertionError: '' != '2026-10-26'
++ 2026-10-26
+
+----------------------------------------------------------------------
+Ran 1 test in 0.003s
+
+FAILED (failures=1)

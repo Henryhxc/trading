@@ -1,0 +1,13 @@
+test_backoff_is_exponential_with_bounded_jitter (test_scheduler.SchedulerContractTests) ... ok
+test_build_payload_contains_quotes_and_candles (test_scheduler.SchedulerContractTests) ... ok
+test_health_check_is_healthy_only_after_successful_delivery (test_scheduler.SchedulerContractTests) ... ok
+test_hmac_matches_go_webhook_vector (test_scheduler.SchedulerContractTests) ... ok
+test_logs_redact_secret_and_webhook_url (test_scheduler.SchedulerContractTests) ... ok
+test_normalizes_history_rows_without_adjustment (test_scheduler.SchedulerContractTests) ... ok
+test_normalizes_spot_rows_to_backend_contract (test_scheduler.SchedulerContractTests) ... ok
+test_spot_interval_cannot_be_shorter_than_fifteen_minutes (test_scheduler.SchedulerContractTests) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.001s
+
+OK

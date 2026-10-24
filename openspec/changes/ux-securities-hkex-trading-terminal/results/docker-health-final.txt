@@ -1,0 +1,4 @@
+/ux-securities-hkex-trading-terminal-mysql-1 status=running health=healthy
+/ux-securities-hkex-trading-terminal-backend-1 status=running health=healthy
+/ux-securities-hkex-trading-terminal-frontend-1 status=running health=healthy
+/ux-securities-hkex-trading-terminal-akshare-1 status=running health=healthy

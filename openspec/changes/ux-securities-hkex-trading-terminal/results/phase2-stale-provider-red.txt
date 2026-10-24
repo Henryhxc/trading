@@ -1,0 +1,6 @@
+=== RUN   TestProviderKeepsStaleUnofficialQuoteVisible
+    provider_test.go:83: Quote() = {Symbol:00700 DisplayName: LastPrice:0x1400010e0f8 Bid:<nil> Ask:<nil> Change:<nil> ChangePercent:<nil> Volume:0 Turnover:0 AsOf:0001-01-01 00:00:00 +0000 UTC Source:mock DataStatus:simulated}, want akshare stale quote
+--- FAIL: TestProviderKeepsStaleUnofficialQuoteVisible (0.00s)
+FAIL
+FAIL	ux-securities/backend/internal/integration/marketdata	1.521s
+FAIL

@@ -1,0 +1,6 @@
+=== RUN   TestBuildMarketDataProviderAkShareModeUsesRepositoryCache
+    main_test.go:96: buildMarketDataProvider() error = unsupported MARKET_DATA_MODE "akshare", want nil
+--- FAIL: TestBuildMarketDataProviderAkShareModeUsesRepositoryCache (0.00s)
+FAIL
+FAIL	ux-securities/backend/cmd/api	0.494s
+FAIL

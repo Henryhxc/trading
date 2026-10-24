@@ -1,0 +1,6 @@
+=== RUN   TestNativeHistoryChunkCompletesWithinDeliveryDeadline
+    market_ingestion_deadline_integration_test.go:36: 400-bar transaction exceeded delivery budget after 10.000974625s: context deadline exceeded
+--- FAIL: TestNativeHistoryChunkCompletesWithinDeliveryDeadline (23.79s)
+FAIL
+FAIL	ux-securities/backend/internal/repository/mysqlrepo	24.986s
+FAIL

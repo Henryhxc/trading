@@ -1,0 +1,6 @@
+=== RUN   TestNativeMinuteStorageProvenanceUniquenessAndOlderOverwrite
+    market_intraday_integration_test.go:23: migration recovery: migration 004_intraday_candles.sql failed: Error 1050 (42S01): Table 'stock_intraday_quotes' already exists
+--- FAIL: TestNativeMinuteStorageProvenanceUniquenessAndOlderOverwrite (40.92s)
+FAIL
+FAIL	ux-securities/backend/internal/repository/mysqlrepo	41.934s
+FAIL

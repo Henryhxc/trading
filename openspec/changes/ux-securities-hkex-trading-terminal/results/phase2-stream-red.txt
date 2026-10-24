@@ -1,0 +1,4 @@
+# ux-securities/backend/internal/httpapi [ux-securities/backend/internal/httpapi.test]
+internal/httpapi/stream_test.go:13:9: undefined: NewMarketStreamHub
+FAIL	ux-securities/backend/internal/httpapi [build failed]
+FAIL

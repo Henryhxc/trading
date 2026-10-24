@@ -1,0 +1,13 @@
+{
+  "change": "ux-securities-hkex-trading-terminal",
+  "status": "planned",
+  "phases": {
+    "phase1-foundation": "pending",
+    "phase2-market-workbench": "pending",
+    "phase3-paper-trading": "pending"
+  },
+  "evidence": [],
+  "blockers": [
+    "数据库专家路径在当前环境未找到，实施前需重新检查"
+  ]
+}

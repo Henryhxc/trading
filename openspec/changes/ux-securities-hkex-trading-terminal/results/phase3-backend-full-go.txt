@@ -1,0 +1,14 @@
+ok  	ux-securities/backend/cmd/api	0.463s
+ok  	ux-securities/backend/internal/config	0.777s
+?   	ux-securities/backend/internal/domain/auth	[no test files]
+?   	ux-securities/backend/internal/domain/market	[no test files]
+?   	ux-securities/backend/internal/domain/trading	[no test files]
+?   	ux-securities/backend/internal/domain/watchlist	[no test files]
+ok  	ux-securities/backend/internal/httpapi	0.627s
+ok  	ux-securities/backend/internal/integration/marketdata	0.905s
+ok  	ux-securities/backend/internal/migrations	0.782s
+ok  	ux-securities/backend/internal/repository/mysqlrepo	1.108s
+ok  	ux-securities/backend/internal/service/auth	1.323s
+ok  	ux-securities/backend/internal/service/market	1.390s
+ok  	ux-securities/backend/internal/service/trading	1.392s
+ok  	ux-securities/backend/internal/service/watchlist	1.373s

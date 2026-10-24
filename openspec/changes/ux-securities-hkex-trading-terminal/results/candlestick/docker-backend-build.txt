@@ -1,0 +1,55 @@
+#1 [internal] load local bake definitions
+#1 reading from stdin 602B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 30B 0.1s
+#2 transferring dockerfile: 472B 0.5s done
+#2 DONE 3.1s
+
+#3 [internal] load metadata for docker.io/library/golang:1.25-alpine
+#3 DONE 4.3s
+
+#4 [internal] load metadata for docker.io/library/alpine:3.22
+#4 DONE 4.3s
+
+#5 [internal] load .dockerignore
+#5 transferring context:
+#5 transferring context: 172B 0.4s done
+#5 DONE 11.6s
+
+#6 [internal] load build context
+#6 ...
+
+#7 [stage-1 1/5] FROM docker.io/library/alpine:3.22@sha256:2e0b81d60597f449baa56dc25d355367869d2dca4cd57e866f1e2b52af3eb55f
+#7 resolve docker.io/library/alpine:3.22@sha256:2e0b81d60597f449baa56dc25d355367869d2dca4cd57e866f1e2b52af3eb55f 1.9s done
+#7 DONE 2.0s
+
+#6 [internal] load build context
+#6 transferring context: 201.70kB 2.2s done
+#6 ...
+
+#8 [build 1/6] FROM docker.io/library/golang:1.25-alpine@sha256:1ae0735f00daffa3aaf1363a5184c0d2dc55c78e3db4ec70241cdac97bf84b59
+#8 resolve docker.io/library/golang:1.25-alpine@sha256:1ae0735f00daffa3aaf1363a5184c0d2dc55c78e3db4ec70241cdac97bf84b59 2.8s done
+#8 DONE 4.2s
+
+#6 [internal] load build context
+#6 DONE 5.0s
+
+#9 [build 2/6] WORKDIR /src
+#9 CACHED
+
+#10 [build 3/6] COPY apps/backend/go.mod apps/backend/go.sum ./
+#10 CACHED
+
+#11 [build 4/6] RUN go mod download
+#11 CACHED
+
+#12 [build 5/6] COPY apps/backend/ ./
+#12 DONE 4.6s
+
+#13 [build 6/6] RUN CGO_ENABLED=0 GOOS=linux GOMAXPROCS=2 go build -p 2 -trimpath -o /out/ux-api ./cmd/api
+

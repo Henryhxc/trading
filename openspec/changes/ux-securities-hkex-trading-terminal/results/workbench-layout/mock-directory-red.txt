@@ -1,0 +1,5 @@
+--- FAIL: TestMockDirectoryListsAllSymbolsInStableOrder (0.00s)
+    provider_test.go:21: directory size=0 err=<nil>, want 3
+FAIL
+FAIL	ux-securities/backend/internal/integration/marketdata	1.558s
+FAIL

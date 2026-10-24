@@ -1,0 +1,33 @@
+
+ RUN  v4.1.12 /Users/hongxincong/project/UX Security/apps/frontend
+
+ ❯ src/features/market/chart-data.test.ts (2 tests | 1 failed) 639ms
+     × rejects impossible calendar dates before passing data to the chart 99ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/market/chart-data.test.ts > candle calendar validation > rejects impossible calendar dates before passing data to the chart
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ src/features/market/chart-data.test.ts:12:42
+     10|   it("rejects impossible calendar dates before passing data to the cha…
+     11|     const bar: Candle = { trade_date: "2026-02-31T00:00:00Z", open: 10…
+     12|     expect(() => chartData([bar], "1d")).toThrow(/日期/);
+       |                                          ^
+     13|   });
+     14| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 1 passed (2)
+   Start at  15:42:15
+   Duration  8.85s (transform 899ms, setup 2.10s, import 447ms, tests 639ms, environment 4.49s)
+

@@ -1,0 +1,13 @@
+
+> ux-securities-frontend@1.0.0 build
+> tsc -b && vite build
+
+vite v7.3.7 building client environment for production...
+transforming...
+✓ 50 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.46 kB │ gzip:   0.29 kB
+dist/assets/index-Dl1S86n8.css   13.67 kB │ gzip:   3.53 kB
+dist/assets/index-BuVv5rjJ.js   390.86 kB │ gzip: 124.09 kB
+✓ built in 8.13s

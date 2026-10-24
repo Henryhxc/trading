@@ -1,0 +1,2645 @@
+
+> ux-securities-frontend@1.0.0 test:frontend
+> node tests/source-guard.mjs && vitest run
+
+Frontend source guard passed: 6 assertions
+
+ RUN  v3.2.7 /Users/hongxincong/project/UX Security/apps/frontend
+
+ ❯ src/features/market/WorkbenchChart.test.tsx (4 tests | 4 failed) 3487ms
+   × Workbench candle behavior > offers all native minute and calendar periods and requests the selected period 425ms
+     → Unable to find an accessible element with the role "button" and name "1分"
+
+Here are the accessible roles:
+
+  main:
+
+  Name "":
+  [36m<main[39m
+    [33mclass[39m=[32m"workbench-shell"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  banner:
+
+  Name "":
+  [36m<header[39m
+    [33mclass[39m=[32m"workbench-header"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  img:
+
+  Name "UX Securities Limited":
+  [36m<img[39m
+    [33malt[39m=[32m"UX Securities Limited"[39m
+    [33msrc[39m=[32m"/ux-securities-logo.png"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  button:
+
+  Name "Sign out":
+  [36m<button[39m
+    [33mclass[39m=[32m"quiet-button"[39m
+  [36m/>[39m
+
+  Name "Search":
+  [36m<button[39m
+    [33mclass[39m=[32m"primary-button compact"[39m
+  [36m/>[39m
+
+  Name "Add to favorites":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Add to favorites"[39m
+    [33mclass[39m=[32m"favorite-button"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  tablist:
+
+  Name "Workspace sections":
+  [36m<nav[39m
+    [33maria-label[39m=[32m"Workspace sections"[39m
+    [33mclass[39m=[32m"workbench-navigation"[39m
+    [33mrole[39m=[32m"tablist"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  tab:
+
+  Name "Market":
+  [36m<button[39m
+    [33maria-selected[39m=[32m"true"[39m
+    [33mclass[39m=[32m"active"[39m
+    [33mrole[39m=[32m"tab"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "My favorites 0":
+  [36m<button[39m
+    [33maria-selected[39m=[32m"false"[39m
+    [33mclass[39m=[32m""[39m
+    [33mrole[39m=[32m"tab"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "My positions":
+  [36m<button[39m
+    [33maria-selected[39m=[32m"false"[39m
+    [33mclass[39m=[32m""[39m
+    [33mrole[39m=[32m"tab"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  complementary:
+
+  Name "":
+  [36m<aside[39m
+    [33mclass[39m=[32m"market-sidebar"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  paragraph:
+
+  Name "":
+  [36m<p[39m
+    [33mclass[39m=[32m"eyebrow"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<p[39m
+    [33mclass[39m=[32m"empty-state"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<p[39m
+    [33mclass[39m=[32m"eyebrow"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<p[39m
+    [33mclass[39m=[32m"quote-source"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  heading:
+
+  Name "Hong Kong equities":
+  [36m<h1 />[39m
+
+  Name "Tencent Holdings":
+  [36m<h2 />[39m
+
+  --------------------------------------------------
+  textbox:
+
+  Name "Search symbols":
+  [36m<input[39m
+    [33maria-label[39m=[32m"Search symbols"[39m
+    [33mplaceholder[39m=[32m"Code or company"[39m
+    [33mvalue[39m=[32m""[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  strong:
+
+  Name "":
+  [36m<strong />[39m
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main[39m
+      [33mclass[39m=[32m"workbench-shell"[39m
+    [36m>[39m
+      [36m<header[39m
+        [33mclass[39m=[32m"workbench-header"[39m
+      [36m>[39m
+        [36m<img[39m
+          [33malt[39m=[32m"UX Securities Limited"[39m
+          [33msrc[39m=[32m"/ux-securities-logo.png"[39m
+        [36m/>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"header-actions"[39m
+        [36m>[39m
+          [36m<span>[39m
+            [0mChart tester[0m
+          [36m</span>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"quiet-button"[39m
+          [36m>[39m
+            [0mSign out[0m
+          [36m</button>[39m
+        [36m</div>[39m
+      [36m</header>[39m
+      [36m<nav[39m
+        [33maria-label[39m=[32m"Workspace sections"[39m
+        [33mclass[39m=[32m"workbench-navigation"[39m
+        [33mrole[39m=[32m"tablist"[39m
+      [36m>[39m
+        [36m<button[39m
+          [33maria-selected[39m=[32m"true"[39m
+          [33mclass[39m=[32m"active"[39m
+          [33mrole[39m=[32m"tab"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mMarket[0m
+        [36m</button>[39m
+        [36m<button[39m
+          [33maria-selected[39m=[32m"false"[39m
+          [33mclass[39m=[32m""[39m
+          [33mrole[39m=[32m"tab"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mMy favorites [0m
+          [36m<span>[39m
+            [0m0[0m
+          [36m</span>[39m
+        [36m</button>[39m
+        [36m<button[39m
+          [33maria-selected[39m=[32m"false"[39m
+          [33mclass[39m=[32m""[39m
+          [33mrole[39m=[32m"tab"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mMy positions[0m
+        [36m</button>[39m
+      [36m</nav>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"workbench-grid"[39m
+      [36m>[39m
+        [36m<aside[39m
+          [33mclass[39m=[32m"market-sidebar"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"sidebar-heading"[39m
+          [36m>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"eyebrow"[39m
+            [36m>[39m
+              [0mMARKET WATCH[0m
+            [36m</p>[39m
+            [36m<h1>[39m
+              [0mHong Kong equities[0m
+            [36m</h1>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"search-row"[39m
+          [36m>[39m
+            [36m<input[39m
+              [33maria-label[39m=[32m"Search symbols"[39m
+              [33mplaceholder[39m=[32m"Code or company"[39m
+              [33mvalue[39m=[32m""[39m
+            [36m/>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"primary-button compact"[39m
+            [36m>[39m
+              [0mSearch[0m
+            [36m</button>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"watchlist-heading"[39m
+          [36m>[39m
+            [36m<span>[39m
+              [0mFavorites[0m
+            [36m</span>[39m
+            [36m<span>[39m
+              [0m0[0m
+            [36m</span>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"watchlist-list"[39m
+          [36m>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"empty-state"[39m
+            [36m>[39m
+              [0mNo favorites yet. Search for a security to add it.[0m
+            [36m</p>[39m
+          [36m</div>[39m
+        [36m</aside>[39m
+        [36m<section[39m
+          [33mclass[39m=[32m"quote-panel"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"quote-heading"[39m
+          [36m>[39m
+            [36m<div>[39m
+              [36m<p[39m
+                [33mclass[39m=[32m"eyebrow"[39m
+              [36m>[39m
+                [0m00700[0m
+                [0m · HKEX[0m
+              [36m</p>[39m
+              [36m<h2>[39m
+                [0mTencent Holdings[0m
+              [36m</h2>[39m
+              [36m<p[39m
+                [33mclass[39m=[32m"quote-source"[39m
+              [36m>[39m
+                [0makshare[0m
+                [0m · [0m
+                [0m10/24/2026, 8:00:00 AM[0m
+              [36m</p>[39m
+            [36m</div>[39m
+            [36m<button[39m
+              [33maria-label[39m=[32m"Add to favorites"[39m
+              [33mclass[39m=[32m"favorite-button"[39m
+            [36m>[39m
+              [0m☆[0m
+            [36m</button>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"quote-value"[39m
+          [36m>[39m
+            [36m<strong>[39m
+              [0m11.00[0m
+            [36m</strong>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"up"[39m
+            [36m>[39m
+              [0m+1.00 (10.00%)[0m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"data-badge delayed"[39m
+            [36m>[39m
+              [0mDELAYED[0m
+            [36m</span>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"quote-stats"[39m
+          [36m>[39m
+            [36m<span>[39m
+              [0mBid [0m
+              [36m<b>[39m
+                [0m10.00[0m
+              [36m</b>[39m
+            [36m</span>[39m
+            [36m<span>[39m
+              [0mAsk [0m
+              [36m<b>[39m
+                [0m12.00[0m
+              [36m</b>[39m
+            [36m</span>[39m
+            [36m<span>[39m
+              [0mVolume [0m
+              [36m<b>[39m
+                [0m100[0m
+              [36m</b>[39m
+            [36m</span>[39m
+            [36m<span>[39m
+              [0mTurnover [0m
+              [36m<b>[39m
+                [0mHKD [0m
+                [0m1,100[0m
+              [36m</b>[39m
+            [36m</span>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"chart-panel"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"chart-heading"[39m
+            [36m>[39m
+              [36m<span>[39m
+                [0mDaily close[0m
+              [36m</span>[39m
+              [36m<span>[39m
+                [0m1[0m
+                [0m sessions[0m
+              [36m</span>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33maria-label[39m=[32m"Daily close prices"[39m
+              [33mclass[39m=[32m"mini-chart"[39m
+            [36m>[39m
+              [36m<i[39m
+                [33mstyle[39m=[32m"height: 10%;"[39m
+                [33mtitle[39m=[32m"2026-10-23T00:00:00Z: 11.00"[39m
+              [36m/>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+        [36m</section>[39m
+      [36m</section>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+   × Workbench candle behavior > renders actual OHLC data and green/red volume, not a close-only bar 1030ms
+     → expected "spy" to be called with arguments: [ [ { time: '2026-10-23', …(4) } ] ]
+
+Number of calls: 0
+
+
+Ignored nodes: comments, script, style
+[36m<html>[39m
+  [36m<head />[39m
+  [36m<body>[39m
+    [36m<div>[39m
+      [36m<main[39m
+        [33mclass[39m=[32m"workbench-shell"[39m
+      [36m>[39m
+        [36m<header[39m
+          [33mclass[39m=[32m"workbench-header"[39m
+        [36m>[39m
+          [36m<img[39m
+            [33malt[39m=[32m"UX Securities Limited"[39m
+            [33msrc[39m=[32m"/ux-securities-logo.png"[39m
+          [36m/>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"header-actions"[39m
+          [36m>[39m
+            [36m<span>[39m
+              [0mChart tester[0m
+            [36m</span>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"quiet-button"[39m
+            [36m>[39m
+              [0mSign out[0m
+            [36m</button>[39m
+          [36m</div>[39m
+        [36m</header>[39m
+        [36m<nav[39m
+          [33maria-label[39m=[32m"Workspace sections"[39m
+          [33mclass[39m=[32m"workbench-navigation"[39m
+          [33mrole[39m=[32m"tablist"[39m
+        [36m>[39m
+          [36m<button[39m
+            [33maria-selected[39m=[32m"true"[39m
+            [33mclass[39m=[32m"active"[39m
+            [33mrole[39m=[32m"tab"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mMarket[0m
+          [36m</button>[39m
+          [36m<button[39m
+            [33maria-selected[39m=[32m"false"[39m
+            [33mclass[39m=[32m""[39m
+            [33mrole[39m=[32m"tab"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mMy favorites [0m
+            [36m<span>[39m
+              [0m0[0m
+            [36m</span>[39m
+          [36m</button>[39m
+          [36m<button[39m
+            [33maria-selected[39m=[32m"false"[39m
+            [33mclass[39m=[32m""[39m
+            [33mrole[39m=[32m"tab"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mMy positions[0m
+          [36m</button>[39m
+        [36m</nav>[39m
+        [36m<section[39m
+          [33mclass[39m=[32m"workbench-grid"[39m
+        [36m>[39m
+          [36m<aside[39m
+            [33mclass[39m=[32m"market-sidebar"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"sidebar-heading"[39m
+            [36m>[39m
+              [36m<p[39m
+                [33mclass[39m=[32m"eyebrow"[39m
+              [36m>[39m
+                [0mMARKET WATCH[0m
+              [36m</p>[39m
+              [36m<h1>[39m
+                [0mHong Kong equities[0m
+              [36m</h1>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"search-row"[39m
+            [36m>[39m
+              [36m<input[39m
+                [33maria-label[39m=[32m"Search symbols"[39m
+                [33mplaceholder[39m=[32m"Code or company"[39m
+                [33mvalue[39m=[32m""[39m
+              [36m/>[39m
+              [36m<button[39m
+                [33mclass[39m=[32m"primary-button compact"[39m
+              [36m>[39m
+                [0mSearch[0m
+              [36m</button>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"watchlist-heading"[39m
+            [36m>[39m
+              [36m<span>[39m
+                [0mFavorites[0m
+              [36m</span>[39m
+              [36m<span>[39m
+                [0m0[0m
+              [36m</span>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"watchlist-list"[39m
+            [36m>[39m
+              [36m<p[39m
+                [33mclass[39m=[32m"empty-state"[39m
+              [36m>[39m
+                [0mNo favorites yet. Search for a security to add it.[0m
+              [36m</p>[39m
+            [36m</div>[39m
+          [36m</aside>[39m
+          [36m<section[39m
+            [33mclass[39m=[32m"quote-panel"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"quote-heading"[39m
+            [36m>[39m
+              [36m<div>[39m
+                [36m<p[39m
+                  [33mclass[39m=[32m"eyebrow"[39m
+                [36m>[39m
+                  [0m00700[0m
+                  [0m · HKEX[0m
+                [36m</p>[39m
+                [36m<h2>[39m
+                  [0mTencent Holdings[0m
+                [36m</h2>[39m
+                [36m<p[39m
+                  [33mclass[39m=[32m"quote-source"[39m
+                [36m>[39m
+                  [0makshare[0m
+                  [0m · [0m
+                  [0m10/24/2026, 8:00:00 AM[0m
+                [36m</p>[39m
+              [36m</div>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"Add to favorites"[39m
+                [33mclass[39m=[32m"favorite-button"[39m
+              [36m>[39m
+                [0m☆[0m
+              [36m</button>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"quote-value"[39m
+            [36m>[39m
+              [36m<strong>[39m
+                [0m11.00[0m
+              [36m</strong>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"up"[39m
+              [36m>[39m
+                [0m+1.00 (10.00%)[0m
+              [36m</span>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"data-badge delayed"[39m
+              [36m>[39m
+                [0mDELAYED[0m
+              [36m</span>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"quote-stats"[39m
+            [36m>[39m
+              [36m<span>[39m
+                [0mBid [0m
+                [36m<b>[39m
+                  [0m10.00[0m
+                [36m</b>[39m
+              [36m</span>[39m
+              [36m<span>[39m
+                [0mAsk [0m
+                [36m<b>[39m
+                  [0m12.00[0m
+                [36m</b>[39m
+              [36m</span>[39m
+              [36m<span>[39m
+                [0mVolume [0m
+                [36m<b>[39m
+                  [0m100[0m
+                [36m</b>[39m
+              [36m</span>[39m
+              [36m<span>[39m
+                [0mTurnover [0m
+                [36m<b>[39m
+                  [0mHKD [0m
+                  [0m1,100[0m
+                [36m</b>[39m
+              [36m</span>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"chart-panel"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"chart-heading"[39m
+              [36m>[39m
+                [36m<span>[39m
+                  [0mDaily close[0m
+                [36m</span>[39m
+                [36m<span>[39m
+                  [0m1[0m
+                  [0m sessions[0m
+                [36m</span>[39m
+              [36m</div>[39m
+              [36m<div[39m
+                [33maria-label[39m=[32m"Daily close prices"[39m
+                [33mclass[39m=[32m"mini-chart"[39m
+              [36m>[39m
+                [36m<i[39m
+                  [33mstyle[39m=[32m"height: 10%;"[39m
+                  [33mtitle[39m=[32m"2026-10-23T00:00:00Z: 11.00"[39m
+                [36m/>[39m
+              [36m</div>[39m
+            [36m</div>[39m
+          [36m</section>[39m
+        [36m</section>[39m
+      [36m</main>[39m
+    [36m</div>[39m
+  [36m</body>[39m
+[36m</html>[39m
+   × Workbench candle behavior > keeps the quote visible on candle failure and supports retry 1018ms
+     → Unable to find an element with the text: Tencent Holdings. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main[39m
+      [33mclass[39m=[32m"workbench-shell"[39m
+    [36m>[39m
+      [36m<header[39m
+        [33mclass[39m=[32m"workbench-header"[39m
+      [36m>[39m
+        [36m<img[39m
+          [33malt[39m=[32m"UX Securities Limited"[39m
+          [33msrc[39m=[32m"/ux-securities-logo.png"[39m
+        [36m/>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"header-actions"[39m
+        [36m>[39m
+          [36m<span>[39m
+            [0mChart tester[0m
+          [36m</span>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"quiet-button"[39m
+          [36m>[39m
+            [0mSign out[0m
+          [36m</button>[39m
+        [36m</div>[39m
+      [36m</header>[39m
+      [36m<nav[39m
+        [33maria-label[39m=[32m"Workspace sections"[39m
+        [33mclass[39m=[32m"workbench-navigation"[39m
+        [33mrole[39m=[32m"tablist"[39m
+      [36m>[39m
+        [36m<button[39m
+          [33maria-selected[39m=[32m"true"[39m
+          [33mclass[39m=[32m"active"[39m
+          [33mrole[39m=[32m"tab"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mMarket[0m
+        [36m</button>[39m
+        [36m<button[39m
+          [33maria-selected[39m=[32m"false"[39m
+          [33mclass[39m=[32m""[39m
+          [33mrole[39m=[32m"tab"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mMy favorites [0m
+          [36m<span>[39m
+            [0m0[0m
+          [36m</span>[39m
+        [36m</button>[39m
+        [36m<button[39m
+          [33maria-selected[39m=[32m"false"[39m
+          [33mclass[39m=[32m""[39m
+          [33mrole[39m=[32m"tab"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mMy positions[0m
+        [36m</button>[39m
+      [36m</nav>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"workbench-grid"[39m
+      [36m>[39m
+        [36m<aside[39m
+          [33mclass[39m=[32m"market-sidebar"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"sidebar-heading"[39m
+          [36m>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"eyebrow"[39m
+            [36m>[39m
+              [0mMARKET WATCH[0m
+            [36m</p>[39m
+            [36m<h1>[39m
+              [0mHong Kong equities[0m
+            [36m</h1>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"search-row"[39m
+          [36m>[39m
+            [36m<input[39m
+              [33maria-label[39m=[32m"Search symbols"[39m
+              [33mplaceholder[39m=[32m"Code or company"[39m
+              [33mvalue[39m=[32m""[39m
+            [36m/>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"primary-button compact"[39m
+            [36m>[39m
+              [0mSearch[0m
+            [36m</button>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"watchlist-heading"[39m
+          [36m>[39m
+            [36m<span>[39m
+              [0mFavorites[0m
+            [36m</span>[39m
+            [36m<span>[39m
+              [0m0[0m
+            [36m</span>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"watchlist-list"[39m
+          [36m>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"empty-state"[39m
+            [36m>[39m
+              [0mNo favorites yet. Search for a security to add it.[0m
+            [36m</p>[39m
+          [36m</div>[39m
+        [36m</aside>[39m
+        [36m<section[39m
+          [33mclass[39m=[32m"quote-panel"[39m
+        [36m>[39m
+          [36m<p[39m
+            [33mclass[39m=[32m"error-message"[39m
+            [33mrole[39m=[32m"alert"[39m
+          [36m>[39m
+            [0mHistory offline[0m
+          [36m</p>[39m
+          [36m<p[39m
+            [33mclass[39m=[32m"panel-state"[39m
+          [36m>[39m
+            [0mSelect a security to view its quote.[0m
+          [36m</p>[39m
+        [36m</section>[39m
+      [36m</section>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main[39m
+      [33mclass[39m=[32m"workbench-shell"[39m
+    [36m>[39m
+      [36m<header[39m
+        [33mclass[39m=[32m"workbench-header"[39m
+      [36m>[39m
+        [36m<img[39m
+          [33malt[39m=[32m"UX Securities Limited"[39m
+          [33msrc[39m=[32m"/ux-securities-logo.png"[39m
+        [36m/>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"header-actions"[39m
+        [36m>[39m
+          [36m<span>[39m
+            [0mChart tester[0m
+          [36m</span>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"quiet-button"[39m
+          [36m>[39m
+            [0mSign out[0m
+          [36m</button>[39m
+        [36m</div>[39m
+      [36m</header>[39m
+      [36m<nav[39m
+        [33maria-label[39m=[32m"Workspace sections"[39m
+        [33mclass[39m=[32m"workbench-navigation"[39m
+        [33mrole[39m=[32m"tablist"[39m
+      [36m>[39m
+        [36m<button[39m
+          [33maria-selected[39m=[32m"true"[39m
+          [33mclass[39m=[32m"active"[39m
+          [33mrole[39m=[32m"tab"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mMarket[0m
+        [36m</button>[39m
+        [36m<button[39m
+          [33maria-selected[39m=[32m"false"[39m
+          [33mclass[39m=[32m""[39m
+          [33mrole[39m=[32m"tab"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mMy favorites [0m
+          [36m<span>[39m
+            [0m0[0m
+          [36m</span>[39m
+        [36m</button>[39m
+        [36m<button[39m
+          [33maria-selected[39m=[32m"false"[39m
+          [33mclass[39m=[32m""[39m
+          [33mrole[39m=[32m"tab"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mMy positions[0m
+        [36m</button>[39m
+      [36m</nav>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"workbench-grid"[39m
+      [36m>[39m
+        [36m<aside[39m
+          [33mclass[39m=[32m"market-sidebar"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"sidebar-heading"[39m
+          [36m>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"eyebrow"[39m
+            [36m>[39m
+              [0mMARKET WATCH[0m
+            [36m</p>[39m
+            [36m<h1>[39m
+              [0mHong Kong equities[0m
+            [36m</h1>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"search-row"[39m
+          [36m>[39m
+            [36m<input[39m
+              [33maria-label[39m=[32m"Search symbols"[39m
+              [33mplaceholder[39m=[32m"Code or company"[39m
+              [33mvalue[39m=[32m""[39m
+            [36m/>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"primary-button compact"[39m
+            [36m>[39m
+              [0mSearch[0m
+            [36m</button>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"watchlist-heading"[39m
+          [36m>[39m
+            [36m<span>[39m
+              [0mFavorites[0m
+            [36m</span>[39m
+            [36m<span>[39m
+              [0m0[0m
+            [36m</span>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"watchlist-list"[39m
+          [36m>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"empty-state"[39m
+            [36m>[39m
+              [0mNo favorites yet. Search for a security to add it.[0m
+            [36m</p>[39m
+          [36m</div>[39m
+        [36m</aside>[39m
+        [36m<section[39m
+          [33mclass[39m=[32m"quote-panel"[39m
+        [36m>[39m
+          [36m<p[39m
+            [33mclass[39m=[32m"error-message"[39m
+            [33mrole[39m=[32m"alert"[39m
+          [36m>[39m
+            [0mHistory offline[0m
+          [36m</p>[39m
+          [36m<p[39m
+            [33mclass[39m=[32m"panel-state"[39m
+          [36m>[39m
+            [0mSelect a security to view its quote.[0m
+          [36m</p>[39m
+        [36m</section>[39m
+      [36m</section>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+   × Workbench candle behavior > shows missing native minutes explicitly without substituting daily bars 1012ms
+     → Unable to find role="button" and name "1分"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main[39m
+      [33mclass[39m=[32m"workbench-shell"[39m
+    [36m>[39m
+      [36m<header[39m
+        [33mclass[39m=[32m"workbench-header"[39m
+      [36m>[39m
+        [36m<img[39m
+          [33malt[39m=[32m"UX Securities Limited"[39m
+          [33msrc[39m=[32m"/ux-securities-logo.png"[39m
+        [36m/>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"header-actions"[39m
+        [36m>[39m
+          [36m<span>[39m
+            [0mChart tester[0m
+          [36m</span>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"quiet-button"[39m
+          [36m>[39m
+            [0mSign out[0m
+          [36m</button>[39m
+        [36m</div>[39m
+      [36m</header>[39m
+      [36m<nav[39m
+        [33maria-label[39m=[32m"Workspace sections"[39m
+        [33mclass[39m=[32m"workbench-navigation"[39m
+        [33mrole[39m=[32m"tablist"[39m
+      [36m>[39m
+        [36m<button[39m
+          [33maria-selected[39m=[32m"true"[39m
+          [33mclass[39m=[32m"active"[39m
+          [33mrole[39m=[32m"tab"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mMarket[0m
+        [36m</button>[39m
+        [36m<button[39m
+          [33maria-selected[39m=[32m"false"[39m
+          [33mclass[39m=[32m""[39m
+          [33mrole[39m=[32m"tab"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mMy favorites [0m
+          [36m<span>[39m
+            [0m0[0m
+          [36m</span>[39m
+        [36m</button>[39m
+        [36m<button[39m
+          [33maria-selected[39m=[32m"false"[39m
+          [33mclass[39m=[32m""[39m
+          [33mrole[39m=[32m"tab"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mMy positions[0m
+        [36m</button>[39m
+      [36m</nav>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"workbench-grid"[39m
+      [36m>[39m
+        [36m<aside[39m
+          [33mclass[39m=[32m"market-sidebar"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"sidebar-heading"[39m
+          [36m>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"eyebrow"[39m
+            [36m>[39m
+              [0mMARKET WATCH[0m
+            [36m</p>[39m
+            [36m<h1>[39m
+              [0mHong Kong equities[0m
+            [36m</h1>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"search-row"[39m
+          [36m>[39m
+            [36m<input[39m
+              [33maria-label[39m=[32m"Search symbols"[39m
+              [33mplaceholder[39m=[32m"Code or company"[39m
+              [33mvalue[39m=[32m""[39m
+            [36m/>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"primary-button compact"[39m
+            [36m>[39m
+              [0mSearch[0m
+            [36m</button>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"watchlist-heading"[39m
+          [36m>[39m
+            [36m<span>[39m
+              [0mFavorites[0m
+            [36m</span>[39m
+            [36m<span>[39m
+              [0m0[0m
+            [36m</span>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"watchlist-list"[39m
+          [36m>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"empty-state"[39m
+            [36m>[39m
+              [0mNo favorites yet. Search for a security to add it.[0m
+            [36m</p>[39m
+          [36m</div>[39m
+        [36m</aside>[39m
+        [36m<section[39m
+          [33mclass[39m=[32m"quote-panel"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"quote-heading"[39m
+          [36m>[39m
+            [36m<div>[39m
+              [36m<p[39m
+                [33mclass[39m=[32m"eyebrow"[39m
+              [36m>[39m
+                [0m00700[0m
+                [0m · HKEX[0m
+              [36m</p>[39m
+              [36m<h2>[39m
+                [0mTencent Holdings[0m
+              [36m</h2>[39m
+              [36m<p[39m
+                [33mclass[39m=[32m"quote-source"[39m
+              [36m>[39m
+                [0makshare[0m
+                [0m · [0m
+                [0m10/24/2026, 8:00:00 AM[0m
+              [36m</p>[39m
+            [36m</div>[39m
+            [36m<button[39m
+              [33maria-label[39m=[32m"Add to favorites"[39m
+              [33mclass[39m=[32m"favorite-button"[39m
+            [36m>[39m
+              [0m☆[0m
+            [36m</button>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"quote-value"[39m
+          [36m>[39m
+            [36m<strong>[39m
+              [0m11.00[0m
+            [36m</strong>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"up"[39m
+            [36m>[39m
+              [0m+1.00 (10.00%)[0m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"data-badge delayed"[39m
+            [36m>[39m
+              [0mDELAYED[0m
+            [36m</span>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"quote-stats"[39m
+          [36m>[39m
+            [36m<span>[39m
+              [0mBid [0m
+              [36m<b>[39m
+                [0m10.00[0m
+              [36m</b>[39m
+            [36m</span>[39m
+            [36m<span>[39m
+              [0mAsk [0m
+              [36m<b>[39m
+                [0m12.00[0m
+              [36m</b>[39m
+            [36m</span>[39m
+            [36m<span>[39m
+              [0mVolume [0m
+              [36m<b>[39m
+                [0m100[0m
+              [36m</b>[39m
+            [36m</span>[39m
+            [36m<span>[39m
+              [0mTurnover [0m
+              [36m<b>[39m
+                [0mHKD [0m
+                [0m1,100[0m
+              [36m</b>[39m
+            [36m</span>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"chart-panel"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"chart-heading"[39m
+            [36m>[39m
+              [36m<span>[39m
+                [0mDaily close[0m
+              [36m</span>[39m
+              [36m<span>[39m
+                [0m0[0m
+                [0m sessions[0m
+              [36m</span>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33maria-label[39m=[32m"Daily close prices"[39m
+              [33mclass[39m=[32m"mini-chart"[39m
+            [36m/>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"empty-state"[39m
+            [36m>[39m
+              [0mNo daily history is available.[0m
+            [36m</p>[39m
+          [36m</div>[39m
+        [36m</section>[39m
+      [36m</section>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main[39m
+      [33mclass[39m=[32m"workbench-shell"[39m
+    [36m>[39m
+      [36m<header[39m
+        [33mclass[39m=[32m"workbench-header"[39m
+      [36m>[39m
+        [36m<img[39m
+          [33malt[39m=[32m"UX Securities Limited"[39m
+          [33msrc[39m=[32m"/ux-securities-logo.png"[39m
+        [36m/>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"header-actions"[39m
+        [36m>[39m
+          [36m<span>[39m
+            [0mChart tester[0m
+          [36m</span>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"quiet-button"[39m
+          [36m>[39m
+            [0mSign out[0m
+          [36m</button>[39m
+        [36m</div>[39m
+      [36m</header>[39m
+      [36m<nav[39m
+        [33maria-label[39m=[32m"Workspace sections"[39m
+        [33mclass[39m=[32m"workbench-navigation"[39m
+        [33mrole[39m=[32m"tablist"[39m
+      [36m>[39m
+        [36m<button[39m
+          [33maria-selected[39m=[32m"true"[39m
+          [33mclass[39m=[32m"active"[39m
+          [33mrole[39m=[32m"tab"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mMarket[0m
+        [36m</button>[39m
+        [36m<button[39m
+          [33maria-selected[39m=[32m"false"[39m
+          [33mclass[39m=[32m""[39m
+          [33mrole[39m=[32m"tab"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mMy favorites [0m
+          [36m<span>[39m
+            [0m0[0m
+          [36m</span>[39m
+        [36m</button>[39m
+        [36m<button[39m
+          [33maria-selected[39m=[32m"false"[39m
+          [33mclass[39m=[32m""[39m
+          [33mrole[39m=[32m"tab"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mMy positions[0m
+        [36m</button>[39m
+      [36m</nav>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"workbench-grid"[39m
+      [36m>[39m
+        [36m<aside[39m
+          [33mclass[39m=[32m"market-sidebar"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"sidebar-heading"[39m
+          [36m>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"eyebrow"[39m
+            [36m>[39m
+              [0mMARKET WATCH[0m
+            [36m</p>[39m
+            [36m<h1>[39m
+              [0mHong Kong equities[0m
+            [36m</h1>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"search-row"[39m
+          [36m>[39m
+            [36m<input[39m
+              [33maria-label[39m=[32m"Search symbols"[39m
+              [33mplaceholder[39m=[32m"Code or company"[39m
+              [33mvalue[39m=[32m""[39m
+            [36m/>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"primary-button compact"[39m
+            [36m>[39m
+              [0mSearch[0m
+            [36m</button>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"watchlist-heading"[39m
+          [36m>[39m
+            [36m<span>[39m
+              [0mFavorites[0m
+            [36m</span>[39m
+            [36m<span>[39m
+              [0m0[0m
+            [36m</span>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"watchlist-list"[39m
+          [36m>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"empty-state"[39m
+            [36m>[39m
+              [0mNo favorites yet. Search for a security to add it.[0m
+            [36m</p>[39m
+          [36m</div>[39m
+        [36m</aside>[39m
+        [36m<section[39m
+          [33mclass[39m=[32m"quote-panel"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"quote-heading"[39m
+          [36m>[39m
+            [36m<div>[39m
+              [36m<p[39m
+                [33mclass[39m=[32m"eyebrow"[39m
+              [36m>[39m
+                [0m00700[0m
+                [0m · HKEX[0m
+              [36m</p>[39m
+              [36m<h2>[39m
+                [0mTencent Holdings[0m
+              [36m</h2>[39m
+              [36m<p[39m
+                [33mclass[39m=[32m"quote-source"[39m
+              [36m>[39m
+                [0makshare[0m
+                [0m · [0m
+                [0m10/24/2026, 8:00:00 AM[0m
+              [36m</p>[39m
+            [36m</div>[39m
+            [36m<button[39m
+              [33maria-label[39m=[32m"Add to favorites"[39m
+              [33mclass[39m=[32m"favorite-button"[39m
+            [36m>[39m
+              [0m☆[0m
+            [36m</button>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"quote-value"[39m
+          [36m>[39m
+            [36m<strong>[39m
+              [0m11.00[0m
+            [36m</strong>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"up"[39m
+            [36m>[39m
+              [0m+1.00 (10.00%)[0m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"data-badge delayed"[39m
+            [36m>[39m
+              [0mDELAYED[0m
+            [36m</span>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"quote-stats"[39m
+          [36m>[39m
+            [36m<span>[39m
+              [0mBid [0m
+              [36m<b>[39m
+                [0m10.00[0m
+              [36m</b>[39m
+            [36m</span>[39m
+            [36m<span>[39m
+              [0mAsk [0m
+              [36m<b>[39m
+                [0m12.00[0m
+              [36m</b>[39m
+            [36m</span>[39m
+            [36m<span>[39m
+              [0mVolume [0m
+              [36m<b>[39m
+                [0m100[0m
+              [36m</b>[39m
+            [36m</span>[39m
+            [36m<span>[39m
+              [0mTurnover [0m
+              [36m<b>[39m
+                [0mHKD [0m
+                [0m1,100[0m
+              [36m</b>[39m
+            [36m</span>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"chart-panel"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"chart-heading"[39m
+            [36m>[39m
+              [36m<span>[39m
+                [0mDaily close[0m
+              [36m</span>[39m
+              [36m<span>[39m
+                [0m0[0m
+                [0m sessions[0m
+              [36m</span>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33maria-label[39m=[32m"Daily close prices"[39m
+              [33mclass[39m=[32m"mini-chart"[39m
+            [36m/>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"empty-state"[39m
+            [36m>[39m
+              [0mNo daily history is available.[0m
+            [36m</p>[39m
+          [36m</div>[39m
+        [36m</section>[39m
+      [36m</section>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/market/WorkbenchChart.test.tsx > Workbench candle behavior > offers all native minute and calendar periods and requests the selected period
+TestingLibraryElementError: Unable to find an accessible element with the role "button" and name "1分"
+
+Here are the accessible roles:
+
+  main:
+
+  Name "":
+  [36m<main[39m
+    [33mclass[39m=[32m"workbench-shell"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  banner:
+
+  Name "":
+  [36m<header[39m
+    [33mclass[39m=[32m"workbench-header"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  img:
+
+  Name "UX Securities Limited":
+  [36m<img[39m
+    [33malt[39m=[32m"UX Securities Limited"[39m
+    [33msrc[39m=[32m"/ux-securities-logo.png"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  button:
+
+  Name "Sign out":
+  [36m<button[39m
+    [33mclass[39m=[32m"quiet-button"[39m
+  [36m/>[39m
+
+  Name "Search":
+  [36m<button[39m
+    [33mclass[39m=[32m"primary-button compact"[39m
+  [36m/>[39m
+
+  Name "Add to favorites":
+  [36m<button[39m
+    [33maria-label[39m=[32m"Add to favorites"[39m
+    [33mclass[39m=[32m"favorite-button"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  tablist:
+
+  Name "Workspace sections":
+  [36m<nav[39m
+    [33maria-label[39m=[32m"Workspace sections"[39m
+    [33mclass[39m=[32m"workbench-navigation"[39m
+    [33mrole[39m=[32m"tablist"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  tab:
+
+  Name "Market":
+  [36m<button[39m
+    [33maria-selected[39m=[32m"true"[39m
+    [33mclass[39m=[32m"active"[39m
+    [33mrole[39m=[32m"tab"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "My favorites 0":
+  [36m<button[39m
+    [33maria-selected[39m=[32m"false"[39m
+    [33mclass[39m=[32m""[39m
+    [33mrole[39m=[32m"tab"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  Name "My positions":
+  [36m<button[39m
+    [33maria-selected[39m=[32m"false"[39m
+    [33mclass[39m=[32m""[39m
+    [33mrole[39m=[32m"tab"[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  complementary:
+
+  Name "":
+  [36m<aside[39m
+    [33mclass[39m=[32m"market-sidebar"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  paragraph:
+
+  Name "":
+  [36m<p[39m
+    [33mclass[39m=[32m"eyebrow"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<p[39m
+    [33mclass[39m=[32m"empty-state"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<p[39m
+    [33mclass[39m=[32m"eyebrow"[39m
+  [36m/>[39m
+
+  Name "":
+  [36m<p[39m
+    [33mclass[39m=[32m"quote-source"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  heading:
+
+  Name "Hong Kong equities":
+  [36m<h1 />[39m
+
+  Name "Tencent Holdings":
+  [36m<h2 />[39m
+
+  --------------------------------------------------
+  textbox:
+
+  Name "Search symbols":
+  [36m<input[39m
+    [33maria-label[39m=[32m"Search symbols"[39m
+    [33mplaceholder[39m=[32m"Code or company"[39m
+    [33mvalue[39m=[32m""[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  strong:
+
+  Name "":
+  [36m<strong />[39m
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main[39m
+      [33mclass[39m=[32m"workbench-shell"[39m
+    [36m>[39m
+      [36m<header[39m
+        [33mclass[39m=[32m"workbench-header"[39m
+      [36m>[39m
+        [36m<img[39m
+          [33malt[39m=[32m"UX Securities Limited"[39m
+          [33msrc[39m=[32m"/ux-securities-logo.png"[39m
+        [36m/>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"header-actions"[39m
+        [36m>[39m
+          [36m<span>[39m
+            [0mChart tester[0m
+          [36m</span>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"quiet-button"[39m
+          [36m>[39m
+            [0mSign out[0m
+          [36m</button>[39m
+        [36m</div>[39m
+      [36m</header>[39m
+      [36m<nav[39m
+        [33maria-label[39m=[32m"Workspace sections"[39m
+        [33mclass[39m=[32m"workbench-navigation"[39m
+        [33mrole[39m=[32m"tablist"[39m
+      [36m>[39m
+        [36m<button[39m
+          [33maria-selected[39m=[32m"true"[39m
+          [33mclass[39m=[32m"active"[39m
+          [33mrole[39m=[32m"tab"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mMarket[0m
+        [36m</button>[39m
+        [36m<button[39m
+          [33maria-selected[39m=[32m"false"[39m
+          [33mclass[39m=[32m""[39m
+          [33mrole[39m=[32m"tab"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mMy favorites [0m
+          [36m<span>[39m
+            [0m0[0m
+          [36m</span>[39m
+        [36m</button>[39m
+        [36m<button[39m
+          [33maria-selected[39m=[32m"false"[39m
+          [33mclass[39m=[32m""[39m
+          [33mrole[39m=[32m"tab"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mMy positions[0m
+        [36m</button>[39m
+      [36m</nav>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"workbench-grid"[39m
+      [36m>[39m
+        [36m<aside[39m
+          [33mclass[39m=[32m"market-sidebar"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"sidebar-heading"[39m
+          [36m>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"eyebrow"[39m
+            [36m>[39m
+              [0mMARKET WATCH[0m
+            [36m</p>[39m
+            [36m<h1>[39m
+              [0mHong Kong equities[0m
+            [36m</h1>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"search-row"[39m
+          [36m>[39m
+            [36m<input[39m
+              [33maria-label[39m=[32m"Search symbols"[39m
+              [33mplaceholder[39m=[32m"Code or company"[39m
+              [33mvalue[39m=[32m""[39m
+            [36m/>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"primary-button compact"[39m
+            [36m>[39m
+              [0mSearch[0m
+            [36m</button>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"watchlist-heading"[39m
+          [36m>[39m
+            [36m<span>[39m
+              [0mFavorites[0m
+            [36m</span>[39m
+            [36m<span>[39m
+              [0m0[0m
+            [36m</span>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"watchlist-list"[39m
+          [36m>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"empty-state"[39m
+            [36m>[39m
+              [0mNo favorites yet. Search for a security to add it.[0m
+            [36m</p>[39m
+          [36m</div>[39m
+        [36m</aside>[39m
+        [36m<section[39m
+          [33mclass[39m=[32m"quote-panel"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"quote-heading"[39m
+          [36m>[39m
+            [36m<div>[39m
+              [36m<p[39m
+                [33mclass[39m=[32m"eyebrow"[39m
+              [36m>[39m
+                [0m00700[0m
+                [0m · HKEX[0m
+              [36m</p>[39m
+              [36m<h2>[39m
+                [0mTencent Holdings[0m
+              [36m</h2>[39m
+              [36m<p[39m
+                [33mclass[39m=[32m"quote-source"[39m
+              [36m>[39m
+                [0makshare[0m
+                [0m · [0m
+                [0m10/24/2026, 8:00:00 AM[0m
+              [36m</p>[39m
+            [36m</div>[39m
+            [36m<button[39m
+              [33maria-label[39m=[32m"Add to favorites"[39m
+              [33mclass[39m=[32m"favorite-button"[39m
+            [36m>[39m
+              [0m☆[0m
+            [36m</button>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"quote-value"[39m
+          [36m>[39m
+            [36m<strong>[39m
+              [0m11.00[0m
+            [36m</strong>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"up"[39m
+            [36m>[39m
+              [0m+1.00 (10.00%)[0m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"data-badge delayed"[39m
+            [36m>[39m
+              [0mDELAYED[0m
+            [36m</span>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"quote-stats"[39m
+          [36m>[39m
+            [36m<span>[39m
+              [0mBid [0m
+              [36m<b>[39m
+                [0m10.00[0m
+              [36m</b>[39m
+            [36m</span>[39m
+            [36m<span>[39m
+              [0mAsk [0m
+              [36m<b>[39m
+                [0m12.00[0m
+              [36m</b>[39m
+            [36m</span>[39m
+            [36m<span>[39m
+              [0mVolume [0m
+              [36m<b>[39m
+                [0m100[0m
+              [36m</b>[39m
+            [36m</span>[39m
+            [36m<span>[39m
+              [0mTurnover [0m
+              [36m<b>[39m
+                [0mHKD [0m
+                [0m1,100[0m
+              [36m</b>[39m
+            [36m</span>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"chart-panel"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"chart-heading"[39m
+            [36m>[39m
+              [36m<span>[39m
+                [0mDaily close[0m
+              [36m</span>[39m
+              [36m<span>[39m
+                [0m1[0m
+                [0m sessions[0m
+              [36m</span>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33maria-label[39m=[32m"Daily close prices"[39m
+              [33mclass[39m=[32m"mini-chart"[39m
+            [36m>[39m
+              [36m<i[39m
+                [33mstyle[39m=[32m"height: 10%;"[39m
+                [33mtitle[39m=[32m"2026-10-23T00:00:00Z: 11.00"[39m
+              [36m/>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+        [36m</section>[39m
+      [36m</section>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ Object.getElementError node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/features/market/WorkbenchChart.test.tsx:33:94
+     31|     render(<WorkbenchPage />);
+     32|     await screen.findByText("Tencent Holdings");
+     33|     for (const label of ["1分", "5分", "15分", "30分", "60分", "日", "周", "月…
+       |                                                                                              ^
+     34|     fireEvent.click(screen.getByRole("button", { name: "5分", exact: tr…
+     35|     await waitFor(() => expect(marketApi.candles).toHaveBeenLastCalled…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  src/features/market/WorkbenchChart.test.tsx > Workbench candle behavior > renders actual OHLC data and green/red volume, not a close-only bar
+AssertionError: expected "spy" to be called with arguments: [ [ { time: '2026-10-23', …(4) } ] ]
+
+Number of calls: 0
+
+
+Ignored nodes: comments, script, style
+[36m<html>[39m
+  [36m<head />[39m
+  [36m<body>[39m
+    [36m<div>[39m
+      [36m<main[39m
+        [33mclass[39m=[32m"workbench-shell"[39m
+      [36m>[39m
+        [36m<header[39m
+          [33mclass[39m=[32m"workbench-header"[39m
+        [36m>[39m
+          [36m<img[39m
+            [33malt[39m=[32m"UX Securities Limited"[39m
+            [33msrc[39m=[32m"/ux-securities-logo.png"[39m
+          [36m/>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"header-actions"[39m
+          [36m>[39m
+            [36m<span>[39m
+              [0mChart tester[0m
+            [36m</span>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"quiet-button"[39m
+            [36m>[39m
+              [0mSign out[0m
+            [36m</button>[39m
+          [36m</div>[39m
+        [36m</header>[39m
+        [36m<nav[39m
+          [33maria-label[39m=[32m"Workspace sections"[39m
+          [33mclass[39m=[32m"workbench-navigation"[39m
+          [33mrole[39m=[32m"tablist"[39m
+        [36m>[39m
+          [36m<button[39m
+            [33maria-selected[39m=[32m"true"[39m
+            [33mclass[39m=[32m"active"[39m
+            [33mrole[39m=[32m"tab"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mMarket[0m
+          [36m</button>[39m
+          [36m<button[39m
+            [33maria-selected[39m=[32m"false"[39m
+            [33mclass[39m=[32m""[39m
+            [33mrole[39m=[32m"tab"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mMy favorites [0m
+            [36m<span>[39m
+              [0m0[0m
+            [36m</span>[39m
+          [36m</button>[39m
+          [36m<button[39m
+            [33maria-selected[39m=[32m"false"[39m
+            [33mclass[39m=[32m""[39m
+            [33mrole[39m=[32m"tab"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mMy positions[0m
+          [36m</button>[39m
+        [36m</nav>[39m
+        [36m<section[39m
+          [33mclass[39m=[32m"workbench-grid"[39m
+        [36m>[39m
+          [36m<aside[39m
+            [33mclass[39m=[32m"market-sidebar"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"sidebar-heading"[39m
+            [36m>[39m
+              [36m<p[39m
+                [33mclass[39m=[32m"eyebrow"[39m
+              [36m>[39m
+                [0mMARKET WATCH[0m
+              [36m</p>[39m
+              [36m<h1>[39m
+                [0mHong Kong equities[0m
+              [36m</h1>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"search-row"[39m
+            [36m>[39m
+              [36m<input[39m
+                [33maria-label[39m=[32m"Search symbols"[39m
+                [33mplaceholder[39m=[32m"Code or company"[39m
+                [33mvalue[39m=[32m""[39m
+              [36m/>[39m
+              [36m<button[39m
+                [33mclass[39m=[32m"primary-button compact"[39m
+              [36m>[39m
+                [0mSearch[0m
+              [36m</button>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"watchlist-heading"[39m
+            [36m>[39m
+              [36m<span>[39m
+                [0mFavorites[0m
+              [36m</span>[39m
+              [36m<span>[39m
+                [0m0[0m
+              [36m</span>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"watchlist-list"[39m
+            [36m>[39m
+              [36m<p[39m
+                [33mclass[39m=[32m"empty-state"[39m
+              [36m>[39m
+                [0mNo favorites yet. Search for a security to add it.[0m
+              [36m</p>[39m
+            [36m</div>[39m
+          [36m</aside>[39m
+          [36m<section[39m
+            [33mclass[39m=[32m"quote-panel"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"quote-heading"[39m
+            [36m>[39m
+              [36m<div>[39m
+                [36m<p[39m
+                  [33mclass[39m=[32m"eyebrow"[39m
+                [36m>[39m
+                  [0m00700[0m
+                  [0m · HKEX[0m
+                [36m</p>[39m
+                [36m<h2>[39m
+                  [0mTencent Holdings[0m
+                [36m</h2>[39m
+                [36m<p[39m
+                  [33mclass[39m=[32m"quote-source"[39m
+                [36m>[39m
+                  [0makshare[0m
+                  [0m · [0m
+                  [0m10/24/2026, 8:00:00 AM[0m
+                [36m</p>[39m
+              [36m</div>[39m
+              [36m<button[39m
+                [33maria-label[39m=[32m"Add to favorites"[39m
+                [33mclass[39m=[32m"favorite-button"[39m
+              [36m>[39m
+                [0m☆[0m
+              [36m</button>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"quote-value"[39m
+            [36m>[39m
+              [36m<strong>[39m
+                [0m11.00[0m
+              [36m</strong>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"up"[39m
+              [36m>[39m
+                [0m+1.00 (10.00%)[0m
+              [36m</span>[39m
+              [36m<span[39m
+                [33mclass[39m=[32m"data-badge delayed"[39m
+              [36m>[39m
+                [0mDELAYED[0m
+              [36m</span>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"quote-stats"[39m
+            [36m>[39m
+              [36m<span>[39m
+                [0mBid [0m
+                [36m<b>[39m
+                  [0m10.00[0m
+                [36m</b>[39m
+              [36m</span>[39m
+              [36m<span>[39m
+                [0mAsk [0m
+                [36m<b>[39m
+                  [0m12.00[0m
+                [36m</b>[39m
+              [36m</span>[39m
+              [36m<span>[39m
+                [0mVolume [0m
+                [36m<b>[39m
+                  [0m100[0m
+                [36m</b>[39m
+              [36m</span>[39m
+              [36m<span>[39m
+                [0mTurnover [0m
+                [36m<b>[39m
+                  [0mHKD [0m
+                  [0m1,100[0m
+                [36m</b>[39m
+              [36m</span>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"chart-panel"[39m
+            [36m>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"chart-heading"[39m
+              [36m>[39m
+                [36m<span>[39m
+                  [0mDaily close[0m
+                [36m</span>[39m
+                [36m<span>[39m
+                  [0m1[0m
+                  [0m sessions[0m
+                [36m</span>[39m
+              [36m</div>[39m
+              [36m<div[39m
+                [33maria-label[39m=[32m"Daily close prices"[39m
+                [33mclass[39m=[32m"mini-chart"[39m
+              [36m>[39m
+                [36m<i[39m
+                  [33mstyle[39m=[32m"height: 10%;"[39m
+                  [33mtitle[39m=[32m"2026-10-23T00:00:00Z: 11.00"[39m
+                [36m/>[39m
+              [36m</div>[39m
+            [36m</div>[39m
+          [36m</section>[39m
+        [36m</section>[39m
+      [36m</main>[39m
+    [36m</div>[39m
+  [36m</body>[39m
+[36m</html>[39m
+ ❯ src/features/market/WorkbenchChart.test.tsx:40:47
+     38|   it("renders actual OHLC data and green/red volume, not a close-only …
+     39|     render(<WorkbenchPage />);
+     40|     await waitFor(() => expect(graph.candles).toHaveBeenCalledWith([{ …
+       |                                               ^
+     41|     expect(graph.volume).toHaveBeenCalledWith([{ time: "2026-10-23", v…
+     42|   });
+ ❯ runWithExpensiveErrorDiagnosticsDisabled node_modules/@testing-library/dom/dist/config.js:47:12
+ ❯ checkCallback node_modules/@testing-library/dom/dist/wait-for.js:124:77
+ ❯ Timeout.checkRealTimersCallback node_modules/@testing-library/dom/dist/wait-for.js:118:16
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+ FAIL  src/features/market/WorkbenchChart.test.tsx > Workbench candle behavior > keeps the quote visible on candle failure and supports retry
+TestingLibraryElementError: Unable to find an element with the text: Tencent Holdings. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main[39m
+      [33mclass[39m=[32m"workbench-shell"[39m
+    [36m>[39m
+      [36m<header[39m
+        [33mclass[39m=[32m"workbench-header"[39m
+      [36m>[39m
+        [36m<img[39m
+          [33malt[39m=[32m"UX Securities Limited"[39m
+          [33msrc[39m=[32m"/ux-securities-logo.png"[39m
+        [36m/>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"header-actions"[39m
+        [36m>[39m
+          [36m<span>[39m
+            [0mChart tester[0m
+          [36m</span>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"quiet-button"[39m
+          [36m>[39m
+            [0mSign out[0m
+          [36m</button>[39m
+        [36m</div>[39m
+      [36m</header>[39m
+      [36m<nav[39m
+        [33maria-label[39m=[32m"Workspace sections"[39m
+        [33mclass[39m=[32m"workbench-navigation"[39m
+        [33mrole[39m=[32m"tablist"[39m
+      [36m>[39m
+        [36m<button[39m
+          [33maria-selected[39m=[32m"true"[39m
+          [33mclass[39m=[32m"active"[39m
+          [33mrole[39m=[32m"tab"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mMarket[0m
+        [36m</button>[39m
+        [36m<button[39m
+          [33maria-selected[39m=[32m"false"[39m
+          [33mclass[39m=[32m""[39m
+          [33mrole[39m=[32m"tab"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mMy favorites [0m
+          [36m<span>[39m
+            [0m0[0m
+          [36m</span>[39m
+        [36m</button>[39m
+        [36m<button[39m
+          [33maria-selected[39m=[32m"false"[39m
+          [33mclass[39m=[32m""[39m
+          [33mrole[39m=[32m"tab"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mMy positions[0m
+        [36m</button>[39m
+      [36m</nav>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"workbench-grid"[39m
+      [36m>[39m
+        [36m<aside[39m
+          [33mclass[39m=[32m"market-sidebar"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"sidebar-heading"[39m
+          [36m>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"eyebrow"[39m
+            [36m>[39m
+              [0mMARKET WATCH[0m
+            [36m</p>[39m
+            [36m<h1>[39m
+              [0mHong Kong equities[0m
+            [36m</h1>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"search-row"[39m
+          [36m>[39m
+            [36m<input[39m
+              [33maria-label[39m=[32m"Search symbols"[39m
+              [33mplaceholder[39m=[32m"Code or company"[39m
+              [33mvalue[39m=[32m""[39m
+            [36m/>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"primary-button compact"[39m
+            [36m>[39m
+              [0mSearch[0m
+            [36m</button>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"watchlist-heading"[39m
+          [36m>[39m
+            [36m<span>[39m
+              [0mFavorites[0m
+            [36m</span>[39m
+            [36m<span>[39m
+              [0m0[0m
+            [36m</span>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"watchlist-list"[39m
+          [36m>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"empty-state"[39m
+            [36m>[39m
+              [0mNo favorites yet. Search for a security to add it.[0m
+            [36m</p>[39m
+          [36m</div>[39m
+        [36m</aside>[39m
+        [36m<section[39m
+          [33mclass[39m=[32m"quote-panel"[39m
+        [36m>[39m
+          [36m<p[39m
+            [33mclass[39m=[32m"error-message"[39m
+            [33mrole[39m=[32m"alert"[39m
+          [36m>[39m
+            [0mHistory offline[0m
+          [36m</p>[39m
+          [36m<p[39m
+            [33mclass[39m=[32m"panel-state"[39m
+          [36m>[39m
+            [0mSelect a security to view its quote.[0m
+          [36m</p>[39m
+        [36m</section>[39m
+      [36m</section>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main[39m
+      [33mclass[39m=[32m"workbench-shell"[39m
+    [36m>[39m
+      [36m<header[39m
+        [33mclass[39m=[32m"workbench-header"[39m
+      [36m>[39m
+        [36m<img[39m
+          [33malt[39m=[32m"UX Securities Limited"[39m
+          [33msrc[39m=[32m"/ux-securities-logo.png"[39m
+        [36m/>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"header-actions"[39m
+        [36m>[39m
+          [36m<span>[39m
+            [0mChart tester[0m
+          [36m</span>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"quiet-button"[39m
+          [36m>[39m
+            [0mSign out[0m
+          [36m</button>[39m
+        [36m</div>[39m
+      [36m</header>[39m
+      [36m<nav[39m
+        [33maria-label[39m=[32m"Workspace sections"[39m
+        [33mclass[39m=[32m"workbench-navigation"[39m
+        [33mrole[39m=[32m"tablist"[39m
+      [36m>[39m
+        [36m<button[39m
+          [33maria-selected[39m=[32m"true"[39m
+          [33mclass[39m=[32m"active"[39m
+          [33mrole[39m=[32m"tab"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mMarket[0m
+        [36m</button>[39m
+        [36m<button[39m
+          [33maria-selected[39m=[32m"false"[39m
+          [33mclass[39m=[32m""[39m
+          [33mrole[39m=[32m"tab"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mMy favorites [0m
+          [36m<span>[39m
+            [0m0[0m
+          [36m</span>[39m
+        [36m</button>[39m
+        [36m<button[39m
+          [33maria-selected[39m=[32m"false"[39m
+          [33mclass[39m=[32m""[39m
+          [33mrole[39m=[32m"tab"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mMy positions[0m
+        [36m</button>[39m
+      [36m</nav>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"workbench-grid"[39m
+      [36m>[39m
+        [36m<aside[39m
+          [33mclass[39m=[32m"market-sidebar"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"sidebar-heading"[39m
+          [36m>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"eyebrow"[39m
+            [36m>[39m
+              [0mMARKET WATCH[0m
+            [36m</p>[39m
+            [36m<h1>[39m
+              [0mHong Kong equities[0m
+            [36m</h1>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"search-row"[39m
+          [36m>[39m
+            [36m<input[39m
+              [33maria-label[39m=[32m"Search symbols"[39m
+              [33mplaceholder[39m=[32m"Code or company"[39m
+              [33mvalue[39m=[32m""[39m
+            [36m/>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"primary-button compact"[39m
+            [36m>[39m
+              [0mSearch[0m
+            [36m</button>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"watchlist-heading"[39m
+          [36m>[39m
+            [36m<span>[39m
+              [0mFavorites[0m
+            [36m</span>[39m
+            [36m<span>[39m
+              [0m0[0m
+            [36m</span>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"watchlist-list"[39m
+          [36m>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"empty-state"[39m
+            [36m>[39m
+              [0mNo favorites yet. Search for a security to add it.[0m
+            [36m</p>[39m
+          [36m</div>[39m
+        [36m</aside>[39m
+        [36m<section[39m
+          [33mclass[39m=[32m"quote-panel"[39m
+        [36m>[39m
+          [36m<p[39m
+            [33mclass[39m=[32m"error-message"[39m
+            [33mrole[39m=[32m"alert"[39m
+          [36m>[39m
+            [0mHistory offline[0m
+          [36m</p>[39m
+          [36m<p[39m
+            [33mclass[39m=[32m"panel-state"[39m
+          [36m>[39m
+            [0mSelect a security to view its quote.[0m
+          [36m</p>[39m
+        [36m</section>[39m
+      [36m</section>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/features/market/WorkbenchChart.test.tsx:47:25
+     45|     vi.mocked(marketApi.candles).mockRejectedValueOnce(new Error("Hist…
+     46|     render(<WorkbenchPage />);
+     47|     expect(await screen.findByText("Tencent Holdings")).toBeTruthy();
+       |                         ^
+     48|     expect(await screen.findByText(/History offline/)).toBeTruthy();
+     49|     fireEvent.click(screen.getByRole("button", { name: "刷新行情" }));
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/4]⎯
+
+ FAIL  src/features/market/WorkbenchChart.test.tsx > Workbench candle behavior > shows missing native minutes explicitly without substituting daily bars
+TestingLibraryElementError: Unable to find role="button" and name "1分"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main[39m
+      [33mclass[39m=[32m"workbench-shell"[39m
+    [36m>[39m
+      [36m<header[39m
+        [33mclass[39m=[32m"workbench-header"[39m
+      [36m>[39m
+        [36m<img[39m
+          [33malt[39m=[32m"UX Securities Limited"[39m
+          [33msrc[39m=[32m"/ux-securities-logo.png"[39m
+        [36m/>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"header-actions"[39m
+        [36m>[39m
+          [36m<span>[39m
+            [0mChart tester[0m
+          [36m</span>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"quiet-button"[39m
+          [36m>[39m
+            [0mSign out[0m
+          [36m</button>[39m
+        [36m</div>[39m
+      [36m</header>[39m
+      [36m<nav[39m
+        [33maria-label[39m=[32m"Workspace sections"[39m
+        [33mclass[39m=[32m"workbench-navigation"[39m
+        [33mrole[39m=[32m"tablist"[39m
+      [36m>[39m
+        [36m<button[39m
+          [33maria-selected[39m=[32m"true"[39m
+          [33mclass[39m=[32m"active"[39m
+          [33mrole[39m=[32m"tab"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mMarket[0m
+        [36m</button>[39m
+        [36m<button[39m
+          [33maria-selected[39m=[32m"false"[39m
+          [33mclass[39m=[32m""[39m
+          [33mrole[39m=[32m"tab"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mMy favorites [0m
+          [36m<span>[39m
+            [0m0[0m
+          [36m</span>[39m
+        [36m</button>[39m
+        [36m<button[39m
+          [33maria-selected[39m=[32m"false"[39m
+          [33mclass[39m=[32m""[39m
+          [33mrole[39m=[32m"tab"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mMy positions[0m
+        [36m</button>[39m
+      [36m</nav>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"workbench-grid"[39m
+      [36m>[39m
+        [36m<aside[39m
+          [33mclass[39m=[32m"market-sidebar"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"sidebar-heading"[39m
+          [36m>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"eyebrow"[39m
+            [36m>[39m
+              [0mMARKET WATCH[0m
+            [36m</p>[39m
+            [36m<h1>[39m
+              [0mHong Kong equities[0m
+            [36m</h1>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"search-row"[39m
+          [36m>[39m
+            [36m<input[39m
+              [33maria-label[39m=[32m"Search symbols"[39m
+              [33mplaceholder[39m=[32m"Code or company"[39m
+              [33mvalue[39m=[32m""[39m
+            [36m/>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"primary-button compact"[39m
+            [36m>[39m
+              [0mSearch[0m
+            [36m</button>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"watchlist-heading"[39m
+          [36m>[39m
+            [36m<span>[39m
+              [0mFavorites[0m
+            [36m</span>[39m
+            [36m<span>[39m
+              [0m0[0m
+            [36m</span>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"watchlist-list"[39m
+          [36m>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"empty-state"[39m
+            [36m>[39m
+              [0mNo favorites yet. Search for a security to add it.[0m
+            [36m</p>[39m
+          [36m</div>[39m
+        [36m</aside>[39m
+        [36m<section[39m
+          [33mclass[39m=[32m"quote-panel"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"quote-heading"[39m
+          [36m>[39m
+            [36m<div>[39m
+              [36m<p[39m
+                [33mclass[39m=[32m"eyebrow"[39m
+              [36m>[39m
+                [0m00700[0m
+                [0m · HKEX[0m
+              [36m</p>[39m
+              [36m<h2>[39m
+                [0mTencent Holdings[0m
+              [36m</h2>[39m
+              [36m<p[39m
+                [33mclass[39m=[32m"quote-source"[39m
+              [36m>[39m
+                [0makshare[0m
+                [0m · [0m
+                [0m10/24/2026, 8:00:00 AM[0m
+              [36m</p>[39m
+            [36m</div>[39m
+            [36m<button[39m
+              [33maria-label[39m=[32m"Add to favorites"[39m
+              [33mclass[39m=[32m"favorite-button"[39m
+            [36m>[39m
+              [0m☆[0m
+            [36m</button>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"quote-value"[39m
+          [36m>[39m
+            [36m<strong>[39m
+              [0m11.00[0m
+            [36m</strong>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"up"[39m
+            [36m>[39m
+              [0m+1.00 (10.00%)[0m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"data-badge delayed"[39m
+            [36m>[39m
+              [0mDELAYED[0m
+            [36m</span>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"quote-stats"[39m
+          [36m>[39m
+            [36m<span>[39m
+              [0mBid [0m
+              [36m<b>[39m
+                [0m10.00[0m
+              [36m</b>[39m
+            [36m</span>[39m
+            [36m<span>[39m
+              [0mAsk [0m
+              [36m<b>[39m
+                [0m12.00[0m
+              [36m</b>[39m
+            [36m</span>[39m
+            [36m<span>[39m
+              [0mVolume [0m
+              [36m<b>[39m
+                [0m100[0m
+              [36m</b>[39m
+            [36m</span>[39m
+            [36m<span>[39m
+              [0mTurnover [0m
+              [36m<b>[39m
+                [0mHKD [0m
+                [0m1,100[0m
+              [36m</b>[39m
+            [36m</span>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"chart-panel"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"chart-heading"[39m
+            [36m>[39m
+              [36m<span>[39m
+                [0mDaily close[0m
+              [36m</span>[39m
+              [36m<span>[39m
+                [0m0[0m
+                [0m sessions[0m
+              [36m</span>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33maria-label[39m=[32m"Daily close prices"[39m
+              [33mclass[39m=[32m"mini-chart"[39m
+            [36m/>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"empty-state"[39m
+            [36m>[39m
+              [0mNo daily history is available.[0m
+            [36m</p>[39m
+          [36m</div>[39m
+        [36m</section>[39m
+      [36m</section>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<main[39m
+      [33mclass[39m=[32m"workbench-shell"[39m
+    [36m>[39m
+      [36m<header[39m
+        [33mclass[39m=[32m"workbench-header"[39m
+      [36m>[39m
+        [36m<img[39m
+          [33malt[39m=[32m"UX Securities Limited"[39m
+          [33msrc[39m=[32m"/ux-securities-logo.png"[39m
+        [36m/>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"header-actions"[39m
+        [36m>[39m
+          [36m<span>[39m
+            [0mChart tester[0m
+          [36m</span>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"quiet-button"[39m
+          [36m>[39m
+            [0mSign out[0m
+          [36m</button>[39m
+        [36m</div>[39m
+      [36m</header>[39m
+      [36m<nav[39m
+        [33maria-label[39m=[32m"Workspace sections"[39m
+        [33mclass[39m=[32m"workbench-navigation"[39m
+        [33mrole[39m=[32m"tablist"[39m
+      [36m>[39m
+        [36m<button[39m
+          [33maria-selected[39m=[32m"true"[39m
+          [33mclass[39m=[32m"active"[39m
+          [33mrole[39m=[32m"tab"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mMarket[0m
+        [36m</button>[39m
+        [36m<button[39m
+          [33maria-selected[39m=[32m"false"[39m
+          [33mclass[39m=[32m""[39m
+          [33mrole[39m=[32m"tab"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mMy favorites [0m
+          [36m<span>[39m
+            [0m0[0m
+          [36m</span>[39m
+        [36m</button>[39m
+        [36m<button[39m
+          [33maria-selected[39m=[32m"false"[39m
+          [33mclass[39m=[32m""[39m
+          [33mrole[39m=[32m"tab"[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mMy positions[0m
+        [36m</button>[39m
+      [36m</nav>[39m
+      [36m<section[39m
+        [33mclass[39m=[32m"workbench-grid"[39m
+      [36m>[39m
+        [36m<aside[39m
+          [33mclass[39m=[32m"market-sidebar"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"sidebar-heading"[39m
+          [36m>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"eyebrow"[39m
+            [36m>[39m
+              [0mMARKET WATCH[0m
+            [36m</p>[39m
+            [36m<h1>[39m
+              [0mHong Kong equities[0m
+            [36m</h1>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"search-row"[39m
+          [36m>[39m
+            [36m<input[39m
+              [33maria-label[39m=[32m"Search symbols"[39m
+              [33mplaceholder[39m=[32m"Code or company"[39m
+              [33mvalue[39m=[32m""[39m
+            [36m/>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"primary-button compact"[39m
+            [36m>[39m
+              [0mSearch[0m
+            [36m</button>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"watchlist-heading"[39m
+          [36m>[39m
+            [36m<span>[39m
+              [0mFavorites[0m
+            [36m</span>[39m
+            [36m<span>[39m
+              [0m0[0m
+            [36m</span>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"watchlist-list"[39m
+          [36m>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"empty-state"[39m
+            [36m>[39m
+              [0mNo favorites yet. Search for a security to add it.[0m
+            [36m</p>[39m
+          [36m</div>[39m
+        [36m</aside>[39m
+        [36m<section[39m
+          [33mclass[39m=[32m"quote-panel"[39m
+        [36m>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"quote-heading"[39m
+          [36m>[39m
+            [36m<div>[39m
+              [36m<p[39m
+                [33mclass[39m=[32m"eyebrow"[39m
+              [36m>[39m
+                [0m00700[0m
+                [0m · HKEX[0m
+              [36m</p>[39m
+              [36m<h2>[39m
+                [0mTencent Holdings[0m
+              [36m</h2>[39m
+              [36m<p[39m
+                [33mclass[39m=[32m"quote-source"[39m
+              [36m>[39m
+                [0makshare[0m
+                [0m · [0m
+                [0m10/24/2026, 8:00:00 AM[0m
+              [36m</p>[39m
+            [36m</div>[39m
+            [36m<button[39m
+              [33maria-label[39m=[32m"Add to favorites"[39m
+              [33mclass[39m=[32m"favorite-button"[39m
+            [36m>[39m
+              [0m☆[0m
+            [36m</button>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"quote-value"[39m
+          [36m>[39m
+            [36m<strong>[39m
+              [0m11.00[0m
+            [36m</strong>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"up"[39m
+            [36m>[39m
+              [0m+1.00 (10.00%)[0m
+            [36m</span>[39m
+            [36m<span[39m
+              [33mclass[39m=[32m"data-badge delayed"[39m
+            [36m>[39m
+              [0mDELAYED[0m
+            [36m</span>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"quote-stats"[39m
+          [36m>[39m
+            [36m<span>[39m
+              [0mBid [0m
+              [36m<b>[39m
+                [0m10.00[0m
+              [36m</b>[39m
+            [36m</span>[39m
+            [36m<span>[39m
+              [0mAsk [0m
+              [36m<b>[39m
+                [0m12.00[0m
+              [36m</b>[39m
+            [36m</span>[39m
+            [36m<span>[39m
+              [0mVolume [0m
+              [36m<b>[39m
+                [0m100[0m
+              [36m</b>[39m
+            [36m</span>[39m
+            [36m<span>[39m
+              [0mTurnover [0m
+              [36m<b>[39m
+                [0mHKD [0m
+                [0m1,100[0m
+              [36m</b>[39m
+            [36m</span>[39m
+          [36m</div>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"chart-panel"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"chart-heading"[39m
+            [36m>[39m
+              [36m<span>[39m
+                [0mDaily close[0m
+              [36m</span>[39m
+              [36m<span>[39m
+                [0m0[0m
+                [0m sessions[0m
+              [36m</span>[39m
+            [36m</div>[39m
+            [36m<div[39m
+              [33maria-label[39m=[32m"Daily close prices"[39m
+              [33mclass[39m=[32m"mini-chart"[39m
+            [36m/>[39m
+            [36m<p[39m
+              [33mclass[39m=[32m"empty-state"[39m
+            [36m>[39m
+              [0mNo daily history is available.[0m
+            [36m</p>[39m
+          [36m</div>[39m
+        [36m</section>[39m
+      [36m</section>[39m
+    [36m</main>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ node_modules/@testing-library/dom/dist/query-helpers.js:86:33
+ ❯ src/features/market/WorkbenchChart.test.tsx:56:34
+     54|     vi.mocked(marketApi.candles).mockResolvedValue({ ...series, items:…
+     55|     render(<WorkbenchPage />);
+     56|     fireEvent.click(await screen.findByRole("button", { name: "1分", ex…
+       |                                  ^
+     57|     expect(await screen.findByText(/暂无原生分钟行情/)).toBeTruthy();
+     58|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/4]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  4 failed (4)
+   Start at  15:31:32
+   Duration  7.68s (transform 294ms, setup 318ms, collect 195ms, tests 3.49s, environment 1.59s, prepare 355ms)
+

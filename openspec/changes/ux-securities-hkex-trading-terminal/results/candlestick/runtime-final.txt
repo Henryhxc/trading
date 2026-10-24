@@ -1,0 +1,10 @@
+ux-securities-hkex-trading-terminal-backend-1	Up 5 minutes (healthy)
+ux-securities-hkex-trading-terminal-frontend-1	Up 18 minutes (healthy)
+ux-securities-hkex-trading-terminal-akshare-1	Up 5 minutes (healthy)
+ux-securities-hkex-trading-terminal-phpmyadmin-1	Up 13 hours
+ux-securities-hkex-trading-terminal-mysql-1	Up 13 hours (healthy)
+{"status":"ok"}
+
+frontend HTTP 200
+phpMyAdmin HTTP 200
+{}

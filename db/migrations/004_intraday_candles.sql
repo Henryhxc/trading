@@ -1,0 +1,20 @@
+CREATE TABLE IF NOT EXISTS stock_intraday_quotes (
+  id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  stock_id BIGINT UNSIGNED NOT NULL,
+  interval_code ENUM('1m','5m','15m','30m','60m') NOT NULL,
+  bar_time DATETIME(3) NOT NULL COMMENT 'UTC native interval timestamp',
+  trade_date DATE NOT NULL COMMENT 'Hong Kong trading date',
+  `open` DECIMAL(18,4) NOT NULL,
+  high DECIMAL(18,4) NOT NULL,
+  low DECIMAL(18,4) NOT NULL,
+  close DECIMAL(18,4) NOT NULL,
+  volume DECIMAL(24,0) NOT NULL DEFAULT 0,
+  turnover DECIMAL(24,4) NOT NULL DEFAULT 0,
+  source VARCHAR(32) NOT NULL,
+  data_status ENUM('unofficial','delayed','stale','unavailable') NOT NULL DEFAULT 'unofficial',
+  collected_at DATETIME(3) NOT NULL,
+  adjustment ENUM('none') NOT NULL DEFAULT 'none',
+  CONSTRAINT fk_intraday_stock FOREIGN KEY (stock_id) REFERENCES stocks(id),
+  UNIQUE KEY uq_intraday_period (stock_id, interval_code, bar_time),
+  KEY ix_intraday_collected (source, collected_at)
+) ENGINE=InnoDB;

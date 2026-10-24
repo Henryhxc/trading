@@ -1,0 +1,4 @@
+# ux-securities/backend/cmd/api [ux-securities/backend/cmd/api.test]
+cmd/api/main_test.go:107:13: undefined: buildMarketService
+FAIL	ux-securities/backend/cmd/api [build failed]
+FAIL

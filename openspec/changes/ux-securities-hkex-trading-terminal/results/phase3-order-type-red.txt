@@ -1,0 +1,8 @@
+=== RUN   TestCreateOrderAcceptsLimitOrderTypeFromFrontend
+2026/10/24 12:52:37 request_id=d842e7ee97a54b9242e88e726d2f0ae3 method=POST path=/api/v1/orders status=400
+    trading_handler_test.go:42: POST /orders status = 400 body={"code":"invalid_request","message":"Request body is invalid","request_id":"d842e7ee97a54b9242e88e726d2f0ae3"}
+        , want 201
+--- FAIL: TestCreateOrderAcceptsLimitOrderTypeFromFrontend (0.00s)
+FAIL
+FAIL	ux-securities/backend/internal/httpapi	0.607s
+FAIL

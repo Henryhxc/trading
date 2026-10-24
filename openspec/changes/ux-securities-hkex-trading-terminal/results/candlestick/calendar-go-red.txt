@@ -1,0 +1,6 @@
+2026/10/24 15:42:47 request_id=05ad99c7285dd315f395530a1cdd2cf1 method=GET path=/api/v1/markets/candles/00700 status=200
+--- FAIL: TestDefaultCandleWindowClampsMonthEnd (0.00s)
+    candle_intervals_test.go:112: default window start=2026-03-03 want 2026-02-28
+FAIL
+FAIL	ux-securities/backend/internal/httpapi	1.275s
+FAIL

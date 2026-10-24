@@ -1,0 +1,6 @@
+=== RUN   TestOrderMapsMissingStorageRowToNotFound
+    service_test.go:74: Order() error = sql: no rows in result set, want ErrNotFound
+--- FAIL: TestOrderMapsMissingStorageRowToNotFound (0.00s)
+FAIL
+FAIL	ux-securities/backend/internal/service/trading	0.485s
+FAIL

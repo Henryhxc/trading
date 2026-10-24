@@ -1,0 +1,262 @@
+- main:
+  - img "UX Securities Limited"
+  - generic: 021021hxc
+  - button "Sign out"
+  - tablist "Workspace sections":
+    - tab "Market" [selected]
+    - tab "My favorites 1":
+      - text: My favorites
+      - generic: "1"
+    - tab "My positions"
+  - complementary:
+    - paragraph: MARKET WATCH
+    - heading "Hong Kong equities" [level=1]
+    - textbox "Search symbols":
+      - /placeholder: Code or company
+      - text: "09988"
+    - button "Search"
+    - generic: Favorites
+    - generic: "1"
+    - button "00700 Tencent Holdings 381.20 +0.81% STALE":
+      - strong: "00700"
+      - generic: Tencent Holdings
+      - strong: "381.20"
+      - generic: +0.81%
+      - generic: STALE
+    - button "Move 00700 up" [disabled]: ↑
+    - button "Move 00700 down" [disabled]: ↓
+  - paragraph: 09988 · HKEX
+  - heading "Alibaba Group" [level=2]
+  - paragraph: mock · 24/10/2026, 05:16:28
+  - button "Add to favorites": ☆
+  - strong: "88.10"
+  - generic: +1.20 (+1.38%)
+  - generic: STALE
+  - text: Bid
+  - generic: "87.90"
+  - text: Ask
+  - generic: "88.30"
+  - text: Volume
+  - generic: 1,200,000
+  - text: Turnover
+  - generic: HKD 105,720,000
+  - region "K 线行情":
+    - heading "K 线行情 09988 · HKD" [level=3]:
+      - text: K 线行情
+      - generic: 09988 · HKD
+    - paragraph: 近半年 · 2026-04-24 — 2026-10-24
+    - button "刷新行情": ↻ 刷新
+    - group "K 线周期":
+      - button "1分"
+      - button "5分"
+      - button "15分"
+      - button "30分"
+      - button "60分"
+      - button "日" [pressed]
+      - button "周"
+      - button "月"
+      - button "年"
+    - text: tencent
+    - generic: unofficial
+    - generic: 125 根 · 每 60 秒读取
+    - generic: 2026-10-23
+    - generic: O 98.50
+    - generic: H 98.65
+    - generic: L 95.30
+    - generic: C 97.80
+    - generic: 本柱 -0.71%
+    - img "OHLC candlestick chart with trading volume":
+      - table:
+        - row "Charting by TradingView":
+          - cell
+          - cell "Charting by TradingView":
+            - link "Charting by TradingView":
+              - /url: https://www.tradingview.com/?utm_medium=lwc-link&utm_campaign=lwc-chart&utm_source=localhost/workspace
+          - cell
+        - row:
+          - cell
+          - cell
+          - cell
+    - paragraph: 实际覆盖 2026-04-24 — 2026-10-23 · 区间内日线聚合
+    - generic: 非官方行情 · 仅用于模拟 · 采集 24/10/2026 16:21:15 · 读取 16:27:25
+    - link "TradingView Lightweight Charts™":
+      - /url: https://www.tradingview.com/
+    - paragraph: Copyright (с) 2025 TradingView, Inc.
+  - region "Paper trading":
+    - paragraph: PAPER TRADING
+    - heading "Place paper order" [level=2]
+    - generic: SIMULATED
+    - paragraph: 09988 · Alibaba Group
+    - group "Order side":
+      - button "Buy"
+      - button "Sell"
+    - text: Quantity
+    - spinbutton "Quantity": "100"
+    - text: Limit price (HKD)
+    - spinbutton "Limit price (HKD)": "88.10"
+    - paragraph:
+      - text: Estimated amount
+      - strong: HKD 8,810.00
+    - paragraph: The server validates lot size, market status, balance, and final fill. This is not a real order.
+    - button "Submit paper order"
+    - paragraph: ACCOUNT
+    - heading "Available cash" [level=2]
+    - generic: active
+    - strong: HKD 1,000,000.00
+    - text: Cash balance
+    - generic: HKD 1,000,000.00
+    - text: Initial cash
+    - generic: HKD 1,000,000.00
+    - paragraph: PORTFOLIO
+    - heading "Open positions" [level=2]
+    - button "Refresh"
+    - status: No open positions yet. Filled paper orders will appear here.
+    - paragraph: ACTIVITY
+    - heading "Order history" [level=2]
+    - generic: 0 orders
+    - textbox "Filter orders by symbol":
+      - /placeholder: Symbol
+    - combobox "Filter orders by side":
+      - option "All sides" [selected]
+      - option "Buy"
+      - option "Sell"
+    - combobox "Filter orders by status":
+      - option "All statuses" [selected]
+      - option "Pending"
+      - option "Filled"
+      - option "Cancelled"
+      - option "Rejected"
+    - button "Filter"
+    - status: No orders match the current filters.
+
+- main:
+  - img "UX Securities Limited"
+  - generic: 021021hxc
+  - button "Sign out"
+  - tablist "Workspace sections":
+    - tab "Market" [selected]
+    - tab "My favorites 1":
+      - text: My favorites
+      - generic: "1"
+    - tab "My positions"
+  - complementary:
+    - paragraph: MARKET WATCH
+    - heading "Hong Kong equities" [level=1]
+    - textbox "Search symbols":
+      - /placeholder: Code or company
+      - text: "09988"
+    - button "Search"
+    - generic: Favorites
+    - generic: "1"
+    - button "00700 Tencent Holdings 381.20 +0.81% STALE":
+      - strong: "00700"
+      - generic: Tencent Holdings
+      - strong: "381.20"
+      - generic: +0.81%
+      - generic: STALE
+    - button "Move 00700 up" [disabled]: ↑
+    - button "Move 00700 down" [disabled]: ↓
+  - paragraph: 09988 · HKEX
+  - heading "Alibaba Group" [level=2]
+  - paragraph: mock · 24/10/2026, 05:16:28
+  - button "Add to favorites": ☆
+  - strong: "88.10"
+  - generic: +1.20 (+1.38%)
+  - generic: STALE
+  - text: Bid
+  - generic: "87.90"
+  - text: Ask
+  - generic: "88.30"
+  - text: Volume
+  - generic: 1,200,000
+  - text: Turnover
+  - generic: HKD 105,720,000
+  - region "K 线行情":
+    - heading "K 线行情 09988 · HKD" [level=3]:
+      - text: K 线行情
+      - generic: 09988 · HKD
+    - paragraph: 近半年 · 2026-04-24 — 2026-10-24
+    - button "刷新行情": ↻ 刷新
+    - group "K 线周期":
+      - button "1分"
+      - button "5分"
+      - button "15分"
+      - button "30分"
+      - button "60分" [active] [pressed]
+      - button "日"
+      - button "周"
+      - button "月"
+      - button "年"
+    - text: yahoo
+    - generic: unofficial
+    - generic: 875 根 · 每 60 秒读取
+    - generic: 23/10 15:30
+    - generic: O 97.90
+    - generic: H 98.15
+    - generic: L 97.80
+    - generic: C 97.80
+    - generic: 本柱 -0.10%
+    - img "OHLC candlestick chart with trading volume":
+      - table:
+        - row "Charting by TradingView":
+          - cell
+          - cell "Charting by TradingView":
+            - link "Charting by TradingView":
+              - /url: https://www.tradingview.com/?utm_medium=lwc-link&utm_campaign=lwc-chart&utm_source=localhost/workspace
+          - cell
+        - row:
+          - cell
+          - cell
+          - cell
+    - paragraph: 实际覆盖 24/04 09:30 — 23/10 15:30 · 香港时间
+    - paragraph: 分钟历史受上游限制；1 分钟通常仅近 5 个交易日，不保证覆盖半年。
+    - generic: 非官方行情 · 仅用于模拟 · 采集 24/10/2026 16:21:15 · 读取 16:27:38
+    - link "TradingView Lightweight Charts™":
+      - /url: https://www.tradingview.com/
+    - paragraph: Copyright (с) 2025 TradingView, Inc.
+  - region "Paper trading":
+    - paragraph: PAPER TRADING
+    - heading "Place paper order" [level=2]
+    - generic: SIMULATED
+    - paragraph: 09988 · Alibaba Group
+    - group "Order side":
+      - button "Buy"
+      - button "Sell"
+    - text: Quantity
+    - spinbutton "Quantity": "100"
+    - text: Limit price (HKD)
+    - spinbutton "Limit price (HKD)": "88.10"
+    - paragraph:
+      - text: Estimated amount
+      - strong: HKD 8,810.00
+    - paragraph: The server validates lot size, market status, balance, and final fill. This is not a real order.
+    - button "Submit paper order"
+    - paragraph: ACCOUNT
+    - heading "Available cash" [level=2]
+    - generic: active
+    - strong: HKD 1,000,000.00
+    - text: Cash balance
+    - generic: HKD 1,000,000.00
+    - text: Initial cash
+    - generic: HKD 1,000,000.00
+    - paragraph: PORTFOLIO
+    - heading "Open positions" [level=2]
+    - button "Refresh"
+    - status: No open positions yet. Filled paper orders will appear here.
+    - paragraph: ACTIVITY
+    - heading "Order history" [level=2]
+    - generic: 0 orders
+    - textbox "Filter orders by symbol":
+      - /placeholder: Symbol
+    - combobox "Filter orders by side":
+      - option "All sides" [selected]
+      - option "Buy"
+      - option "Sell"
+    - combobox "Filter orders by status":
+      - option "All statuses" [selected]
+      - option "Pending"
+      - option "Filled"
+      - option "Cancelled"
+      - option "Rejected"
+    - button "Filter"
+    - status: No orders match the current filters.

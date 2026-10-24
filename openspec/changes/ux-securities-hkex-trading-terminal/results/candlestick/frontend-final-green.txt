@@ -1,0 +1,14 @@
+
+> ux-securities-frontend@1.0.0 test:frontend
+> node tests/source-guard.mjs && vitest run
+
+Frontend source guard passed: 6 assertions
+
+ RUN  v4.1.12 /Users/hongxincong/project/UX Security/apps/frontend
+
+
+ Test Files  3 passed (3)
+      Tests  8 passed (8)
+   Start at  16:24:07
+   Duration  6.21s (transform 1.37s, setup 2.26s, import 1.18s, tests 2.03s, environment 7.60s)
+

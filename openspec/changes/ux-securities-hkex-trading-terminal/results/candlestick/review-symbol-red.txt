@@ -1,0 +1,6 @@
+=== RUN   TestNativeMinuteStorageProvenanceUniquenessAndOlderOverwrite
+    market_intraday_integration_test.go:25: unknown minute symbol: <nil>
+--- FAIL: TestNativeMinuteStorageProvenanceUniquenessAndOlderOverwrite (40.99s)
+FAIL
+FAIL	ux-securities/backend/internal/repository/mysqlrepo	42.705s
+FAIL

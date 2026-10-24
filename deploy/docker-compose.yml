@@ -1,0 +1,106 @@
+services:
+  mysql:
+    image: mysql:8.4
+    command: ["--character-set-server=utf8mb4", "--collation-server=utf8mb4_0900_ai_ci"]
+    environment:
+      MYSQL_DATABASE: ${DB_NAME:-ux_securities}
+      MYSQL_USER: ${DB_USER:-ux_app}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-local-dev-only}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-local-root-dev-only}
+    ports:
+      - "${MYSQL_PORT:-3306}:3306"
+    volumes:
+      - ux_mysql:/var/lib/mysql
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -u root -p$$MYSQL_ROOT_PASSWORD --silent"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 20s
+
+  backend:
+    build:
+      context: ..
+      dockerfile: apps/backend/Dockerfile
+    environment:
+      PORT: 8080
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_NAME: ${DB_NAME:-ux_securities}
+      DB_USER: ${DB_USER:-ux_app}
+      DB_PASSWORD: ${DB_PASSWORD:-local-dev-only}
+      COOKIE_SECURE: ${COOKIE_SECURE:-false}
+      SESSION_TTL: ${SESSION_TTL:-24h}
+      INITIAL_CASH_HKD: ${INITIAL_CASH_HKD:-1000000.0000}
+      MARKET_DATA_MODE: ${MARKET_DATA_MODE:-mock}
+      AKSHARE_WEBHOOK_SECRET: ${AKSHARE_WEBHOOK_SECRET:-local-akshare-dev-secret}
+      AKSHARE_WEBHOOK_MAX_AGE: ${AKSHARE_WEBHOOK_MAX_AGE:-30s}
+      MARKET_DATA_STALE_AFTER: ${MARKET_DATA_STALE_AFTER:-20m}
+      FRONTEND_ORIGIN: ${FRONTEND_ORIGIN:-http://localhost:3000}
+    ports:
+      - "${BACKEND_PORT:-8080}:8080"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1:8080/health"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+      start_period: 10s
+
+  akshare:
+    build:
+      context: ..
+      dockerfile: services/akshare/Dockerfile
+    profiles: ["akshare"]
+    environment:
+      AKSHARE_WEBHOOK_URL: http://backend:8080/api/v1/internal/market-data/akshare
+      AKSHARE_WEBHOOK_SECRET: ${AKSHARE_WEBHOOK_SECRET:-local-akshare-dev-secret}
+      AKSHARE_POLL_INTERVAL: ${AKSHARE_POLL_INTERVAL:-900}
+      AKSHARE_REQUEST_TIMEOUT: ${AKSHARE_REQUEST_TIMEOUT:-15}
+      AKSHARE_SYMBOLS: ${AKSHARE_SYMBOLS:-00700,00005,09988}
+      AKSHARE_MINUTE_PERIODS: ${AKSHARE_MINUTE_PERIODS:-1m,5m,15m,30m,60m}
+      AKSHARE_HISTORY_START: ${AKSHARE_HISTORY_START:-}
+      AKSHARE_HISTORY_END: ${AKSHARE_HISTORY_END:-}
+      HISTORY_PROVIDER: ${HISTORY_PROVIDER:-public}
+    depends_on:
+      backend:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import services.akshare.scheduler"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+
+  frontend:
+    build:
+      context: ..
+      dockerfile: apps/frontend/Dockerfile
+    ports:
+      - "${FRONTEND_PORT:-3000}:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1/"]
+      interval: 10s
+      timeout: 3s
+      retries: 10
+
+  phpmyadmin:
+    image: phpmyadmin:5.2-apache
+    profiles: ["admin"]
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      PMA_ABSOLUTE_URI: http://localhost:${PHPMYADMIN_PORT:-8081}/
+    ports:
+      - "${PHPMYADMIN_PORT:-8081}:80"
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+volumes:
+  ux_mysql:

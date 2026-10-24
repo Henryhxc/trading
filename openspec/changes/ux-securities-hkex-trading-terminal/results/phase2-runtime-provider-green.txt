@@ -1,0 +1,5 @@
+=== RUN   TestRuntimeDiagnosticMarketProvider
+    runtime_diagnostic_test.go:39: repository={Symbol:00700 DisplayName:Tencent Holdings LastPrice:0x14000010430 Bid:0x14000010440 Ask:0x14000010450 Change:0x14000010460 ChangePercent:0x14000010470 Volume:1200100 Turnover:4.5744e+08 AsOf:2026-10-24 05:55:00 +0000 UTC Source:akshare DataStatus:delayed} provider={Symbol:00700 DisplayName:Tencent Holdings LastPrice:0x140000105d0 Bid:0x140000105e0 Ask:0x140000105f0 Change:0x14000010600 ChangePercent:0x14000010610 Volume:1200100 Turnover:4.5744e+08 AsOf:2026-10-24 05:55:00 +0000 UTC Source:akshare DataStatus:delayed}
+--- PASS: TestRuntimeDiagnosticMarketProvider (0.03s)
+PASS
+ok  	ux-securities/backend/internal/repository/mysqlrepo	0.579s

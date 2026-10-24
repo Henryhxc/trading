@@ -1,0 +1,20 @@
+=== RUN   TestComposedMockNativeCandlesDistinguishesUnknownSymbolFromMissingMinutes
+=== RUN   TestComposedMockNativeCandlesDistinguishesUnknownSymbolFromMissingMinutes/1m
+    provider_test.go:156: unknown native candles error = <nil>, want ErrNotFound
+=== RUN   TestComposedMockNativeCandlesDistinguishesUnknownSymbolFromMissingMinutes/5m
+    provider_test.go:156: unknown native candles error = <nil>, want ErrNotFound
+=== RUN   TestComposedMockNativeCandlesDistinguishesUnknownSymbolFromMissingMinutes/15m
+    provider_test.go:156: unknown native candles error = <nil>, want ErrNotFound
+=== RUN   TestComposedMockNativeCandlesDistinguishesUnknownSymbolFromMissingMinutes/30m
+    provider_test.go:156: unknown native candles error = <nil>, want ErrNotFound
+=== RUN   TestComposedMockNativeCandlesDistinguishesUnknownSymbolFromMissingMinutes/60m
+    provider_test.go:156: unknown native candles error = <nil>, want ErrNotFound
+--- FAIL: TestComposedMockNativeCandlesDistinguishesUnknownSymbolFromMissingMinutes (0.00s)
+    --- FAIL: TestComposedMockNativeCandlesDistinguishesUnknownSymbolFromMissingMinutes/1m (0.00s)
+    --- FAIL: TestComposedMockNativeCandlesDistinguishesUnknownSymbolFromMissingMinutes/5m (0.00s)
+    --- FAIL: TestComposedMockNativeCandlesDistinguishesUnknownSymbolFromMissingMinutes/15m (0.00s)
+    --- FAIL: TestComposedMockNativeCandlesDistinguishesUnknownSymbolFromMissingMinutes/30m (0.00s)
+    --- FAIL: TestComposedMockNativeCandlesDistinguishesUnknownSymbolFromMissingMinutes/60m (0.00s)
+FAIL
+FAIL	ux-securities/backend/internal/integration/marketdata	1.177s
+FAIL

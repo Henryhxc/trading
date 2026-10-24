@@ -1,0 +1,14 @@
+=== RUN   TestComposedMockNativeCandlesDistinguishesUnknownSymbolFromMissingMinutes
+=== RUN   TestComposedMockNativeCandlesDistinguishesUnknownSymbolFromMissingMinutes/1m
+=== RUN   TestComposedMockNativeCandlesDistinguishesUnknownSymbolFromMissingMinutes/5m
+=== RUN   TestComposedMockNativeCandlesDistinguishesUnknownSymbolFromMissingMinutes/15m
+=== RUN   TestComposedMockNativeCandlesDistinguishesUnknownSymbolFromMissingMinutes/30m
+=== RUN   TestComposedMockNativeCandlesDistinguishesUnknownSymbolFromMissingMinutes/60m
+--- PASS: TestComposedMockNativeCandlesDistinguishesUnknownSymbolFromMissingMinutes (0.00s)
+    --- PASS: TestComposedMockNativeCandlesDistinguishesUnknownSymbolFromMissingMinutes/1m (0.00s)
+    --- PASS: TestComposedMockNativeCandlesDistinguishesUnknownSymbolFromMissingMinutes/5m (0.00s)
+    --- PASS: TestComposedMockNativeCandlesDistinguishesUnknownSymbolFromMissingMinutes/15m (0.00s)
+    --- PASS: TestComposedMockNativeCandlesDistinguishesUnknownSymbolFromMissingMinutes/30m (0.00s)
+    --- PASS: TestComposedMockNativeCandlesDistinguishesUnknownSymbolFromMissingMinutes/60m (0.00s)
+PASS
+ok  	ux-securities/backend/internal/integration/marketdata	0.974s

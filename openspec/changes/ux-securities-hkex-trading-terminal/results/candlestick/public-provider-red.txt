@@ -1,0 +1,16 @@
+test_configured_public_history_does_not_wait_on_unavailable_akshare (services.akshare.tests.test_candlesticks.CandlestickTests) ... WARNING:root:history unavailable symbol=00700 interval=1d error=AttributeError
+WARNING:root:history unavailable symbol=00700 interval=1m error=AttributeError
+FAIL
+
+======================================================================
+FAIL: test_configured_public_history_does_not_wait_on_unavailable_akshare (services.akshare.tests.test_candlesticks.CandlestickTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/hongxincong/project/UX Security/services/akshare/tests/test_candlesticks.py", line 21, in test_configured_public_history_does_not_wait_on_unavailable_akshare
+    scheduler.Config.from_env({"HISTORY_PROVIDER": "unknown"})
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 1 test in 0.011s
+
+FAILED (failures=1)

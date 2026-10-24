@@ -1,0 +1,14 @@
+=== RUN   TestProviderFallsBackToMockAndPreservesSimulatedStatus
+--- PASS: TestProviderFallsBackToMockAndPreservesSimulatedStatus (0.00s)
+=== RUN   TestProviderDowngradesStatusesNotAllowedForUnofficialSources
+=== RUN   TestProviderDowngradesStatusesNotAllowedForUnofficialSources/live
+=== RUN   TestProviderDowngradesStatusesNotAllowedForUnofficialSources/simulated
+=== RUN   TestProviderDowngradesStatusesNotAllowedForUnofficialSources/unexpected
+--- PASS: TestProviderDowngradesStatusesNotAllowedForUnofficialSources (0.00s)
+    --- PASS: TestProviderDowngradesStatusesNotAllowedForUnofficialSources/live (0.00s)
+    --- PASS: TestProviderDowngradesStatusesNotAllowedForUnofficialSources/simulated (0.00s)
+    --- PASS: TestProviderDowngradesStatusesNotAllowedForUnofficialSources/unexpected (0.00s)
+=== RUN   TestProviderKeepsStaleUnofficialQuoteVisible
+--- PASS: TestProviderKeepsStaleUnofficialQuoteVisible (0.00s)
+PASS
+ok  	ux-securities/backend/internal/integration/marketdata	0.506s

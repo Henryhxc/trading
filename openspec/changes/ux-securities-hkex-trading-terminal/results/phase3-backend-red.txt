@@ -1,0 +1,14 @@
+# ux-securities/backend/internal/service/trading [ux-securities/backend/internal/service/trading.test]
+internal/service/trading/service_test.go:15:58: undefined: CreateOrderInput
+internal/service/trading/service_test.go:15:91: undefined: Order
+internal/service/trading/service_test.go:18:81: undefined: Order
+internal/service/trading/service_test.go:19:63: undefined: Order
+internal/service/trading/service_test.go:20:66: undefined: Order
+internal/service/trading/service_test.go:21:55: undefined: Account
+internal/service/trading/service_test.go:22:59: undefined: Position
+internal/service/trading/service_test.go:23:53: undefined: OrderFilter
+internal/service/trading/service_test.go:23:69: undefined: Order
+internal/service/trading/service_test.go:25:53: undefined: CreateOrderInput
+internal/service/trading/service_test.go:25:53: too many errors
+FAIL	ux-securities/backend/internal/service/trading [build failed]
+FAIL

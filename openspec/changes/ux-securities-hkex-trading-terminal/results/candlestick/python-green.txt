@@ -1,0 +1,32 @@
+test_configured_public_history_does_not_wait_on_unavailable_akshare (test_candlesticks.CandlestickTests) ... ok
+test_default_history_covers_previous_six_calendar_months (test_candlesticks.CandlestickTests) ... ok
+test_duplicate_minutes_keep_most_recent_row_and_sort (test_candlesticks.CandlestickTests) ... ok
+test_failed_akshare_uses_explicit_fallback_without_relabelling (test_candlesticks.CandlestickTests) ... WARNING:root:history unavailable symbol=00700 interval=1d error=ConnectionError
+ok
+test_failed_spot_does_not_discard_successful_history (test_candlesticks.CandlestickTests) ... ERROR:akshare.scheduler:upstream failed kind=spot error=ConnectionError
+ok
+test_large_history_is_delivered_in_bounded_chunks (test_candlesticks.CandlestickTests) ... ok
+test_minute_normalization_retains_actual_time_and_native_period (test_candlesticks.CandlestickTests) ... ok
+test_one_native_period_failure_preserves_other_periods (test_candlesticks.CandlestickTests) ... WARNING:root:history unavailable symbol=00700 interval=1d error=ConnectionError
+WARNING:root:history unavailable symbol=00700 interval=1m error=ConnectionError
+ok
+test_invalid_native_ohlc_is_not_reconstructed_or_inserted (test_public_history.PublicHistoryTests) ... ok
+test_minute_rows_keep_native_period_time_and_source (test_public_history.PublicHistoryTests) ... ok
+test_never_substitutes_adjusted_rows_for_unadjusted_history (test_public_history.PublicHistoryTests) ... ok
+test_tencent_unadjusted_rows_keep_missing_turnover_null (test_public_history.PublicHistoryTests) ... ok
+test_backoff_is_exponential_with_bounded_jitter (test_scheduler.SchedulerContractTests) ... ok
+test_build_payload_contains_quotes_and_candles (test_scheduler.SchedulerContractTests) ... ok
+test_health_check_is_healthy_only_after_successful_delivery (test_scheduler.SchedulerContractTests) ... ok
+test_hmac_matches_go_webhook_vector (test_scheduler.SchedulerContractTests) ... ok
+test_logs_redact_secret_and_webhook_url (test_scheduler.SchedulerContractTests) ... ERROR:akshare-test:request failed token=secret=[REDACTED] url=http://example.test/hook
+ok
+test_normalizes_history_rows_without_adjustment (test_scheduler.SchedulerContractTests) ... ok
+test_normalizes_spot_rows_to_backend_contract (test_scheduler.SchedulerContractTests) ... ok
+test_spot_interval_cannot_be_shorter_than_fifteen_minutes (test_scheduler.SchedulerContractTests) ... ok
+test_native_minutes_keep_hk_timestamp_and_missing_amount (test_yahoo_history.YahooHistoryTests) ... ok
+test_provider_failure_or_invalid_ohlc_does_not_make_bars (test_yahoo_history.YahooHistoryTests) ... ok
+
+----------------------------------------------------------------------
+Ran 22 tests in 0.051s
+
+OK

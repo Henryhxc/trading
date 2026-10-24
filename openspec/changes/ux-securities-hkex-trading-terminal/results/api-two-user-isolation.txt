@@ -1,0 +1,4 @@
+user_a_order={"id":3,"symbol":"00700","name":"Tencent Holdings","side":"buy","quantity":100,"limit_price":380.2,"estimated_amount":38020,"status":"filled","client_order_id":"isolation-order-1792820770030664000","filled_quantity":100,"filled_price":380.2,"quote_as_of":"2026-10-24T05:46:10.381466889Z","created_at":"0001-01-01T00:00:00Z"}
+user_b_detail_status=404
+user_b_detail={"code":"not_found","message":"Resource was not found","request_id":"3cb412e1836e3b52f4bd5c08276480ee"}
+user_b_positions={"items":[]}

@@ -1,0 +1,1324 @@
+- main:
+  - img "UX Securities Limited"
+  - generic: 021021hxc
+  - button "Sign out"
+  - tablist "Workspace sections":
+    - tab "Market" [selected]
+    - tab "My favorites 1":
+      - text: My favorites
+      - generic: "1"
+    - tab "My positions"
+  - complementary:
+    - paragraph: MARKET WATCH
+    - heading "Hong Kong equities" [level=1]
+    - textbox "Search symbols":
+      - /placeholder: Code or company
+    - button "Search"
+    - generic: Favorites
+    - generic: "1"
+    - button "00700 Tencent Holdings 381.20 +0.81% STALE":
+      - strong: "00700"
+      - generic: Tencent Holdings
+      - strong: "381.20"
+      - generic: +0.81%
+      - generic: STALE
+    - button "Move 00700 up" [disabled]: ↑
+    - button "Move 00700 down" [disabled]: ↓
+  - paragraph: 00700 · HKEX
+  - heading "Tencent Holdings" [level=2]
+  - paragraph: akshare · 24/10/2026, 13:55:00
+  - button "Remove from favorites": ★
+  - strong: "381.20"
+  - generic: +3.10 (+0.81%)
+  - generic: STALE
+  - text: Bid
+  - generic: "381.00"
+  - text: Ask
+  - generic: "381.40"
+  - text: Volume
+  - generic: 1,200,100
+  - text: Turnover
+  - generic: HKD 457,440,000
+  - region "K 线行情":
+    - heading "K 线行情 00700 · HKD" [level=3]:
+      - text: K 线行情
+      - generic: 00700 · HKD
+    - paragraph: 近半年 · 2026-04-24 — 2026-10-24
+    - button "刷新行情": ↻ 刷新
+    - group "K 线周期":
+      - button "1分" [active] [pressed]
+      - button "5分"
+      - button "15分"
+      - button "30分"
+      - button "60分"
+      - button "日"
+      - button "周"
+      - button "月"
+      - button "年"
+    - text: yahoo
+    - generic: unofficial
+    - generic: 1,655 根 · 每 60 秒读取
+    - generic: 23/10 16:08
+    - generic: O 386.00
+    - generic: H 386.00
+    - generic: L 386.00
+    - generic: C 386.00
+    - generic: 本柱 +0.00%
+    - img "OHLC candlestick chart with trading volume":
+      - table:
+        - row "Charting by TradingView":
+          - cell
+          - cell "Charting by TradingView":
+            - link "Charting by TradingView":
+              - /url: https://www.tradingview.com/?utm_medium=lwc-link&utm_campaign=lwc-chart&utm_source=localhost/workspace
+          - cell
+        - row:
+          - cell
+          - cell
+          - cell
+    - paragraph: 实际覆盖 16/10 09:30 — 23/10 16:08 · 香港时间
+    - paragraph: 分钟历史受上游限制；1 分钟通常仅近 5 个交易日，不保证覆盖半年。
+    - generic: 非官方行情 · 仅用于模拟 · 采集 24/10/2026 16:21:15 · 读取 16:25:01
+    - link "TradingView Lightweight Charts™":
+      - /url: https://www.tradingview.com/
+    - paragraph: Copyright (с) 2025 TradingView, Inc.
+  - region "Paper trading":
+    - paragraph: PAPER TRADING
+    - heading "Place paper order" [level=2]
+    - generic: SIMULATED
+    - paragraph: 00700 · Tencent Holdings
+    - group "Order side":
+      - button "Buy"
+      - button "Sell"
+    - text: Quantity
+    - spinbutton "Quantity": "100"
+    - text: Limit price (HKD)
+    - spinbutton "Limit price (HKD)": "381.20"
+    - paragraph:
+      - text: Estimated amount
+      - strong: HKD 38,120.00
+    - paragraph: The server validates lot size, market status, balance, and final fill. This is not a real order.
+    - button "Submit paper order"
+    - paragraph: ACCOUNT
+    - heading "Available cash" [level=2]
+    - generic: active
+    - strong: HKD 1,000,000.00
+    - text: Cash balance
+    - generic: HKD 1,000,000.00
+    - text: Initial cash
+    - generic: HKD 1,000,000.00
+    - paragraph: PORTFOLIO
+    - heading "Open positions" [level=2]
+    - button "Refresh"
+    - status: No open positions yet. Filled paper orders will appear here.
+    - paragraph: ACTIVITY
+    - heading "Order history" [level=2]
+    - generic: 0 orders
+    - textbox "Filter orders by symbol":
+      - /placeholder: Symbol
+    - combobox "Filter orders by side":
+      - option "All sides" [selected]
+      - option "Buy"
+      - option "Sell"
+    - combobox "Filter orders by status":
+      - option "All statuses" [selected]
+      - option "Pending"
+      - option "Filled"
+      - option "Cancelled"
+      - option "Rejected"
+    - button "Filter"
+    - status: No orders match the current filters.
+
+--- OBSERVED SNAPSHOT ---
+
+- main:
+  - img "UX Securities Limited"
+  - generic: 021021hxc
+  - button "Sign out"
+  - tablist "Workspace sections":
+    - tab "Market" [selected]
+    - tab "My favorites 1":
+      - text: My favorites
+      - generic: "1"
+    - tab "My positions"
+  - complementary:
+    - paragraph: MARKET WATCH
+    - heading "Hong Kong equities" [level=1]
+    - textbox "Search symbols":
+      - /placeholder: Code or company
+    - button "Search"
+    - generic: Favorites
+    - generic: "1"
+    - button "00700 Tencent Holdings 381.20 +0.81% STALE":
+      - strong: "00700"
+      - generic: Tencent Holdings
+      - strong: "381.20"
+      - generic: +0.81%
+      - generic: STALE
+    - button "Move 00700 up" [disabled]: ↑
+    - button "Move 00700 down" [disabled]: ↓
+  - paragraph: 00700 · HKEX
+  - heading "Tencent Holdings" [level=2]
+  - paragraph: akshare · 24/10/2026, 13:55:00
+  - button "Remove from favorites": ★
+  - strong: "381.20"
+  - generic: +3.10 (+0.81%)
+  - generic: STALE
+  - text: Bid
+  - generic: "381.00"
+  - text: Ask
+  - generic: "381.40"
+  - text: Volume
+  - generic: 1,200,100
+  - text: Turnover
+  - generic: HKD 457,440,000
+  - region "K 线行情":
+    - heading "K 线行情 00700 · HKD" [level=3]:
+      - text: K 线行情
+      - generic: 00700 · HKD
+    - paragraph: 近半年 · 2026-04-24 — 2026-10-24
+    - button "刷新行情": ↻ 刷新
+    - group "K 线周期":
+      - button "1分"
+      - button "5分" [active] [pressed]
+      - button "15分"
+      - button "30分"
+      - button "60分"
+      - button "日"
+      - button "周"
+      - button "月"
+      - button "年"
+    - text: yahoo
+    - generic: unofficial
+    - generic: 2,679 根 · 每 60 秒读取
+    - generic: 23/10 16:05
+    - generic: O 386.00
+    - generic: H 386.00
+    - generic: L 386.00
+    - generic: C 386.00
+    - generic: 本柱 +0.00%
+    - img "OHLC candlestick chart with trading volume":
+      - table:
+        - row "Charting by TradingView":
+          - cell
+          - cell "Charting by TradingView":
+            - link "Charting by TradingView":
+              - /url: https://www.tradingview.com/?utm_medium=lwc-link&utm_campaign=lwc-chart&utm_source=localhost/workspace
+          - cell
+        - row:
+          - cell
+          - cell
+          - cell
+    - paragraph: 实际覆盖 27/08 09:30 — 23/10 16:05 · 香港时间
+    - paragraph: 分钟历史受上游限制；1 分钟通常仅近 5 个交易日，不保证覆盖半年。
+    - generic: 非官方行情 · 仅用于模拟 · 采集 24/10/2026 16:21:15 · 读取 16:25:31
+    - link "TradingView Lightweight Charts™":
+      - /url: https://www.tradingview.com/
+    - paragraph: Copyright (с) 2025 TradingView, Inc.
+  - region "Paper trading":
+    - paragraph: PAPER TRADING
+    - heading "Place paper order" [level=2]
+    - generic: SIMULATED
+    - paragraph: 00700 · Tencent Holdings
+    - group "Order side":
+      - button "Buy"
+      - button "Sell"
+    - text: Quantity
+    - spinbutton "Quantity": "100"
+    - text: Limit price (HKD)
+    - spinbutton "Limit price (HKD)": "381.20"
+    - paragraph:
+      - text: Estimated amount
+      - strong: HKD 38,120.00
+    - paragraph: The server validates lot size, market status, balance, and final fill. This is not a real order.
+    - button "Submit paper order"
+    - paragraph: ACCOUNT
+    - heading "Available cash" [level=2]
+    - generic: active
+    - strong: HKD 1,000,000.00
+    - text: Cash balance
+    - generic: HKD 1,000,000.00
+    - text: Initial cash
+    - generic: HKD 1,000,000.00
+    - paragraph: PORTFOLIO
+    - heading "Open positions" [level=2]
+    - button "Refresh"
+    - status: No open positions yet. Filled paper orders will appear here.
+    - paragraph: ACTIVITY
+    - heading "Order history" [level=2]
+    - generic: 0 orders
+    - textbox "Filter orders by symbol":
+      - /placeholder: Symbol
+    - combobox "Filter orders by side":
+      - option "All sides" [selected]
+      - option "Buy"
+      - option "Sell"
+    - combobox "Filter orders by status":
+      - option "All statuses" [selected]
+      - option "Pending"
+      - option "Filled"
+      - option "Cancelled"
+      - option "Rejected"
+    - button "Filter"
+    - status: No orders match the current filters.
+
+--- OBSERVED SNAPSHOT ---
+
+- main:
+  - img "UX Securities Limited"
+  - generic: 021021hxc
+  - button "Sign out"
+  - tablist "Workspace sections":
+    - tab "Market" [selected]
+    - tab "My favorites 1":
+      - text: My favorites
+      - generic: "1"
+    - tab "My positions"
+  - complementary:
+    - paragraph: MARKET WATCH
+    - heading "Hong Kong equities" [level=1]
+    - textbox "Search symbols":
+      - /placeholder: Code or company
+    - button "Search"
+    - generic: Favorites
+    - generic: "1"
+    - button "00700 Tencent Holdings 381.20 +0.81% STALE":
+      - strong: "00700"
+      - generic: Tencent Holdings
+      - strong: "381.20"
+      - generic: +0.81%
+      - generic: STALE
+    - button "Move 00700 up" [disabled]: ↑
+    - button "Move 00700 down" [disabled]: ↓
+  - paragraph: 00700 · HKEX
+  - heading "Tencent Holdings" [level=2]
+  - paragraph: akshare · 24/10/2026, 13:55:00
+  - button "Remove from favorites": ★
+  - strong: "381.20"
+  - generic: +3.10 (+0.81%)
+  - generic: STALE
+  - text: Bid
+  - generic: "381.00"
+  - text: Ask
+  - generic: "381.40"
+  - text: Volume
+  - generic: 1,200,100
+  - text: Turnover
+  - generic: HKD 457,440,000
+  - region "K 线行情":
+    - heading "K 线行情 00700 · HKD" [level=3]:
+      - text: K 线行情
+      - generic: 00700 · HKD
+    - paragraph: 近半年 · 2026-04-24 — 2026-10-24
+    - button "刷新行情": ↻ 刷新
+    - group "K 线周期":
+      - button "1分"
+      - button "5分"
+      - button "15分" [active] [pressed]
+      - button "30分"
+      - button "60分"
+      - button "日"
+      - button "周"
+      - button "月"
+      - button "年"
+    - text: yahoo
+    - generic: unofficial
+    - generic: 920 根 · 每 60 秒读取
+    - generic: 23/10 16:00
+    - generic: O 386.00
+    - generic: H 386.00
+    - generic: L 386.00
+    - generic: C 386.00
+    - generic: 本柱 +0.00%
+    - img "OHLC candlestick chart with trading volume":
+      - table:
+        - row "Charting by TradingView":
+          - cell
+          - cell "Charting by TradingView":
+            - link "Charting by TradingView":
+              - /url: https://www.tradingview.com/?utm_medium=lwc-link&utm_campaign=lwc-chart&utm_source=localhost/workspace
+          - cell
+        - row:
+          - cell
+          - cell
+          - cell
+    - paragraph: 实际覆盖 27/08 09:30 — 23/10 16:00 · 香港时间
+    - paragraph: 分钟历史受上游限制；1 分钟通常仅近 5 个交易日，不保证覆盖半年。
+    - generic: 非官方行情 · 仅用于模拟 · 采集 24/10/2026 16:21:15 · 读取 16:26:00
+    - link "TradingView Lightweight Charts™":
+      - /url: https://www.tradingview.com/
+    - paragraph: Copyright (с) 2025 TradingView, Inc.
+  - region "Paper trading":
+    - paragraph: PAPER TRADING
+    - heading "Place paper order" [level=2]
+    - generic: SIMULATED
+    - paragraph: 00700 · Tencent Holdings
+    - group "Order side":
+      - button "Buy"
+      - button "Sell"
+    - text: Quantity
+    - spinbutton "Quantity": "100"
+    - text: Limit price (HKD)
+    - spinbutton "Limit price (HKD)": "381.20"
+    - paragraph:
+      - text: Estimated amount
+      - strong: HKD 38,120.00
+    - paragraph: The server validates lot size, market status, balance, and final fill. This is not a real order.
+    - button "Submit paper order"
+    - paragraph: ACCOUNT
+    - heading "Available cash" [level=2]
+    - generic: active
+    - strong: HKD 1,000,000.00
+    - text: Cash balance
+    - generic: HKD 1,000,000.00
+    - text: Initial cash
+    - generic: HKD 1,000,000.00
+    - paragraph: PORTFOLIO
+    - heading "Open positions" [level=2]
+    - button "Refresh"
+    - status: No open positions yet. Filled paper orders will appear here.
+    - paragraph: ACTIVITY
+    - heading "Order history" [level=2]
+    - generic: 0 orders
+    - textbox "Filter orders by symbol":
+      - /placeholder: Symbol
+    - combobox "Filter orders by side":
+      - option "All sides" [selected]
+      - option "Buy"
+      - option "Sell"
+    - combobox "Filter orders by status":
+      - option "All statuses" [selected]
+      - option "Pending"
+      - option "Filled"
+      - option "Cancelled"
+      - option "Rejected"
+    - button "Filter"
+    - status: No orders match the current filters.
+
+--- OBSERVED SNAPSHOT ---
+
+- main:
+  - img "UX Securities Limited"
+  - generic: 021021hxc
+  - button "Sign out"
+  - tablist "Workspace sections":
+    - tab "Market" [selected]
+    - tab "My favorites 1":
+      - text: My favorites
+      - generic: "1"
+    - tab "My positions"
+  - complementary:
+    - paragraph: MARKET WATCH
+    - heading "Hong Kong equities" [level=1]
+    - textbox "Search symbols":
+      - /placeholder: Code or company
+    - button "Search"
+    - generic: Favorites
+    - generic: "1"
+    - button "00700 Tencent Holdings 381.20 +0.81% STALE":
+      - strong: "00700"
+      - generic: Tencent Holdings
+      - strong: "381.20"
+      - generic: +0.81%
+      - generic: STALE
+    - button "Move 00700 up" [disabled]: ↑
+    - button "Move 00700 down" [disabled]: ↓
+  - paragraph: 00700 · HKEX
+  - heading "Tencent Holdings" [level=2]
+  - paragraph: akshare · 24/10/2026, 13:55:00
+  - button "Remove from favorites": ★
+  - strong: "381.20"
+  - generic: +3.10 (+0.81%)
+  - generic: STALE
+  - text: Bid
+  - generic: "381.00"
+  - text: Ask
+  - generic: "381.40"
+  - text: Volume
+  - generic: 1,200,100
+  - text: Turnover
+  - generic: HKD 457,440,000
+  - region "K 线行情":
+    - heading "K 线行情 00700 · HKD" [level=3]:
+      - text: K 线行情
+      - generic: 00700 · HKD
+    - paragraph: 近半年 · 2026-04-24 — 2026-10-24
+    - button "刷新行情": ↻ 刷新
+    - group "K 线周期":
+      - button "1分"
+      - button "5分"
+      - button "15分"
+      - button "30分" [active] [pressed]
+      - button "60分"
+      - button "日"
+      - button "周"
+      - button "月"
+      - button "年"
+    - text: yahoo
+    - generic: unofficial
+    - generic: 480 根 · 每 60 秒读取
+    - generic: 23/10 16:00
+    - generic: O 386.00
+    - generic: H 386.00
+    - generic: L 386.00
+    - generic: C 386.00
+    - generic: 本柱 +0.00%
+    - img "OHLC candlestick chart with trading volume":
+      - table:
+        - row "Charting by TradingView":
+          - cell
+          - cell "Charting by TradingView":
+            - link "Charting by TradingView":
+              - /url: https://www.tradingview.com/?utm_medium=lwc-link&utm_campaign=lwc-chart&utm_source=localhost/workspace
+          - cell
+        - row:
+          - cell
+          - cell
+          - cell
+    - paragraph: 实际覆盖 27/08 09:30 — 23/10 16:00 · 香港时间
+    - paragraph: 分钟历史受上游限制；1 分钟通常仅近 5 个交易日，不保证覆盖半年。
+    - generic: 非官方行情 · 仅用于模拟 · 采集 24/10/2026 16:21:15 · 读取 16:24:38
+    - link "TradingView Lightweight Charts™":
+      - /url: https://www.tradingview.com/
+    - paragraph: Copyright (с) 2025 TradingView, Inc.
+  - region "Paper trading":
+    - paragraph: PAPER TRADING
+    - heading "Place paper order" [level=2]
+    - generic: SIMULATED
+    - paragraph: 00700 · Tencent Holdings
+    - group "Order side":
+      - button "Buy"
+      - button "Sell"
+    - text: Quantity
+    - spinbutton "Quantity": "100"
+    - text: Limit price (HKD)
+    - spinbutton "Limit price (HKD)": "381.20"
+    - paragraph:
+      - text: Estimated amount
+      - strong: HKD 38,120.00
+    - paragraph: The server validates lot size, market status, balance, and final fill. This is not a real order.
+    - button "Submit paper order"
+    - paragraph: ACCOUNT
+    - heading "Available cash" [level=2]
+    - generic: active
+    - strong: HKD 1,000,000.00
+    - text: Cash balance
+    - generic: HKD 1,000,000.00
+    - text: Initial cash
+    - generic: HKD 1,000,000.00
+    - paragraph: PORTFOLIO
+    - heading "Open positions" [level=2]
+    - button "Refresh"
+    - status: No open positions yet. Filled paper orders will appear here.
+    - paragraph: ACTIVITY
+    - heading "Order history" [level=2]
+    - generic: 0 orders
+    - textbox "Filter orders by symbol":
+      - /placeholder: Symbol
+    - combobox "Filter orders by side":
+      - option "All sides" [selected]
+      - option "Buy"
+      - option "Sell"
+    - combobox "Filter orders by status":
+      - option "All statuses" [selected]
+      - option "Pending"
+      - option "Filled"
+      - option "Cancelled"
+      - option "Rejected"
+    - button "Filter"
+    - status: No orders match the current filters.
+
+--- OBSERVED SNAPSHOT ---
+
+- main:
+  - img "UX Securities Limited"
+  - generic: 021021hxc
+  - button "Sign out"
+  - tablist "Workspace sections":
+    - tab "Market" [selected]
+    - tab "My favorites 1":
+      - text: My favorites
+      - generic: "1"
+    - tab "My positions"
+  - complementary:
+    - paragraph: MARKET WATCH
+    - heading "Hong Kong equities" [level=1]
+    - textbox "Search symbols":
+      - /placeholder: Code or company
+    - button "Search"
+    - generic: Favorites
+    - generic: "1"
+    - button "00700 Tencent Holdings 381.20 +0.81% STALE":
+      - strong: "00700"
+      - generic: Tencent Holdings
+      - strong: "381.20"
+      - generic: +0.81%
+      - generic: STALE
+    - button "Move 00700 up" [disabled]: ↑
+    - button "Move 00700 down" [disabled]: ↓
+  - paragraph: 00700 · HKEX
+  - heading "Tencent Holdings" [level=2]
+  - paragraph: akshare · 24/10/2026, 13:55:00
+  - button "Remove from favorites": ★
+  - strong: "381.20"
+  - generic: +3.10 (+0.81%)
+  - generic: STALE
+  - text: Bid
+  - generic: "381.00"
+  - text: Ask
+  - generic: "381.40"
+  - text: Volume
+  - generic: 1,200,100
+  - text: Turnover
+  - generic: HKD 457,440,000
+  - region "K 线行情":
+    - heading "K 线行情 00700 · HKD" [level=3]:
+      - text: K 线行情
+      - generic: 00700 · HKD
+    - paragraph: 近半年 · 2026-04-24 — 2026-10-24
+    - button "刷新行情": ↻ 刷新
+    - group "K 线周期":
+      - button "1分"
+      - button "5分"
+      - button "15分"
+      - button "30分"
+      - button "60分" [active] [pressed]
+      - button "日"
+      - button "周"
+      - button "月"
+      - button "年"
+    - text: yahoo
+    - generic: unofficial
+    - generic: 875 根 · 每 60 秒读取
+    - generic: 23/10 15:30
+    - generic: O 386.00
+    - generic: H 387.80
+    - generic: L 386.00
+    - generic: C 386.00
+    - generic: 本柱 +0.00%
+    - img "OHLC candlestick chart with trading volume":
+      - table:
+        - row "Charting by TradingView":
+          - cell
+          - cell "Charting by TradingView":
+            - link "Charting by TradingView":
+              - /url: https://www.tradingview.com/?utm_medium=lwc-link&utm_campaign=lwc-chart&utm_source=localhost/workspace
+          - cell
+        - row:
+          - cell
+          - cell
+          - cell
+    - paragraph: 实际覆盖 24/04 09:30 — 23/10 15:30 · 香港时间
+    - paragraph: 分钟历史受上游限制；1 分钟通常仅近 5 个交易日，不保证覆盖半年。
+    - generic: 非官方行情 · 仅用于模拟 · 采集 24/10/2026 16:21:15 · 读取 16:22:38
+    - link "TradingView Lightweight Charts™":
+      - /url: https://www.tradingview.com/
+    - paragraph: Copyright (с) 2025 TradingView, Inc.
+  - region "Paper trading":
+    - paragraph: PAPER TRADING
+    - heading "Place paper order" [level=2]
+    - generic: SIMULATED
+    - paragraph: 00700 · Tencent Holdings
+    - group "Order side":
+      - button "Buy"
+      - button "Sell"
+    - text: Quantity
+    - spinbutton "Quantity": "100"
+    - text: Limit price (HKD)
+    - spinbutton "Limit price (HKD)": "381.20"
+    - paragraph:
+      - text: Estimated amount
+      - strong: HKD 38,120.00
+    - paragraph: The server validates lot size, market status, balance, and final fill. This is not a real order.
+    - button "Submit paper order"
+    - paragraph: ACCOUNT
+    - heading "Available cash" [level=2]
+    - generic: active
+    - strong: HKD 1,000,000.00
+    - text: Cash balance
+    - generic: HKD 1,000,000.00
+    - text: Initial cash
+    - generic: HKD 1,000,000.00
+    - paragraph: PORTFOLIO
+    - heading "Open positions" [level=2]
+    - button "Refresh"
+    - status: No open positions yet. Filled paper orders will appear here.
+    - paragraph: ACTIVITY
+    - heading "Order history" [level=2]
+    - generic: 0 orders
+    - textbox "Filter orders by symbol":
+      - /placeholder: Symbol
+    - combobox "Filter orders by side":
+      - option "All sides" [selected]
+      - option "Buy"
+      - option "Sell"
+    - combobox "Filter orders by status":
+      - option "All statuses" [selected]
+      - option "Pending"
+      - option "Filled"
+      - option "Cancelled"
+      - option "Rejected"
+    - button "Filter"
+    - status: No orders match the current filters.
+
+--- OBSERVED SNAPSHOT ---
+
+- main:
+  - img "UX Securities Limited"
+  - generic: 021021hxc
+  - button "Sign out"
+  - tablist "Workspace sections":
+    - tab "Market" [selected]
+    - tab "My favorites 1":
+      - text: My favorites
+      - generic: "1"
+    - tab "My positions"
+  - complementary:
+    - paragraph: MARKET WATCH
+    - heading "Hong Kong equities" [level=1]
+    - textbox "Search symbols":
+      - /placeholder: Code or company
+    - button "Search"
+    - generic: Favorites
+    - generic: "1"
+    - button "00700 Tencent Holdings 381.20 +0.81% STALE":
+      - strong: "00700"
+      - generic: Tencent Holdings
+      - strong: "381.20"
+      - generic: +0.81%
+      - generic: STALE
+    - button "Move 00700 up" [disabled]: ↑
+    - button "Move 00700 down" [disabled]: ↓
+  - paragraph: 00700 · HKEX
+  - heading "Tencent Holdings" [level=2]
+  - paragraph: akshare · 24/10/2026, 13:55:00
+  - button "Remove from favorites": ★
+  - strong: "381.20"
+  - generic: +3.10 (+0.81%)
+  - generic: STALE
+  - text: Bid
+  - generic: "381.00"
+  - text: Ask
+  - generic: "381.40"
+  - text: Volume
+  - generic: 1,200,100
+  - text: Turnover
+  - generic: HKD 457,440,000
+  - region "K 线行情":
+    - heading "K 线行情 00700 · HKD" [level=3]:
+      - text: K 线行情
+      - generic: 00700 · HKD
+    - paragraph: 近半年 · 2026-04-24 — 2026-10-24
+    - button "刷新行情": ↻ 刷新
+    - group "K 线周期":
+      - button "1分"
+      - button "5分"
+      - button "15分"
+      - button "30分"
+      - button "60分"
+      - button "日" [active] [pressed]
+      - button "周"
+      - button "月"
+      - button "年"
+    - text: tencent
+    - generic: unofficial
+    - generic: 125 根 · 每 60 秒读取
+    - generic: 2026-10-23
+    - generic: O 381.80
+    - generic: H 388.80
+    - generic: L 378.00
+    - generic: C 386.00
+    - generic: 本柱 +1.10%
+    - img "OHLC candlestick chart with trading volume":
+      - table:
+        - row "Charting by TradingView":
+          - cell
+          - cell "Charting by TradingView":
+            - link "Charting by TradingView":
+              - /url: https://www.tradingview.com/?utm_medium=lwc-link&utm_campaign=lwc-chart&utm_source=localhost/workspace
+          - cell
+        - row:
+          - cell
+          - cell
+          - cell
+    - paragraph: 实际覆盖 2026-04-24 — 2026-10-23 · 区间内日线聚合
+    - generic: 非官方行情 · 仅用于模拟 · 采集 24/10/2026 16:21:15 · 读取 16:26:31
+    - link "TradingView Lightweight Charts™":
+      - /url: https://www.tradingview.com/
+    - paragraph: Copyright (с) 2025 TradingView, Inc.
+  - region "Paper trading":
+    - paragraph: PAPER TRADING
+    - heading "Place paper order" [level=2]
+    - generic: SIMULATED
+    - paragraph: 00700 · Tencent Holdings
+    - group "Order side":
+      - button "Buy"
+      - button "Sell"
+    - text: Quantity
+    - spinbutton "Quantity": "100"
+    - text: Limit price (HKD)
+    - spinbutton "Limit price (HKD)": "381.20"
+    - paragraph:
+      - text: Estimated amount
+      - strong: HKD 38,120.00
+    - paragraph: The server validates lot size, market status, balance, and final fill. This is not a real order.
+    - button "Submit paper order"
+    - paragraph: ACCOUNT
+    - heading "Available cash" [level=2]
+    - generic: active
+    - strong: HKD 1,000,000.00
+    - text: Cash balance
+    - generic: HKD 1,000,000.00
+    - text: Initial cash
+    - generic: HKD 1,000,000.00
+    - paragraph: PORTFOLIO
+    - heading "Open positions" [level=2]
+    - button "Refresh"
+    - status: No open positions yet. Filled paper orders will appear here.
+    - paragraph: ACTIVITY
+    - heading "Order history" [level=2]
+    - generic: 0 orders
+    - textbox "Filter orders by symbol":
+      - /placeholder: Symbol
+    - combobox "Filter orders by side":
+      - option "All sides" [selected]
+      - option "Buy"
+      - option "Sell"
+    - combobox "Filter orders by status":
+      - option "All statuses" [selected]
+      - option "Pending"
+      - option "Filled"
+      - option "Cancelled"
+      - option "Rejected"
+    - button "Filter"
+    - status: No orders match the current filters.
+
+--- OBSERVED SNAPSHOT ---
+
+- main:
+  - img "UX Securities Limited"
+  - generic: 021021hxc
+  - button "Sign out"
+  - tablist "Workspace sections":
+    - tab "Market" [selected]
+    - tab "My favorites 1":
+      - text: My favorites
+      - generic: "1"
+    - tab "My positions"
+  - complementary:
+    - paragraph: MARKET WATCH
+    - heading "Hong Kong equities" [level=1]
+    - textbox "Search symbols":
+      - /placeholder: Code or company
+    - button "Search"
+    - generic: Favorites
+    - generic: "1"
+    - button "00700 Tencent Holdings 381.20 +0.81% STALE":
+      - strong: "00700"
+      - generic: Tencent Holdings
+      - strong: "381.20"
+      - generic: +0.81%
+      - generic: STALE
+    - button "Move 00700 up" [disabled]: ↑
+    - button "Move 00700 down" [disabled]: ↓
+  - paragraph: 00700 · HKEX
+  - heading "Tencent Holdings" [level=2]
+  - paragraph: akshare · 24/10/2026, 13:55:00
+  - button "Remove from favorites": ★
+  - strong: "381.20"
+  - generic: +3.10 (+0.81%)
+  - generic: STALE
+  - text: Bid
+  - generic: "381.00"
+  - text: Ask
+  - generic: "381.40"
+  - text: Volume
+  - generic: 1,200,100
+  - text: Turnover
+  - generic: HKD 457,440,000
+  - region "K 线行情":
+    - heading "K 线行情 00700 · HKD" [level=3]:
+      - text: K 线行情
+      - generic: 00700 · HKD
+    - paragraph: 近半年 · 2026-04-24 — 2026-10-24
+    - button "刷新行情": ↻ 刷新
+    - group "K 线周期":
+      - button "1分"
+      - button "5分"
+      - button "15分"
+      - button "30分"
+      - button "60分"
+      - button "日"
+      - button "周"
+      - button "月" [active] [pressed]
+      - button "年"
+    - text: tencent
+    - generic: unofficial
+    - generic: 7 根 · 每 60 秒读取
+    - generic: 2026-10-01
+    - generic: O 422.00
+    - generic: H 430.40
+    - generic: L 378.00
+    - generic: C 386.00
+    - generic: 本柱 -8.53%
+    - img "OHLC candlestick chart with trading volume":
+      - table:
+        - row "Charting by TradingView":
+          - cell
+          - cell "Charting by TradingView":
+            - link "Charting by TradingView":
+              - /url: https://www.tradingview.com/?utm_medium=lwc-link&utm_campaign=lwc-chart&utm_source=localhost/workspace
+          - cell
+        - row:
+          - cell
+          - cell
+          - cell
+    - paragraph: 实际覆盖 2026-04-01 — 2026-10-01 · 区间内日线聚合
+    - generic: 非官方行情 · 仅用于模拟 · 采集 24/10/2026 16:21:15 · 读取 16:21:51
+    - link "TradingView Lightweight Charts™":
+      - /url: https://www.tradingview.com/
+    - paragraph: Copyright (с) 2025 TradingView, Inc.
+  - region "Paper trading":
+    - paragraph: PAPER TRADING
+    - heading "Place paper order" [level=2]
+    - generic: SIMULATED
+    - paragraph: 00700 · Tencent Holdings
+    - group "Order side":
+      - button "Buy"
+      - button "Sell"
+    - text: Quantity
+    - spinbutton "Quantity": "100"
+    - text: Limit price (HKD)
+    - spinbutton "Limit price (HKD)": "381.20"
+    - paragraph:
+      - text: Estimated amount
+      - strong: HKD 38,120.00
+    - paragraph: The server validates lot size, market status, balance, and final fill. This is not a real order.
+    - button "Submit paper order"
+    - paragraph: ACCOUNT
+    - heading "Available cash" [level=2]
+    - generic: active
+    - strong: HKD 1,000,000.00
+    - text: Cash balance
+    - generic: HKD 1,000,000.00
+    - text: Initial cash
+    - generic: HKD 1,000,000.00
+    - paragraph: PORTFOLIO
+    - heading "Open positions" [level=2]
+    - button "Refresh"
+    - status: No open positions yet. Filled paper orders will appear here.
+    - paragraph: ACTIVITY
+    - heading "Order history" [level=2]
+    - generic: 0 orders
+    - textbox "Filter orders by symbol":
+      - /placeholder: Symbol
+    - combobox "Filter orders by side":
+      - option "All sides" [selected]
+      - option "Buy"
+      - option "Sell"
+    - combobox "Filter orders by status":
+      - option "All statuses" [selected]
+      - option "Pending"
+      - option "Filled"
+      - option "Cancelled"
+      - option "Rejected"
+    - button "Filter"
+    - status: No orders match the current filters.
+
+--- OBSERVED SNAPSHOT ---
+
+- main:
+  - img "UX Securities Limited"
+  - generic: 021021hxc
+  - button "Sign out"
+  - tablist "Workspace sections":
+    - tab "Market" [selected]
+    - tab "My favorites 1":
+      - text: My favorites
+      - generic: "1"
+    - tab "My positions"
+  - complementary:
+    - paragraph: MARKET WATCH
+    - heading "Hong Kong equities" [level=1]
+    - textbox "Search symbols":
+      - /placeholder: Code or company
+    - button "Search"
+    - generic: Favorites
+    - generic: "1"
+    - button "00700 Tencent Holdings 381.20 +0.81% STALE":
+      - strong: "00700"
+      - generic: Tencent Holdings
+      - strong: "381.20"
+      - generic: +0.81%
+      - generic: STALE
+    - button "Move 00700 up" [disabled]: ↑
+    - button "Move 00700 down" [disabled]: ↓
+  - paragraph: 00700 · HKEX
+  - heading "Tencent Holdings" [level=2]
+  - paragraph: akshare · 24/10/2026, 13:55:00
+  - button "Remove from favorites": ★
+  - strong: "381.20"
+  - generic: +3.10 (+0.81%)
+  - generic: STALE
+  - text: Bid
+  - generic: "381.00"
+  - text: Ask
+  - generic: "381.40"
+  - text: Volume
+  - generic: 1,200,100
+  - text: Turnover
+  - generic: HKD 457,440,000
+  - region "K 线行情":
+    - heading "K 线行情 00700 · HKD" [level=3]:
+      - text: K 线行情
+      - generic: 00700 · HKD
+    - paragraph: 近半年 · 2026-04-24 — 2026-10-24
+    - button "刷新行情": ↻ 刷新
+    - group "K 线周期":
+      - button "1分"
+      - button "5分"
+      - button "15分"
+      - button "30分"
+      - button "60分"
+      - button "日"
+      - button "周"
+      - button "月"
+      - button "年" [active] [pressed]
+    - text: tencent
+    - generic: unofficial
+    - generic: 1 根 · 每 60 秒读取
+    - generic: 2026-01-01
+    - generic: O 487.00
+    - generic: H 497.80
+    - generic: L 378.00
+    - generic: C 386.00
+    - generic: 本柱 -20.74%
+    - img "OHLC candlestick chart with trading volume":
+      - table:
+        - row "Charting by TradingView":
+          - cell
+          - cell "Charting by TradingView":
+            - link "Charting by TradingView":
+              - /url: https://www.tradingview.com/?utm_medium=lwc-link&utm_campaign=lwc-chart&utm_source=localhost/workspace
+          - cell
+        - row:
+          - cell
+          - cell
+          - cell
+    - paragraph: 实际覆盖 2026-01-01 — 2026-01-01 · 区间内日线聚合
+    - generic: 非官方行情 · 仅用于模拟 · 采集 24/10/2026 16:21:15 · 读取 16:22:06
+    - link "TradingView Lightweight Charts™":
+      - /url: https://www.tradingview.com/
+    - paragraph: Copyright (с) 2025 TradingView, Inc.
+  - region "Paper trading":
+    - paragraph: PAPER TRADING
+    - heading "Place paper order" [level=2]
+    - generic: SIMULATED
+    - paragraph: 00700 · Tencent Holdings
+    - group "Order side":
+      - button "Buy"
+      - button "Sell"
+    - text: Quantity
+    - spinbutton "Quantity": "100"
+    - text: Limit price (HKD)
+    - spinbutton "Limit price (HKD)": "381.20"
+    - paragraph:
+      - text: Estimated amount
+      - strong: HKD 38,120.00
+    - paragraph: The server validates lot size, market status, balance, and final fill. This is not a real order.
+    - button "Submit paper order"
+    - paragraph: ACCOUNT
+    - heading "Available cash" [level=2]
+    - generic: active
+    - strong: HKD 1,000,000.00
+    - text: Cash balance
+    - generic: HKD 1,000,000.00
+    - text: Initial cash
+    - generic: HKD 1,000,000.00
+    - paragraph: PORTFOLIO
+    - heading "Open positions" [level=2]
+    - button "Refresh"
+    - status: No open positions yet. Filled paper orders will appear here.
+    - paragraph: ACTIVITY
+    - heading "Order history" [level=2]
+    - generic: 0 orders
+    - textbox "Filter orders by symbol":
+      - /placeholder: Symbol
+    - combobox "Filter orders by side":
+      - option "All sides" [selected]
+      - option "Buy"
+      - option "Sell"
+    - combobox "Filter orders by status":
+      - option "All statuses" [selected]
+      - option "Pending"
+      - option "Filled"
+      - option "Cancelled"
+      - option "Rejected"
+    - button "Filter"
+    - status: No orders match the current filters.
+
+--- OBSERVED SNAPSHOT ---
+
+- main:
+  - img "UX Securities Limited"
+  - generic: 021021hxc
+  - button "Sign out"
+  - tablist "Workspace sections":
+    - tab "Market" [selected]
+    - tab "My favorites 1":
+      - text: My favorites
+      - generic: "1"
+    - tab "My positions"
+  - complementary:
+    - paragraph: MARKET WATCH
+    - heading "Hong Kong equities" [level=1]
+    - textbox "Search symbols":
+      - /placeholder: Code or company
+    - button "Search"
+    - generic: Favorites
+    - generic: "1"
+    - button "00700 Tencent Holdings 381.20 +0.81% STALE":
+      - strong: "00700"
+      - generic: Tencent Holdings
+      - strong: "381.20"
+      - generic: +0.81%
+      - generic: STALE
+    - button "Move 00700 up" [disabled]: ↑
+    - button "Move 00700 down" [disabled]: ↓
+  - paragraph: 00700 · HKEX
+  - heading "Tencent Holdings" [level=2]
+  - paragraph: akshare · 24/10/2026, 13:55:00
+  - button "Remove from favorites": ★
+  - strong: "381.20"
+  - generic: +3.10 (+0.81%)
+  - generic: STALE
+  - text: Bid
+  - generic: "381.00"
+  - text: Ask
+  - generic: "381.40"
+  - text: Volume
+  - generic: 1,200,100
+  - text: Turnover
+  - generic: HKD 457,440,000
+  - region "K 线行情":
+    - heading "K 线行情 00700 · HKD" [level=3]:
+      - text: K 线行情
+      - generic: 00700 · HKD
+    - paragraph: 近半年 · 2026-04-24 — 2026-10-24
+    - button "刷新行情": ↻ 刷新
+    - group "K 线周期":
+      - button "1分"
+      - button "5分"
+      - button "15分"
+      - button "30分"
+      - button "60分" [pressed]
+      - button "日"
+      - button "周"
+      - button "月"
+      - button "年"
+    - text: yahoo
+    - generic: unofficial
+    - generic: 875 根 · 每 60 秒读取
+    - generic: 23/10 15:30
+    - generic: O 386.00
+    - generic: H 387.80
+    - generic: L 386.00
+    - generic: C 386.00
+    - generic: 本柱 +0.00%
+    - img "OHLC candlestick chart with trading volume":
+      - table:
+        - row "Charting by TradingView":
+          - cell
+          - cell "Charting by TradingView":
+            - link "Charting by TradingView":
+              - /url: https://www.tradingview.com/?utm_medium=lwc-link&utm_campaign=lwc-chart&utm_source=localhost/workspace
+          - cell
+        - row:
+          - cell
+          - cell
+          - cell
+    - paragraph: 实际覆盖 24/04 09:30 — 23/10 15:30 · 香港时间
+    - paragraph: 分钟历史受上游限制；1 分钟通常仅近 5 个交易日，不保证覆盖半年。
+    - generic: 非官方行情 · 仅用于模拟 · 采集 24/10/2026 16:21:15 · 读取 16:23:34
+    - link "TradingView Lightweight Charts™":
+      - /url: https://www.tradingview.com/
+    - paragraph: Copyright (с) 2025 TradingView, Inc.
+  - region "Paper trading":
+    - paragraph: PAPER TRADING
+    - heading "Place paper order" [level=2]
+    - generic: SIMULATED
+    - paragraph: 00700 · Tencent Holdings
+    - group "Order side":
+      - button "Buy"
+      - button "Sell"
+    - text: Quantity
+    - spinbutton "Quantity": "100"
+    - text: Limit price (HKD)
+    - spinbutton "Limit price (HKD)": "381.20"
+    - paragraph:
+      - text: Estimated amount
+      - strong: HKD 38,120.00
+    - paragraph: The server validates lot size, market status, balance, and final fill. This is not a real order.
+    - button "Submit paper order"
+    - paragraph: ACCOUNT
+    - heading "Available cash" [level=2]
+    - generic: active
+    - strong: HKD 1,000,000.00
+    - text: Cash balance
+    - generic: HKD 1,000,000.00
+    - text: Initial cash
+    - generic: HKD 1,000,000.00
+    - paragraph: PORTFOLIO
+    - heading "Open positions" [level=2]
+    - button "Refresh"
+    - status: No open positions yet. Filled paper orders will appear here.
+    - paragraph: ACTIVITY
+    - heading "Order history" [level=2]
+    - generic: 0 orders
+    - textbox "Filter orders by symbol":
+      - /placeholder: Symbol
+    - combobox "Filter orders by side":
+      - option "All sides" [selected]
+      - option "Buy"
+      - option "Sell"
+    - combobox "Filter orders by status":
+      - option "All statuses" [selected]
+      - option "Pending"
+      - option "Filled"
+      - option "Cancelled"
+      - option "Rejected"
+    - button "Filter"
+    - status: No orders match the current filters.
+
+--- OBSERVED SNAPSHOT ---
+
+- main:
+  - img "UX Securities Limited"
+  - generic: 021021hxc
+  - button "Sign out"
+  - tablist "Workspace sections":
+    - tab "Market" [selected]
+    - tab "My favorites 1":
+      - text: My favorites
+      - generic: "1"
+    - tab "My positions"
+  - complementary:
+    - paragraph: MARKET WATCH
+    - heading "Hong Kong equities" [level=1]
+    - textbox "Search symbols":
+      - /placeholder: Code or company
+    - button "Search"
+    - generic: Favorites
+    - generic: "1"
+    - button "00700 Tencent Holdings 381.20 +0.81% STALE":
+      - strong: "00700"
+      - generic: Tencent Holdings
+      - strong: "381.20"
+      - generic: +0.81%
+      - generic: STALE
+    - button "Move 00700 up" [disabled]: ↑
+    - button "Move 00700 down" [disabled]: ↓
+  - paragraph: 00700 · HKEX
+  - heading "Tencent Holdings" [level=2]
+  - paragraph: akshare · 24/10/2026, 13:55:00
+  - button "Remove from favorites": ★
+  - strong: "381.20"
+  - generic: +3.10 (+0.81%)
+  - generic: STALE
+  - text: Bid
+  - generic: "381.00"
+  - text: Ask
+  - generic: "381.40"
+  - text: Volume
+  - generic: 1,200,100
+  - text: Turnover
+  - generic: HKD 457,440,000
+  - region "K 线行情":
+    - heading "K 线行情 00700 · HKD" [level=3]:
+      - text: K 线行情
+      - generic: 00700 · HKD
+    - paragraph: 近半年 · 2026-04-24 — 2026-10-24
+    - button "刷新行情": ↻ 刷新
+    - group "K 线周期":
+      - button "1分"
+      - button "5分"
+      - button "15分"
+      - button "30分"
+      - button "60分" [pressed]
+      - button "日"
+      - button "周"
+      - button "月"
+      - button "年"
+    - text: yahoo
+    - generic: unofficial
+    - generic: 875 根 · 每 60 秒读取
+    - generic: 23/10 15:30
+    - generic: O 386.00
+    - generic: H 387.80
+    - generic: L 386.00
+    - generic: C 386.00
+    - generic: 本柱 +0.00%
+    - img "OHLC candlestick chart with trading volume":
+      - table:
+        - row "Charting by TradingView":
+          - cell
+          - cell "Charting by TradingView":
+            - link "Charting by TradingView":
+              - /url: https://www.tradingview.com/?utm_medium=lwc-link&utm_campaign=lwc-chart&utm_source=localhost/workspace
+          - cell
+        - row:
+          - cell
+          - cell
+          - cell
+    - paragraph: 实际覆盖 24/04 09:30 — 23/10 15:30 · 香港时间
+    - paragraph: 分钟历史受上游限制；1 分钟通常仅近 5 个交易日，不保证覆盖半年。
+    - generic: 非官方行情 · 仅用于模拟 · 采集 24/10/2026 16:21:15 · 读取 16:24:34
+    - link "TradingView Lightweight Charts™":
+      - /url: https://www.tradingview.com/
+    - paragraph: Copyright (с) 2025 TradingView, Inc.
+  - region "Paper trading":
+    - paragraph: PAPER TRADING
+    - heading "Place paper order" [level=2]
+    - generic: SIMULATED
+    - paragraph: 00700 · Tencent Holdings
+    - group "Order side":
+      - button "Buy"
+      - button "Sell"
+    - text: Quantity
+    - spinbutton "Quantity": "100"
+    - text: Limit price (HKD)
+    - spinbutton "Limit price (HKD)": "381.20"
+    - paragraph:
+      - text: Estimated amount
+      - strong: HKD 38,120.00
+    - paragraph: The server validates lot size, market status, balance, and final fill. This is not a real order.
+    - button "Submit paper order"
+    - paragraph: ACCOUNT
+    - heading "Available cash" [level=2]
+    - generic: active
+    - strong: HKD 1,000,000.00
+    - text: Cash balance
+    - generic: HKD 1,000,000.00
+    - text: Initial cash
+    - generic: HKD 1,000,000.00
+    - paragraph: PORTFOLIO
+    - heading "Open positions" [level=2]
+    - button "Refresh"
+    - status: No open positions yet. Filled paper orders will appear here.
+    - paragraph: ACTIVITY
+    - heading "Order history" [level=2]
+    - generic: 0 orders
+    - textbox "Filter orders by symbol":
+      - /placeholder: Symbol
+    - combobox "Filter orders by side":
+      - option "All sides" [selected]
+      - option "Buy"
+      - option "Sell"
+    - combobox "Filter orders by status":
+      - option "All statuses" [selected]
+      - option "Pending"
+      - option "Filled"
+      - option "Cancelled"
+      - option "Rejected"
+    - button "Filter"
+    - status: No orders match the current filters.

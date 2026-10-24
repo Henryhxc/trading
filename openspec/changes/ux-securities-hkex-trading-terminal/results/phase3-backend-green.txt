@@ -1,0 +1,2 @@
+ok  	ux-securities/backend/internal/service/trading	0.452s
+ok  	ux-securities/backend/internal/repository/mysqlrepo	(cached)

@@ -1,0 +1,17 @@
+Browser gate status: BLOCKED
+
+Attempted the required local-browser initialization against `http://localhost:3000`
+through the configured Node browser tool. Every invocation failed before browser
+selection with:
+
+`codex/sandbox-state-meta: sandboxCwd must be an absolute file URI: relative URL without a base`
+
+No browser navigation or screenshots are claimed from this run. Required Phase 2 and
+Phase 3 three-viewport screenshots remain pending; this is an environment/tooling
+blocker, not a passing visual check.
+
+2026-10-24 retry: the browser runtime and its troubleshooting lookup both failed
+before browser selection with the same sandbox-state-meta error. No localhost page
+was opened and no screenshot evidence was created.
+
+2026-10-24 Chrome retry: selecting the configured Chrome surface failed before documentation/navigation with the same sandbox-state-meta error. This does not substitute for browser evidence.

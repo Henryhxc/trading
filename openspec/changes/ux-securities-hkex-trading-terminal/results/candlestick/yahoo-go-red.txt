@@ -1,0 +1,5 @@
+--- FAIL: TestIngestionAcceptsExplicitPublicCandleSources (0.00s)
+    ingestion_test.go:72: source yahoo rejected: invalid market ingestion
+FAIL
+FAIL	ux-securities/backend/internal/service/market	1.005s
+FAIL

@@ -1,0 +1,4 @@
+=== RUN   TestBuildMarketServiceUsesConfiguredStaleThreshold
+--- PASS: TestBuildMarketServiceUsesConfiguredStaleThreshold (0.00s)
+PASS
+ok  	ux-securities/backend/cmd/api	0.767s

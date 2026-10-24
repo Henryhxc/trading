@@ -1,0 +1,5 @@
+=== RUN   TestCreateOrderAcceptsLimitOrderTypeFromFrontend
+2026/10/24 12:53:31 request_id=8cfe73d27560a9589dc622a6d3039702 method=POST path=/api/v1/orders status=201
+--- PASS: TestCreateOrderAcceptsLimitOrderTypeFromFrontend (0.00s)
+PASS
+ok  	ux-securities/backend/internal/httpapi	0.508s

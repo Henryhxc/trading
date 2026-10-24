@@ -1,0 +1,10 @@
+...WARNING:root:history unavailable symbol=00700 interval=1d error=ConnectionError
+.ERROR:akshare.scheduler:upstream failed kind=spot error=ConnectionError
+...WARNING:root:history unavailable symbol=00700 interval=1d error=ConnectionError
+WARNING:root:history unavailable symbol=00700 interval=1m error=ConnectionError
+.........ERROR:akshare-test:request failed token=secret=[REDACTED] url=http://example.test/hook
+......
+----------------------------------------------------------------------
+Ran 22 tests in 0.036s
+
+OK

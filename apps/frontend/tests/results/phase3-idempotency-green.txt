@@ -1,0 +1,5 @@
+
+> ux-securities-frontend@1.0.0 test:frontend
+> node tests/source-guard.mjs
+
+Frontend source guard passed: 6 assertions

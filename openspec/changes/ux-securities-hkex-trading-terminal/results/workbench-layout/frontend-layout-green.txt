@@ -1,0 +1,9 @@
+
+ RUN  v4.1.12 /Users/hongxincong/project/UX Security/apps/frontend
+
+
+ Test Files  1 passed (1)
+      Tests  5 passed (5)
+   Start at  16:43:05
+   Duration  4.03s (transform 505ms, setup 409ms, import 515ms, tests 1.40s, environment 1.28s)
+

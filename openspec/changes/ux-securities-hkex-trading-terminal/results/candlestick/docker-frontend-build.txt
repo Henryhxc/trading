@@ -1,0 +1,49 @@
+#1 [internal] load local bake definitions
+#1 reading from stdin 1.10kB done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile:
+#2 transferring dockerfile: 485B 0.7s done
+#2 DONE 1.3s
+
+#3 [internal] load metadata for docker.io/library/node:22-alpine
+#3 DONE 3.3s
+
+#4 [internal] load metadata for docker.io/library/nginx:1.27-alpine
+#4 DONE 8.7s
+
+#5 [internal] load .dockerignore
+#5 DONE 0.1s
+
+#5 [internal] load .dockerignore
+#5 transferring context:
+#5 transferring context: 172B 0.4s done
+#5 DONE 1.3s
+
+#6 [internal] load build context
+#6 DONE 0.0s
+
+#7 [stage-1 1/3] FROM docker.io/library/nginx:1.27-alpine@sha256:65645c7bb6a0661892a8b03b89d0743208a18dd2f3f17a54ef4b76fb8e2f2a10
+#7 resolve docker.io/library/nginx:1.27-alpine@sha256:65645c7bb6a0661892a8b03b89d0743208a18dd2f3f17a54ef4b76fb8e2f2a10
+#7 resolve docker.io/library/nginx:1.27-alpine@sha256:65645c7bb6a0661892a8b03b89d0743208a18dd2f3f17a54ef4b76fb8e2f2a10 1.1s done
+#7 DONE 1.2s
+
+#8 [build 1/8] FROM docker.io/library/node:22-alpine@sha256:fe4f6d74e20370acb04ad889077d14d0f64a9c8ea6a42bc60cddf1e844699914
+#8 resolve docker.io/library/node:22-alpine@sha256:fe4f6d74e20370acb04ad889077d14d0f64a9c8ea6a42bc60cddf1e844699914
+#8 resolve docker.io/library/node:22-alpine@sha256:fe4f6d74e20370acb04ad889077d14d0f64a9c8ea6a42bc60cddf1e844699914 1.3s done
+#8 DONE 1.5s
+
+#6 [internal] load build context
+#6 transferring context: 24B 0.0s
+#6 transferring context: 191.02kB 1.1s done
+#6 DONE 1.3s
+
+#9 [build 2/8] WORKDIR /app
+#9 CACHED
+
+#10 [build 3/8] COPY apps/frontend/package.json apps/frontend/package-lock.json* ./
+#10 CACHED
+
+#11 [build 4/8] RUN npm ci --no-audit --no-fund
+

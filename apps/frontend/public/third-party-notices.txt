@@ -1,0 +1,8 @@
+TradingView Lightweight Charts™ v5.2.1
+Copyright (с) 2025 TradingView, Inc. https://www.tradingview.com/
+Licensed under Apache License, Version 2.0.
+Source: https://github.com/tradingview/lightweight-charts
+License: https://www.apache.org/licenses/LICENSE-2.0
+
+The package incorporates parts of tslib, Copyright Microsoft Corporation,
+licensed under BSD Zero Clause License.

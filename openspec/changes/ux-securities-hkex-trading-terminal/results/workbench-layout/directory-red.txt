@@ -1,0 +1,6 @@
+=== RUN   TestDirectoryListsBeyondFiftyAndAllowsMissingQuote
+    market_directory_integration_test.go:20: directory entries=50 err=<nil>, want 61
+--- FAIL: TestDirectoryListsBeyondFiftyAndAllowsMissingQuote (1.92s)
+FAIL
+FAIL	ux-securities/backend/internal/repository/mysqlrepo	2.774s
+FAIL

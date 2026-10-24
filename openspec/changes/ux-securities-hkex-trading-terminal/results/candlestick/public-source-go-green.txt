@@ -1,0 +1,2 @@
+ok  	ux-securities/backend/internal/service/market	2.249s
+ok  	ux-securities/backend/internal/integration/marketdata	1.483s

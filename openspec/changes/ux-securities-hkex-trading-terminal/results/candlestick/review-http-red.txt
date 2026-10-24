@@ -1,0 +1,6 @@
+2026/10/24 15:44:53 request_id=3086d3caf92e8e0076c8e954082d6ecc method=GET path=/api/v1/markets/candles/12345 status=503
+--- FAIL: TestExplicitCandleIntervalsPreserveNotFound (0.00s)
+    candle_intervals_test.go:123: interval 1d status=503 want 404
+FAIL
+FAIL	ux-securities/backend/internal/httpapi	1.445s
+FAIL

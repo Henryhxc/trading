@@ -1,0 +1,14 @@
+--- FAIL: TestMinuteIngestionSeparatesNativePeriodsAndTimes (0.00s)
+    minute_ingestion_test.go:24: valid native minutes rejected: invalid market ingestion
+--- FAIL: TestMinuteIngestionRejectsInvalidPeriodTimeAndCalendarDate (0.00s)
+    --- FAIL: TestMinuteIngestionRejectsInvalidPeriodTimeAndCalendarDate/2m2026-10-23T01:31:00Z2026-10-23 (0.00s)
+        minute_ingestion_test.go:37: invalid candle accepted
+    --- FAIL: TestMinuteIngestionRejectsInvalidPeriodTimeAndCalendarDate/1m2026-10-23T01:31:00Z2026-10-22 (0.00s)
+        minute_ingestion_test.go:37: invalid candle accepted
+    --- FAIL: TestMinuteIngestionRejectsInvalidPeriodTimeAndCalendarDate/1m2026-10-23 (0.00s)
+        minute_ingestion_test.go:37: invalid candle accepted
+    --- FAIL: TestMinuteIngestionRejectsInvalidPeriodTimeAndCalendarDate/1d2026-02-31 (0.00s)
+        minute_ingestion_test.go:37: invalid candle accepted
+FAIL
+FAIL	ux-securities/backend/internal/service/market	0.928s
+FAIL

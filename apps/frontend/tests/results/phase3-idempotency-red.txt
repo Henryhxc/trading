@@ -1,0 +1,6 @@
+
+> ux-securities-frontend@1.0.0 test:frontend
+> node tests/source-guard.mjs
+
+Frontend source guard failed: 1/6
+- trading API sends the same idempotency key in the JSON body

@@ -1,0 +1,6 @@
+=== RUN   TestMarketStreamHubPublishesCommittedQuoteEvents
+--- PASS: TestMarketStreamHubPublishesCommittedQuoteEvents (0.00s)
+=== RUN   TestMarketStreamRequiresSessionAndWritesJSONEvents
+--- PASS: TestMarketStreamRequiresSessionAndWritesJSONEvents (5.00s)
+PASS
+ok  	ux-securities/backend/internal/httpapi	5.630s

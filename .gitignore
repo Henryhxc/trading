@@ -1,0 +1,38 @@
+# Dependencies and generated output
+node_modules/
+dist/
+coverage/
+*.tsbuildinfo
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+!.env.*.example
+*.pem
+*.key
+*.p12
+*.pfx
+.secrets/
+secrets/
+
+# Local databases and dumps (SQL migrations remain versioned)
+*.db
+*.sqlite
+*.sqlite3
+*.sql.gz
+*.dump
+/deploy/mysql-data/
+/deploy/backups/
+
+# Editor and operating-system files
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
