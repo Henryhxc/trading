@@ -8,6 +8,7 @@ This is a development application for **simulated trading only**. It does not co
 
 - Account email: `021021hxc@gmail.com`
 - Username: `021021hxc`
+- Password： 'qweQWE123...'
 - Password: provisioned locally and intentionally not committed to Git
 - Current favorites: Tencent (`00700`), Alibaba (`09988`), Xiaomi (`01810`)
 
@@ -18,12 +19,14 @@ The demo password was reset in the local database. Use the password supplied sep
 Install Docker with Compose, then run from the project root:
 
 ```sh
+cd "/Users/hongxincong/project/UX Security"
 docker compose up
 ```
 
 This root-level command starts MySQL, the backend, the frontend and the AkShare collector. Use `Ctrl+C` to stop the foreground stack, or add `-d` to run it in the background:
 
 ```sh
+cd "/Users/hongxincong/project/UX Security"
 docker compose up -d
 ```
 
