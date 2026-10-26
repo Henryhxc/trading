@@ -77,6 +77,32 @@ class CandlestickTests(unittest.TestCase):
         self.assertEqual(bounds(datetime(2026, 10, 24, tzinfo=timezone.utc)), ("20260424", "20261024"))
         self.assertEqual(bounds(datetime(2026, 8, 31, tzinfo=timezone.utc)), ("20260228", "20260831"))
 
+    def test_history_collection_is_limited_to_three_symbols(self):
+        default = scheduler.Config.from_env({})
+        configured = scheduler.Config.from_env({"AKSHARE_SYMBOLS": "00700,00005,09988,01810,00941"})
+        self.assertEqual(default.symbols, ("00700", "09988", "01810"))
+        self.assertEqual(configured.symbols, ("00700", "00005", "09988"))
+
+    def test_history_start_cannot_expand_beyond_six_months(self):
+        config = scheduler.Config.from_env({"AKSHARE_SYMBOLS": "00700", "AKSHARE_HISTORY_START": "20200101"})
+        self.assertEqual(config.history_bounds(datetime(2026, 10, 24, tzinfo=timezone.utc)), ("20260424", "20261024"))
+
+    def test_successful_history_backfill_is_not_repeated_during_quote_polling(self):
+        history_calls = []
+        delivered = []
+        service = scheduler.Scheduler(
+            scheduler.Config(symbols=("00700",)),
+            lambda: [],
+            delivered.append,
+            fetch_history=lambda: history_calls.append("fetch") or [{"symbol": "00700"}],
+        )
+        start = datetime(2026, 10, 24, tzinfo=timezone.utc)
+        service.run_once(start)
+        service.run_once(start.replace(minute=15))
+        self.assertEqual(history_calls, ["fetch"])
+        service.run_once(start.replace(day=25))
+        self.assertEqual(history_calls, ["fetch", "fetch"])
+
     def test_minute_normalization_retains_actual_time_and_native_period(self):
         normalize = getattr(scheduler, "normalize_minute_rows", lambda *args: [])
         bars = normalize([{"时间": "2026-10-23 09:35:00", "开盘": 10, "最高": 12,

@@ -2,11 +2,13 @@ import { FormEvent, useState } from "react";
 import { useSession } from "../app/SessionProvider";
 import { navigate } from "../app/navigation";
 import { authApi } from "../shared/api/auth";
+import { LanguageToggle, useI18n } from "../app/I18nProvider";
 
 export type AuthMode = "login" | "register";
 
 export function AuthPage({ mode }: { mode: AuthMode }) {
   const session = useSession();
+  const { t } = useI18n();
   const [identity, setIdentity] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -27,7 +29,7 @@ export function AuthPage({ mode }: { mode: AuthMode }) {
         navigate("/workspace");
       }
     } catch (error) {
-      setMessage(error instanceof Error ? error.message : "Request could not be completed");
+      setMessage(t(error instanceof Error ? error.message : "Request could not be completed"));
     } finally {
       setBusy(false);
     }
@@ -40,62 +42,64 @@ export function AuthPage({ mode }: { mode: AuthMode }) {
       setPassword("");
       navigate("/login");
     } catch {
-      setMessage("Sign out could not be completed. Please retry.");
+      setMessage(t("Sign out could not be completed. Please retry."));
     }
   }
 
   if (session.status === "authenticated" && session.user) {
     return (
-      <main className="auth-layout">
-        <img className="brand-logo" src="/ux-securities-logo.png" alt="UX Securities Limited" />
+      <main className="auth-layout terminal-auth">
+        <LanguageToggle />
+        <img className="brand-logo terminal-auth-logo" src="/ux-securities-logo.png" alt="UX Securities Limited" />
         <section className="account-panel" aria-live="polite">
-          <p className="eyebrow">PERSONAL ACCOUNT</p>
-          <h1>Welcome, {session.user.username}</h1>
+          <p className="eyebrow">{t("PERSONAL ACCOUNT")}</p>
+          <h1>{t("Welcome, {name}", { name: session.user.username })}</h1>
           <p className="account-email">{session.user.email}</p>
-          <p className="account-note">Your secure session is active.</p>
+          <p className="account-note">{t("Your secure session is active.")}</p>
           {message && <p className="error-message" role="alert">{message}</p>}
-          <button className="primary-button" type="button" onClick={signOut}>Sign out</button>
+          <button className="primary-button" type="button" onClick={signOut}>{t("Sign out")}</button>
         </section>
       </main>
     );
   }
 
   return (
-    <main className="auth-layout">
-      <img className="brand-logo" src="/ux-securities-logo.png" alt="UX Securities Limited" />
+    <main className="auth-layout terminal-auth">
+      <LanguageToggle />
+      <img className="brand-logo terminal-auth-logo" src="/ux-securities-logo.png" alt="UX Securities Limited" />
       <section className="auth-panel">
         <div className="auth-heading">
-          <p className="eyebrow">UX SECURITIES LIMITED</p>
-          <h1>{mode === "login" ? "Sign in" : "Create your account"}</h1>
-          <p className="subheading">Hong Kong market workspace</p>
+          <p className="eyebrow">{t("UX SECURITIES LIMITED")}</p>
+          <h1>{t(mode === "login" ? "Sign in" : "Create your account")}</h1>
+          <p className="subheading">{t("Hong Kong market workspace")}</p>
         </div>
-        <nav className="mode-switch" aria-label="Account access">
-          <button className={mode === "login" ? "mode active" : "mode"} aria-current={mode === "login" ? "page" : undefined} type="button" onClick={() => navigate("/login")}>Sign in</button>
-          <button className={mode === "register" ? "mode active" : "mode"} aria-current={mode === "register" ? "page" : undefined} type="button" onClick={() => navigate("/register")}>Register</button>
+        <nav className="mode-switch" aria-label={t("Account access")}>
+          <button className={mode === "login" ? "mode active" : "mode"} aria-current={mode === "login" ? "page" : undefined} type="button" onClick={() => navigate("/login")}>{t("Sign in")}</button>
+          <button className={mode === "register" ? "mode active" : "mode"} aria-current={mode === "register" ? "page" : undefined} type="button" onClick={() => navigate("/register")}>{t("Register")}</button>
         </nav>
         <form onSubmit={submit} noValidate>
           {mode === "register" ? (
             <>
-              <label htmlFor="username">Username</label>
+              <label htmlFor="username">{t("Username")}</label>
               <input id="username" name="username" autoComplete="username" value={username} onChange={(event) => setUsername(event.target.value)} required minLength={3} />
-              <label htmlFor="email">Email</label>
+              <label htmlFor="email">{t("Email")}</label>
               <input id="email" name="email" type="email" autoComplete="email" value={email} onChange={(event) => setEmail(event.target.value)} required maxLength={128} />
             </>
           ) : (
             <>
-              <label htmlFor="identity">Username or email</label>
+              <label htmlFor="identity">{t("Username or email")}</label>
               <input id="identity" name="identity" autoComplete="username" value={identity} onChange={(event) => setIdentity(event.target.value)} required />
             </>
           )}
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">{t("Password")}</label>
           <input id="password" name="password" type="password" autoComplete={mode === "login" ? "current-password" : "new-password"} value={password} onChange={(event) => setPassword(event.target.value)} required minLength={12} />
-          {mode === "register" && <p className="field-hint">Use at least 12 characters.</p>}
+          {mode === "register" && <p className="field-hint">{t("Use at least 12 characters.")}</p>}
           {message && <p className="error-message" role="alert">{message}</p>}
-          <button className="primary-button" type="submit" disabled={busy}>{busy ? "Please wait" : mode === "login" ? "Sign in" : "Create account"}</button>
+          <button className="primary-button" type="submit" disabled={busy}>{t(busy ? "Please wait" : mode === "login" ? "Sign in" : "Create account")}</button>
         </form>
-        <p className="security-note">Paper trading only · No real orders are submitted</p>
+        <p className="security-note">{t("Paper trading only · No real orders are submitted")}</p>
       </section>
-      <footer>Market data and simulated account services are provided for development use.</footer>
+      <footer>{t("Market data and simulated account services are provided for development use.")}</footer>
     </main>
   );
 }

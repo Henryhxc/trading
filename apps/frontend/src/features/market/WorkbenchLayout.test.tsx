@@ -1,4 +1,4 @@
-import { render, screen, fireEvent, within, waitFor } from "@testing-library/react";
+import { render, screen, fireEvent, within, waitFor } from "../../test-utils";
 import { beforeEach, expect, it, vi } from "vitest";
 import { WorkbenchPage } from "../../pages/WorkbenchPage";
 import { marketApi, type Quote } from "../../shared/api/market";
@@ -57,6 +57,8 @@ it("keeps the order ticket beside the chart and separates positions from order h
   fireEvent.click(screen.getByRole("tab", { name: /Order history/ }));
   expect(await screen.findByRole("heading", { name: "Order history" })).toBeTruthy();
   expect(screen.queryByRole("heading", { name: "Open positions" })).toBeNull();
+  fireEvent.click(screen.getByRole("tab", { name: "Financing" }));
+  expect(await screen.findByRole("heading", { name: "Financing simulator" })).toBeTruthy();
 });
 
 it("provides separate navigation pages for cash overview, deposits, withdrawals, and history", async () => {
@@ -92,7 +94,7 @@ it("shows a directory error and retries without hiding the chart", async () => {
   vi.mocked(marketApi.search).mockRejectedValueOnce(new Error("Directory offline"));
   render(<WorkbenchPage />);
   expect(await screen.findByText(/Directory offline/)).toBeTruthy();
-  expect(screen.getByRole("heading", { name: /K 线行情/ })).toBeTruthy();
+  expect(screen.getByRole("heading", { name: /Candlestick chart/ })).toBeTruthy();
   fireEvent.click(screen.getByRole("button", { name: "Retry directory" }));
   await waitFor(() => expect(screen.getByRole("button", { name: /09988.*Alibaba Group/ })).toBeTruthy());
 });
@@ -107,7 +109,7 @@ it("refreshes cash and ownership markers after submitting an editable paper orde
   fireEvent.change(within(ticket).getByLabelText("Quantity"), { target: { value: "100" } });
   fireEvent.change(within(ticket).getByLabelText("Limit price (HKD)"), { target: { value: "11" } });
   fireEvent.click(within(ticket).getByRole("button", { name: "Submit paper order" }));
-  expect(await within(ticket).findByText(/Order filled/)).toBeTruthy();
+  expect(await within(ticket).findByText(/Order Filled/)).toBeTruthy();
   expect(await within(ticket).findByText("HKD 900.00")).toBeTruthy();
   const saved = screen.getByRole("button", { name: /00700.*Tencent Holdings/ });
   expect(within(saved).getByText(/◆ Position/)).toBeTruthy();

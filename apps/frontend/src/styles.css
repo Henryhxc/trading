@@ -41,9 +41,57 @@ input:focus-visible, button:focus-visible, select:focus-visible { outline: 3px s
 footer { margin-top: auto; padding-top: 44px; color: var(--ux-muted); font-size: 11px; text-align: center; line-height: 1.5; }
 .runtime-state { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding: 24px; text-align: center; color: var(--ux-ink); }
 .runtime-state p { margin: 0 0 8px; color: var(--ux-muted); }
+.auth-layout { position: relative; }
+.auth-layout > .language-toggle { position: absolute; top: 16px; right: 20px; }
+.language-toggle { display: inline-flex; flex: 0 0 auto; align-items: center; gap: 2px; padding: 3px; border: 1px solid #d6dbe4; border-radius: 4px; background: #f1f3f6; }
+.language-toggle button { min-width: 38px; min-height: 28px; padding: 0 7px; border: 0; border-radius: 2px; background: transparent; color: #667085; font-size: 11px; font-weight: 600; cursor: pointer; }
+.language-toggle button.active { color: var(--ux-primary); background: #fff; box-shadow: 0 1px 2px rgb(0 0 0 / 12%); }
 @media (max-width: 520px) {
   .auth-layout { padding: 36px 16px 20px; }
+  .auth-layout > .language-toggle { top: 10px; right: 12px; }
   .brand-logo { width: min(260px, 76vw); margin-bottom: 30px; }
   .auth-panel, .account-panel { padding: 25px 20px; }
   footer { padding-top: 28px; max-width: 290px; }
+}
+
+.terminal-auth {
+  --auth-bg: #0a111d;
+  --auth-surface: #101b2b;
+  --auth-raised: #152238;
+  --auth-line: #26374e;
+  --auth-text: #dbe5f3;
+  --auth-muted: #9fb1c9;
+  --auth-blue: #82a5ff;
+  color: var(--auth-text);
+  background: var(--auth-bg);
+  color-scheme: dark;
+}
+.terminal-auth .brand-logo { margin-bottom: 40px; }
+.terminal-auth .auth-panel, .terminal-auth .account-panel {
+  color: var(--auth-text);
+  background: var(--auth-surface);
+  border-color: var(--auth-line);
+  box-shadow: none;
+}
+.terminal-auth .eyebrow { color: var(--auth-blue); }
+.terminal-auth .subheading, .terminal-auth .account-email,
+.terminal-auth footer, .terminal-auth .security-note { color: var(--auth-muted); }
+.terminal-auth .mode-switch { border: 1px solid var(--auth-line); background: var(--auth-bg); }
+.terminal-auth .mode { color: var(--auth-muted); }
+.terminal-auth .mode.active { color: #c2d2ff; background: var(--auth-raised); box-shadow: none; }
+.terminal-auth label { color: var(--auth-text); }
+.terminal-auth input {
+  color: var(--auth-text);
+  background: var(--auth-bg);
+  border-color: #34465e;
+}
+.terminal-auth input::placeholder { color: var(--auth-muted); }
+.terminal-auth .primary-button { background: #2857e2; border-color: #2857e2; }
+.terminal-auth .primary-button:hover:not(:disabled) { background: #416cf0; border-color: #416cf0; }
+.terminal-auth .security-note { border-top-color: var(--auth-line); }
+.terminal-auth > .language-toggle { border-color: var(--auth-line); background: var(--auth-surface); }
+.terminal-auth > .language-toggle button { color: var(--auth-muted); }
+.terminal-auth > .language-toggle button.active { color: #101827; background: #a9c0ff; box-shadow: none; }
+@media (max-width: 520px) {
+  .terminal-auth .brand-logo { margin-bottom: 30px; }
 }

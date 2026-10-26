@@ -43,6 +43,15 @@ Compose contains development-only fallback credentials. Set your own `DB_PASSWOR
 docker compose --profile admin up -d
 ```
 
+## Security notes
+
+- **Password algorithms:** passwords are stored as one-way bcrypt hashes with a work factor managed by the Go service; plaintext passwords are never persisted or logged. Argon2id is the preferred migration option if the deployment standard requires memory-hard hashing. The system should select one password-hashing scheme per stored record and identify it by the algorithm prefix, rather than stacking multiple hashes or treating encryption as password storage.
+- **Session authentication:** the browser receives an opaque, randomly generated `HttpOnly` session cookie. The database stores only its SHA-256 digest, and each protected request checks expiry, revocation, and active-user status. In production, serve the frontend and API over HTTPS with `COOKIE_SECURE=true` and an explicit allowed origin.
+- **Symmetric authentication:** service-to-service callbacks such as the AkShare webhook use a shared secret and HMAC-style request authentication with timestamp/age checks. This is for integrity and replay resistance; it is not a replacement for TLS, user login, or broker authorization. Shared secrets belong in environment variables or a secret manager, never in source, screenshots, or logs.
+- **Frontend/backend access:** the React app calls only the internal `/api/v1` API. Authorization is enforced in Go middleware and repositories using the session actor, so the client cannot choose another user's account, orders, positions, or watchlist by changing an ID in the request.
+- **SQL injection prevention:** database code uses `database/sql` placeholders (`?`) and bound arguments for user-controlled values. Dynamic SQL is limited to allow-listed table/column fragments selected by code; user input is never concatenated into SQL. Error responses and logs omit SQL text, credentials, tokens, passwords, and raw provider payloads.
+- **Scope:** these controls protect the local simulated-trading prototype. They do not grant real broker access, real-order permission, or HKEX feed authorization. Before production, add key rotation, rate limiting, CSRF/origin review, dependency scanning, audit retention, and an external security review.
+
 The Compose entrypoint defaults to the AkShare ingestion mode. To use the mock provider instead:
 
 ```sh

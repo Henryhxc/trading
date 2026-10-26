@@ -1,4 +1,4 @@
-import { render, screen, waitFor, fireEvent } from "@testing-library/react";
+import { render, screen, waitFor, fireEvent } from "../../test-utils";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { WorkbenchPage } from "../../pages/WorkbenchPage";
 import { marketApi, type Candle, type CandleSeries } from "../../shared/api/market";
@@ -35,8 +35,8 @@ describe("Workbench candle behavior", () => {
   it("offers all native minute and calendar periods and requests the selected period", async () => {
     render(<WorkbenchPage />);
     await screen.findByText("Tencent Holdings");
-    for (const label of ["1分", "5分", "15分", "30分", "60分", "日", "周", "月", "年"]) expect(screen.getByRole("button", { name: label })).toBeTruthy();
-    fireEvent.click(screen.getByRole("button", { name: "5分" }));
+    for (const label of ["1 min", "5 min", "15 min", "30 min", "60 min", "Daily", "Weekly", "Monthly", "Yearly"]) expect(screen.getByRole("button", { name: label })).toBeTruthy();
+    fireEvent.click(screen.getByRole("button", { name: "5 min" }));
     await waitFor(() => expect(marketApi.candles).toHaveBeenLastCalledWith("00700", "5m", expect.stringMatching(/^\d{4}-\d{2}-\d{2}$/), expect.stringMatching(/^\d{4}-\d{2}-\d{2}$/)));
   });
 
@@ -51,14 +51,14 @@ describe("Workbench candle behavior", () => {
     render(<WorkbenchPage />);
     expect(await screen.findByText("Tencent Holdings")).toBeTruthy();
     expect(await screen.findByText(/History offline/)).toBeTruthy();
-    fireEvent.click(screen.getByRole("button", { name: "刷新行情" }));
+    fireEvent.click(screen.getByRole("button", { name: "Refresh market data" }));
     await waitFor(() => expect(graph.candles).toHaveBeenCalled());
   });
 
   it("shows missing native minutes explicitly without substituting daily bars", async () => {
     vi.mocked(marketApi.candles).mockImplementation(async (symbol, interval) => ({ ...series, symbol, interval, items: [], source: "none", data_status: "unavailable" }));
     render(<WorkbenchPage />);
-    fireEvent.click(await screen.findByRole("button", { name: "1分" }));
-    expect(await screen.findByText(/暂无原生分钟行情/)).toBeTruthy();
+    fireEvent.click(await screen.findByRole("button", { name: "1 min" }));
+    expect(await screen.findByText(/No native minute data is available/)).toBeTruthy();
   });
 });

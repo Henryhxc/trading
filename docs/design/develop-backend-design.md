@@ -56,6 +56,14 @@ Environment variables: `PORT=8080`, `DB_HOST=mysql`, `DB_PORT=3306`, `DB_NAME=ux
 
 Request logs include request ID, method, path, and status only. Passwords, cookie values, token digests, database credentials, and query values are not logged. The HTTP server has a read-header timeout and graceful shutdown.
 
+### Security implementation notes
+
+- Passwords use a single versioned one-way scheme per record: bcrypt is the current implementation; Argon2id is the recommended future migration target when the deployment can support its memory cost. Passwords are never reversibly encrypted, logged, or returned to the client.
+- User sessions use an opaque random cookie. Only a SHA-256 digest is stored in MySQL. Protected handlers resolve the session, validate expiry/revocation, and pass the authenticated actor into services and repositories. `HttpOnly`, `SameSite=Lax`, HTTPS, and `COOKIE_SECURE=true` are required for a production deployment.
+- Internal provider callbacks use a shared secret with HMAC-style authentication and a timestamp/maximum-age check. The shared secret provides request integrity and replay resistance; TLS remains required for confidentiality, and this mechanism is separate from user authentication and broker execution authorization.
+- React never connects directly to MySQL or public market providers. The Go API is the only application boundary, and authorization is enforced server-side by the session actor rather than by client-supplied user IDs.
+- Repository SQL uses placeholders and bound arguments for all values. Any unavoidable dynamic identifier is selected from a fixed allow-list. User input is never concatenated into SQL strings, and database errors are mapped to generic API errors without leaking SQL, credentials, or provider payloads.
+
 ## Database contract
 
 MySQL 8.4 uses InnoDB and `utf8mb4_0900_ai_ci`. Migration `001_users_sessions_accounts.sql` creates users, sessions, accounts and indexes; the matching `.down.sql` drops dependent tables in order. The startup runner creates `schema_migrations`, applies sorted non-down SQL once, and records filenames after successful statements. MySQL DDL auto-commits, so a failed migration may leave earlier tables present; rerun is idempotent (`CREATE TABLE IF NOT EXISTS`) and the rollback script is the recovery path. The API migration runner never executes `.down.sql`.

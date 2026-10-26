@@ -20,6 +20,7 @@ from zoneinfo import ZoneInfo
 from .normalization import normalize_history_rows, normalize_minute_rows, normalize_spot_rows, normalize_symbol
 
 MIN_SPOT_INTERVAL_SECONDS = 15 * 60
+DEFAULT_HISTORY_REFRESH_SECONDS = 24 * 60 * 60
 _SECRET_RE = re.compile(r"(?i)(secret|token|password|authorization)=?[^\s,]+")
 
 
@@ -38,7 +39,8 @@ class Config:
     webhook_secret: str = ""
     poll_interval_seconds: int = MIN_SPOT_INTERVAL_SECONDS
     request_timeout_seconds: float = 15.0
-    symbols: tuple[str, ...] = ("00700", "00005", "09988", "01810")
+    history_refresh_seconds: int = DEFAULT_HISTORY_REFRESH_SECONDS
+    symbols: tuple[str, ...] = ("00700", "09988", "01810")
     history_start: str = ""
     history_end: str = ""
     minute_periods: tuple[str, ...] = ("1m", "5m", "15m", "30m", "60m")
@@ -49,7 +51,9 @@ class Config:
         month_index = end.year * 12 + end.month - 1 - 6
         year, month = divmod(month_index, 12)
         start = end.replace(year=year, month=month + 1, day=min(end.day, calendar.monthrange(year, month + 1)[1]))
-        return self.history_start or start.strftime("%Y%m%d"), end.strftime("%Y%m%d")
+        six_month_start = start.strftime("%Y%m%d")
+        configured_start = self.history_start or six_month_start
+        return max(configured_start, six_month_start), end.strftime("%Y%m%d")
 
     @classmethod
     def from_env(cls, values: Mapping[str, str] | None = None) -> "Config":
@@ -57,7 +61,7 @@ class Config:
         interval = int(values.get("AKSHARE_POLL_INTERVAL", str(MIN_SPOT_INTERVAL_SECONDS)))
         if interval < MIN_SPOT_INTERVAL_SECONDS:
             raise ValueError("AKSHARE_POLL_INTERVAL cannot be shorter than 15 minutes")
-        symbols = tuple(normalize_symbol(item) for item in values.get("AKSHARE_SYMBOLS", "00700,00005,09988,01810").split(",") if item.strip())
+        symbols = tuple(normalize_symbol(item) for item in values.get("AKSHARE_SYMBOLS", "00700,09988,01810").split(",") if item.strip())[:3]
         periods = tuple(item.strip() for item in values.get("AKSHARE_MINUTE_PERIODS", "1m,5m,15m,30m,60m").split(",") if item.strip())
         if any(item not in ("1m", "5m", "15m", "30m", "60m") for item in periods):
             raise ValueError("unsupported minute period")
@@ -69,6 +73,7 @@ class Config:
             webhook_secret=values.get("AKSHARE_WEBHOOK_SECRET", ""),
             poll_interval_seconds=interval,
             request_timeout_seconds=float(values.get("AKSHARE_REQUEST_TIMEOUT", "15")),
+            history_refresh_seconds=int(values.get("AKSHARE_HISTORY_REFRESH_SECONDS", str(DEFAULT_HISTORY_REFRESH_SECONDS))),
             symbols=symbols,
             history_start=values.get("AKSHARE_HISTORY_START", ""),
             history_end=values.get("AKSHARE_HISTORY_END", ""),
@@ -103,6 +108,7 @@ class Scheduler:
         self.logger = logger or logging.getLogger("akshare.scheduler")
         self._health = Health(False)
         self.backoff = Backoff()
+        self._last_history_refresh: datetime | None = None
 
     def _redact(self, value: Any) -> str:
         text = str(value)
@@ -119,7 +125,13 @@ class Scheduler:
     def run_once(self, now: datetime | None = None) -> None:
         now = now or datetime.now(timezone.utc)
         quotes, candles, errors = [], [], []
-        for label, fetch in (("spot", lambda: normalize_spot_rows(self.fetch_spot(), now)), ("history", self.fetch_history)):
+        history_due = self.fetch_history is not None and (
+            self._last_history_refresh is None
+            or (now - self._last_history_refresh).total_seconds() >= self.config.history_refresh_seconds
+        )
+        history_succeeded = False
+        fetches = (("spot", lambda: normalize_spot_rows(self.fetch_spot(), now)), ("history", self.fetch_history if history_due else None))
+        for label, fetch in fetches:
             if fetch is None:
                 continue
             try:
@@ -128,6 +140,7 @@ class Scheduler:
                     quotes = rows
                 else:
                     candles = rows
+                    history_succeeded = True
             except Exception as exc:
                 errors.append(exc)
                 self.log_error("upstream failed", kind=label, error=type(exc).__name__)
@@ -139,6 +152,8 @@ class Scheduler:
                 payload = build_payload(quotes[offset:offset + 400], candles[offset:offset + 400])
                 if payload["quotes"] or payload["candles"]:
                     self._deliver(payload)
+            if history_due and history_succeeded:
+                self._last_history_refresh = now
             self._health = Health(True, now, None)
         except Exception as exc:
             self._health = Health(False, self._health.last_success, str(exc))

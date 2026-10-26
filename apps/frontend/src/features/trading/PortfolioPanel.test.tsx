@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen, waitFor } from "../../test-utils";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { PortfolioPanel } from "./PortfolioPanel";
 import { tradingApi } from "../../shared/api/trading";
@@ -21,16 +21,16 @@ describe("PortfolioPanel analytics", () => {
     render(<PortfolioPanel account={{ currency: "HKD", cash_balance: 1000, available_cash: 1000, initial_cash: 1000, status: "active" }} positions={[]} loading={false} error="" refresh={vi.fn(async () => undefined)} onSelect={vi.fn()} />);
 
     expect(await screen.findByRole("heading", { name: "Daily P/L" })).toBeTruthy();
-    expect(screen.getByRole("tab", { name: "日" }).getAttribute("aria-selected")).toBe("true");
+    expect(screen.getByRole("tab", { name: "Day" }).getAttribute("aria-selected")).toBe("true");
     expect(screen.getByRole("grid", { name: "Daily realized P/L calendar" })).toBeTruthy();
     await waitFor(() => expect(screen.getByRole("gridcell", { name: /2026-05-06.*profit/i })).toBeTruthy());
     expect(screen.getAllByText("+HKD 500.00").length).toBeGreaterThan(0);
     expect(screen.getAllByText("+10.00%").length).toBeGreaterThan(0);
 
-    screen.getByRole("tab", { name: "月" }).click();
+    screen.getByRole("tab", { name: "Month" }).click();
     expect(await screen.findByRole("heading", { name: "Monthly P/L" })).toBeTruthy();
     expect(screen.getByRole("grid", { name: "Monthly realized P/L calendar" })).toBeTruthy();
-    screen.getByRole("tab", { name: "年" }).click();
+    screen.getByRole("tab", { name: "Year" }).click();
     expect(await screen.findByRole("heading", { name: "Yearly P/L" })).toBeTruthy();
     expect(screen.getByRole("grid", { name: "Yearly realized P/L calendar" })).toBeTruthy();
   });

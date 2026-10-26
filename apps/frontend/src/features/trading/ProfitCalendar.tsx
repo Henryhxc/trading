@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import type { ProfitPeriod, ProfitRow } from "./profit";
+import { useI18n } from "../../app/I18nProvider";
 
 const money = (value: number) => `${value >= 0 ? "+" : "-"}HKD ${Math.abs(value).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 const percent = (value: number) => `${value >= 0 ? "+" : ""}${value.toFixed(2)}%`;
@@ -14,6 +15,7 @@ function initialPeriod(rows: ProfitRow[], periodType: ProfitPeriod) {
 function valueClass(pnl: number) { return pnl > 0 ? "up" : pnl < 0 ? "down" : "neutral"; }
 
 export function ProfitCalendar({ title, rows, granularity = "day", monthly }: { title: string; rows: ProfitRow[]; granularity?: ProfitPeriod; monthly?: boolean }) {
+  const { language, t } = useI18n();
   const periodType = monthly ? "month" : granularity;
   const [period, setPeriod] = useState(() => initialPeriod(rows, periodType));
   useEffect(() => { if (rows.length > 0) setPeriod(initialPeriod(rows, periodType)); }, [rows, periodType]);
@@ -36,7 +38,7 @@ export function ProfitCalendar({ title, rows, granularity = "day", monthly }: { 
     : periodType === "month"
     ? Array.from({ length: 12 }, (_, index) => {
       const key = `${yearValue}-${String(index + 1).padStart(2, "0")}`;
-      return { key, label: new Date(Date.UTC(yearValue, index, 1)).toLocaleDateString("en", { month: "short", timeZone: "UTC" }), row: byPeriod.get(key) };
+      return { key, label: new Date(Date.UTC(yearValue, index, 1)).toLocaleDateString(language === "zh" ? "zh-HK" : "en", { month: "short", timeZone: "UTC" }), row: byPeriod.get(key) };
     })
     : (() => {
       const count = new Date(Date.UTC(yearValue, monthValue + 1, 0)).getUTCDate();
@@ -49,22 +51,23 @@ export function ProfitCalendar({ title, rows, granularity = "day", monthly }: { 
     })();
 
   return <section className="data-card profit-card">
-    <div className="panel-title"><div><h2>{title}</h2><p className="panel-caption">Realized P/L from filled paper orders</p></div><span className="muted-count">{rows.length} periods</span></div>
-    <div className="calendar-toolbar"><button className="quiet-button" aria-label={`Previous ${periodType === "day" ? "month" : "year"}`} onClick={() => move(-1)}>‹</button><strong>{label}</strong><button className="quiet-button" aria-label={`Next ${periodType === "day" ? "month" : "year"}`} onClick={() => move(1)}>›</button></div>
-    {periodType === "day" && <div className="calendar-weekdays" aria-hidden="true">{["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map(day => <span key={day}>{day}</span>)}</div>}
-    <div className={`profit-calendar ${periodType !== "day" ? "monthly-calendar" : ""} ${periodType === "year" ? "yearly-calendar" : ""}`} role="grid" aria-label={`${periodType === "year" ? "Yearly" : periodType === "month" ? "Monthly" : "Daily"} realized P/L calendar`}>
-      {cells.map(cell => cell.row ? <div key={cell.key} className={`profit-cell ${valueClass(cell.row.pnl)}`} role="gridcell" aria-label={`${cell.key} ${cell.row.pnl >= 0 ? "profit" : "loss"} ${money(cell.row.pnl)} ${percent(cell.row.returnPercent)}`}><span>{cell.label}</span><strong>{money(cell.row.pnl)}</strong><small>{percent(cell.row.returnPercent)}</small></div> : <div key={cell.key} className="profit-cell empty" role="gridcell" aria-label={cell.key.startsWith("empty-") ? "Empty calendar cell" : `${cell.key} no realized P/L`}><span>{cell.label}</span>{cell.label && <small>No P/L</small>}</div>)}
+    <div className="panel-title"><div><h2>{t(title)}</h2><p className="panel-caption">{t("Realized P/L from filled paper orders")}</p></div><span className="muted-count">{t("{count} periods", { count: rows.length })}</span></div>
+    <div className="calendar-toolbar"><button className="quiet-button" aria-label={t(periodType === "day" ? "Previous month" : "Previous year")} onClick={() => move(-1)}>‹</button><strong>{label}</strong><button className="quiet-button" aria-label={t(periodType === "day" ? "Next month" : "Next year")} onClick={() => move(1)}>›</button></div>
+    {periodType === "day" && <div className="calendar-weekdays" aria-hidden="true">{["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map(day => <span key={day}>{t(day)}</span>)}</div>}
+    <div className={`profit-calendar ${periodType !== "day" ? "monthly-calendar" : ""} ${periodType === "year" ? "yearly-calendar" : ""}`} role="grid" aria-label={t(periodType === "year" ? "Yearly realized P/L calendar" : periodType === "month" ? "Monthly realized P/L calendar" : "Daily realized P/L calendar")}>
+      {cells.map(cell => cell.row ? <div key={cell.key} className={`profit-cell ${valueClass(cell.row.pnl)}`} role="gridcell" aria-label={t("{period} {result} {amount} {returnPercent}", { period: cell.key, result: t(cell.row.pnl >= 0 ? "profit" : "loss"), amount: money(cell.row.pnl), returnPercent: percent(cell.row.returnPercent) })}><span>{cell.label}</span><strong>{money(cell.row.pnl)}</strong><small>{percent(cell.row.returnPercent)}</small></div> : <div key={cell.key} className="profit-cell empty" role="gridcell" aria-label={cell.key.startsWith("empty-") ? t("Empty calendar cell") : t("{period} no realized P/L", { period: cell.key })}><span>{cell.label}</span>{cell.label && <small>{t("No P/L")}</small>}</div>)}
     </div>
-    {rows.length === 0 && <p className="empty-state" role="status">No realized P/L records yet.</p>}
+    {rows.length === 0 && <p className="empty-state" role="status">{t("No realized P/L records yet.")}</p>}
   </section>;
 }
 
 export function PortfolioAllocationChart({ account, positions }: { account: { available_cash: number } | null; positions: Array<{ display_name: string; market_value: number | null }> }) {
+  const { t } = useI18n();
   const entries = positions.map(position => ({ label: position.display_name, value: Math.max(0, position.market_value || 0) })).filter(entry => entry.value > 0);
   const cash = Math.max(0, account?.available_cash || 0);
-  const totals = [...entries, { label: "Available cash", value: cash }];
+  const totals = [...entries, { label: t("Available cash"), value: cash }];
   const total = totals.reduce((sum, entry) => sum + entry.value, 0);
   let cursor = 0;
   const stops = totals.map((entry, index) => { const start = total ? cursor / total * 100 : 0; cursor += entry.value; const end = total ? cursor / total * 100 : 100; return `${["#5478ed", "#40d794", "#f3c76b", "#c58cff"][index % 4]} ${start}% ${end}%`; });
-  return <section className="data-card allocation-card"><div className="panel-title"><div><h2>Portfolio allocation</h2><p className="panel-caption">Mock holdings and cash mix from your paper account</p></div><span className="data-badge simulated">DB MOCK</span></div><div className="allocation-content"><div className="allocation-pie" role="img" aria-label="Portfolio allocation pie chart" style={{ background: total ? `conic-gradient(${stops.join(", ")})` : "#26374e" }}><span>{total ? "100%" : "—"}</span></div><div className="allocation-legend">{totals.map((entry, index) => <div key={entry.label}><i className={`allocation-swatch swatch-${index % 4}`} /><span>{entry.label}</span><strong>{total ? `${Math.round(entry.value / total * 100)}%` : "0%"}</strong></div>)}</div></div></section>;
+  return <section className="data-card allocation-card"><div className="panel-title"><div><h2>{t("Portfolio allocation")}</h2><p className="panel-caption">{t("Mock holdings and cash mix from your paper account")}</p></div><span className="data-badge simulated">{t("DB MOCK")}</span></div><div className="allocation-content"><div className="allocation-pie" role="img" aria-label={t("Portfolio allocation pie chart")} style={{ background: total ? `conic-gradient(${stops.join(", ")})` : "#26374e" }}><span>{total ? "100%" : "—"}</span></div><div className="allocation-legend">{totals.map((entry, index) => <div key={entry.label}><i className={`allocation-swatch swatch-${index % 4}`} /><span>{entry.label}</span><strong>{total ? `${Math.round(entry.value / total * 100)}%` : "0%"}</strong></div>)}</div></div></section>;
 }

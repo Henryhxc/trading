@@ -1,0 +1,45 @@
+<mxfile host="Electron" modified="2026-10-25T00:00:00.000Z" agent="draw.io" version="32.6.1" type="device">
+  <diagram id="project-architecture" name="專案架構">
+    <mxGraphModel dx="1600" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0" background="#080e19">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="frontend" value="React 前端&#xa;工作台／頁面／API client" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#172743;strokeColor=#5f83ef;fontColor=#e8eef8;fontSize=20;fontStyle=1;spacing=14;" vertex="1" parent="1">
+          <mxGeometry x="70" y="150" width="300" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="api" value="same-origin API&#xa;/api/v1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#101b2b;strokeColor=#3d587d;fontColor=#dbe5f3;fontSize=18;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="470" y="170" width="250" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="handler" value="Go MVC&#xa;Controller／Handler" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#172743;strokeColor=#5f83ef;fontColor=#e8eef8;fontSize=18;fontStyle=1;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="820" y="70" width="300" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="service" value="Service／Usecase&#xa;業務流程與風險校驗" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#172743;strokeColor=#5f83ef;fontColor=#e8eef8;fontSize=18;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="820" y="210" width="300" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="domain" value="Domain／Model&#xa;行情、訂單、持倉、資金" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#172743;strokeColor=#5f83ef;fontColor=#e8eef8;fontSize=18;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="820" y="350" width="300" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="repository" value="Repository&#xa;交易資料持久化邊界" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#172743;strokeColor=#5f83ef;fontColor=#e8eef8;fontSize=18;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="820" y="490" width="300" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="mysql" value="MySQL&#xa;users／watchlist／orders&#xa;positions／cash" style="shape=cylinder;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#12332c;strokeColor=#40d794;fontColor=#e8eef8;fontSize=18;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="410" width="280" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="akshare" value="Integration adapter&#xa;AkShare 非官方行情 provider&#xa;source／data_status／as_of" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#382e25;strokeColor=#d7a843;fontColor=#f4e5c7;fontSize=18;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="100" width="280" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="compose" value="Docker Compose&#xa;frontend + backend + mysql&#xa;phpMyAdmin（可選管理服務）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0e1726;strokeColor=#3d587d;fontColor=#bdcbe0;fontSize=18;spacing=12;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="410" y="690" width="760" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#82a5ff;strokeWidth=2;endArrow=block;" edge="1" parent="1" source="frontend" target="api"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#82a5ff;strokeWidth=2;endArrow=block;" edge="1" parent="1" source="api" target="handler"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#82a5ff;strokeWidth=2;endArrow=block;" edge="1" parent="1" source="handler" target="service"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#82a5ff;strokeWidth=2;endArrow=block;" edge="1" parent="1" source="service" target="domain"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#82a5ff;strokeWidth=2;endArrow=block;" edge="1" parent="1" source="domain" target="repository"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e6" value="讀寫" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#40d794;strokeWidth=2;fontColor=#40d794;fontSize=14;endArrow=block;" edge="1" parent="1" source="repository" target="mysql"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e7" value="行情適配" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#d7a843;strokeWidth=2;fontColor=#d7a843;fontSize=14;endArrow=block;" edge="1" parent="1" source="service" target="akshare"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e8" value="部署邊界" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#3d587d;strokeWidth=2;dashed=1;fontColor=#93a2b8;fontSize=14;endArrow=none;" edge="1" parent="1" source="compose" target="api"><mxGeometry relative="1" as="geometry" /></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
