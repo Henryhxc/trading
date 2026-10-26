@@ -9,6 +9,41 @@
     :root{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#e8eef8;background:#080e19;font-synthesis:none;text-rendering:optimizeLegibility;--surface:#101a2a;--line:#24334a;--muted:#93a2b8;--blue:#4268f5;--green:#37c98b;--red:#f06b78}
     *{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#0d1727 0,#080e19 360px);line-height:1.65}a{color:#8ca9ff}header,main,footer{width:min(1720px,calc(100% - 40px));margin:auto}header{padding:60px 0 36px;border-bottom:1px solid var(--line)}header img{width:225px;height:auto;object-fit:contain;object-position:left center;display:block;margin:0 0 26px}h1{font-size:clamp(30px,4vw,46px);line-height:1.15;margin:0 0 16px;letter-spacing:0}h2{font-size:24px;line-height:1.25;margin:0 0 14px}h3{font-size:16px;margin:0 0 8px}p{margin:8px 0;color:#c5d0df}.lede{max-width:850px;color:#aebbd0;font-size:17px}.meta{font-size:13px;color:var(--muted)}main{padding:30px 0 70px}.section{padding:30px 0;border-bottom:1px solid var(--line)}.callout{padding:16px 18px;background:#111d2f;border-left:3px solid var(--blue);border-radius:4px;color:#cfdaea}.callout.warning{border-color:#d7a843}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:20px 0}.fact{padding:14px;background:#101a2a;border:1px solid var(--line);border-radius:5px}.fact strong{display:block;font-size:20px;color:#fff}.fact span{font-size:12px;color:var(--muted)}.gallery{display:block}.shot{margin:0 0 24px;background:#101a2a;border:1px solid var(--line);border-radius:5px;overflow:visible}.shot img{display:block;width:auto;max-width:100%;height:auto;object-fit:contain;margin:0 auto;background:#080e19}.shot img.full-resolution{width:100%;height:auto}.shot figcaption{padding:12px 14px 8px;color:#c8d4e5;font-size:14px}.shot small{display:block;color:var(--muted);margin-top:3px}.structure-flow{display:flex;align-items:stretch;gap:8px;padding:10px 14px;background:#0c1523;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.structure-flow span{display:flex;flex:1;align-items:center;justify-content:center;min-height:38px;padding:7px 9px;border:1px solid #2d4262;border-radius:3px;color:#d2def0;font-size:12px;line-height:1.35;text-align:center}.structure-flow b{display:flex;align-items:center;color:#82a1ff;font-size:16px}.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:5px}table{border-collapse:collapse;width:100%;min-width:680px;background:#0e1726}th,td{text-align:left;padding:11px 13px;border-bottom:1px solid var(--line);vertical-align:top}th{font-size:12px;color:#aab8cb;background:#121e30}td{font-size:14px;color:#d4deeb}code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:#bbccff}.muted{color:var(--muted)}ul{padding-left:20px;color:#c5d0df}li{margin:5px 0}.two{columns:2;column-gap:32px}.two li{break-inside:avoid}.diagram{padding:18px;background:#0e1726;border:1px solid var(--line);border-radius:5px;font:14px/1.8 ui-monospace,monospace;color:#bdcbe0;white-space:pre-wrap}.badge{display:inline-block;border:1px solid #34445e;padding:2px 8px;border-radius:20px;color:#bdcbe0;font-size:12px}.small{font-size:13px;color:var(--muted)}footer{padding:22px 0 42px;color:var(--muted);font-size:13px}
     @media(max-width:760px){header,main,footer{width:min(100% - 28px,1720px)}header{padding-top:36px}.grid{grid-template-columns:1fr}.facts{grid-template-columns:repeat(2,minmax(0,1fr))}.two{columns:1}.structure-flow{flex-wrap:wrap}.structure-flow span{min-width:calc(50% - 22px)}.structure-flow b{padding:0 2px}}
+    @media print{
+      @page{size:A4 portrait;margin:12mm}
+      :root{color-scheme:light;--surface:#f6f8fb;--line:#d8dee8;--muted:#5f6f84;--blue:#315fc9;--green:#16865d;--red:#bd3344}
+      *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+      html,body{background:#fff!important;color:#172033!important}
+      body{font-size:10.5pt;line-height:1.5}
+      header,main,footer{width:100%;max-width:none;margin:0}
+      header{min-height:270mm;padding:12mm 0 8mm;break-after:page;border-bottom:0;display:flex;flex-direction:column;justify-content:center}
+      header img{width:54mm;margin-bottom:8mm}
+      h1{font-size:29pt}h2{font-size:19pt;break-after:avoid-page}h3{break-after:avoid-page}
+      h1,h2,h3,strong{color:#172033!important}
+      p,li,.lede,.meta,.small,footer{color:#435166!important}
+      main{padding:0}.section{padding:0;border-bottom:0;break-before:page}
+      .section>h2{padding-top:2mm}
+      .grid,.facts,.table-wrap,.callout,.structure-flow,ol,ul{break-inside:auto}
+      .grid>div,.fact,li,tr{break-inside:avoid-page}
+      .table-wrap{overflow:visible;border-color:#d8dee8}table{min-width:0;font-size:9pt;background:#fff}th,td{padding:7px 8px;border-color:#d8dee8;color:#263247}th{background:#eef2f7;color:#435166}
+      .gallery .shot+.shot{break-before:page}
+      .shot{break-inside:avoid-page;margin:0;background:#fff;border-color:#d8dee8}
+      .shot figcaption{font-size:10pt;padding:9px 11px 6px;color:#263247}
+      .shot small{font-size:8.7pt;line-height:1.4;color:#5f6f84}
+      .structure-flow{padding:7px 10px;gap:6px;background:#f3f6fa;border-color:#d8dee8}
+      .structure-flow span{min-height:28px;padding:5px 7px;font-size:8.5pt;background:#fff;border-color:#bdc8d8;color:#263247}
+      .structure-flow b{color:#315fc9}
+      .shot img,.shot img.full-resolution{display:block;width:auto;max-width:100%;height:auto;max-height:222mm;object-fit:contain;margin:0 auto}
+      .section:nth-of-type(3) .shot img{max-height:215mm}
+      .callout{background:#f1f5fb;color:#263247;border-color:#315fc9}
+      .callout.warning{background:#fff8e8;border-color:#b7791f}
+      .fact{background:#f6f8fb;border-color:#d8dee8}.fact strong{color:#172033}.fact span{color:#5f6f84}
+      code{color:#254f9d}
+      a{color:inherit;text-decoration:none}
+      .case-study{break-before:page;break-inside:avoid-page;font-size:9.3pt;line-height:1.38}
+      .case-study li{margin:3px 0}
+      footer{padding:5mm 0 0;break-before:auto}
+    }
   </style>
 </head>
 <body>
@@ -17,14 +52,6 @@
   <p class="meta">項目框架與產品判斷 · in-app browser 實機截圖 · 核查日期 2026-10-25</p>
   <h1>UX Securities 港股交易終端</h1>
   <p class="lede">項目框架：React 前端 + Go MVC 後端 + MySQL + Docker Compose。產品定位是個人港股研究與交易終端原型，圍繞“行情查看 → 多角度研究 → 決策工作流 → 賬户覆盤”組織頁面。</p>
-  <div class="callout"><strong>產品判斷</strong><br>先保證行情來源可信、賬户認證安全、頁面工作流清晰，再逐步實現交易與資金業務。界面原型負責展示產品結構和交互方向，不表示對應業務已經完成。多 Agent 的價值是把不同研究視角組合成有證據、有分歧、可覆盤的分析過程。</div>
-  <div class="facts">
-    <div class="fact"><strong>10</strong><span>工作台導航模塊</span></div>
-    <div class="fact"><strong>9</strong><span>圖表週期選項</span></div>
-    <div class="fact"><strong>2,791</strong><span>證券目錄條目（現場）</span></div>
-    <div class="fact"><strong>原型優先</strong><span>清晰區分界面稿與已實現能力</span></div>
-  </div>
-  <p class="small">工作台截圖來自瀏覽器實機狀態，保留 localhost 工作台畫面；新增盈利與多 Agent 截圖使用 in-app browser 的原生擷取，圖片按原始尺寸優先呈現，只有欄寬不足時等比例縮小，不以放大插值提升清晰度。行情與餘額是演示環境現場狀態，不代表實時市場或生產賬户。</p>
 </header>
 <main>
   <section class="section">
@@ -116,7 +143,7 @@
     <figure class="shot" style="margin-top:16px"><figcaption>金融多 Agent Harness 工作流（draw.io）<small>宏觀、產業、市場、量化與風險五個 Skill 會各自形成一份可核對的分析結論，再由 Harness 統一核對證據、保留分歧並輸出綜合結論。整張結構圖保留原始比例與完整邊界；點擊圖片可開啟 3785 × 2085 原始尺寸。可編輯源文件：<code>docs/evidence/diagrams/harness-financial-agents.drawio</code>。</small></figcaption><a href="../../../../docs/evidence/diagrams/harness-financial-agents.png" target="_blank" rel="noopener"><img class="full-resolution" src="../../../../docs/evidence/diagrams/harness-financial-agents.png" alt="五個分析 Skill 分別輸出結論後統一彙總的金融多 Agent Harness 工作流"></a></figure>
     <figure class="shot" style="margin-top:16px"><figcaption>多 Agent 多輪對話 <small>右下角助手展示多輪提問與回應：不同分析角色並行整理持倉、宏觀、產業與量化視角，再由 Harness 彙總第二輪回撤問題。這張圖放在 Duo Agent 章節，用於說明交互原型的角色協作方式。</small></figcaption><div class="structure-flow" aria-label="多 Agent 助手結構"><span>用户問題</span><b>→</b><span>Harness 路由多角色</span><b>→</b><span>證據核對／策略總結</span></div><img src="../../../../docs/evidence/screenshots/ux-terminal/in-app/quant-assistant-round2.jpg" alt="多 Agent 多輪聊天助手"></figure>
     <p class="small">多 Agent 編排可組合不同分析角色，但不會自動保證分析正確；行情時效、來源透明、觀點評估和風險複核仍須納入產品設計。</p>
-    <div class="callout" style="margin-top:16px">
+    <div class="callout case-study" style="margin-top:16px">
       <strong>案例：SpaceX／Starlink 與跨市場事件推演</strong>
       <ol>
         <li><strong>產業趨勢：</strong>SpaceX 是未上市公司，Starlink 也不是獨立上市股票；助手先把衛星互聯網的用戶增長、發射能力、頻譜與資本開支列成觀察變量，再區分直接資訊與可交易的產業鏈映射，避免把品牌熱度直接當成可買入訊號。</li>
@@ -142,8 +169,8 @@
     <h2>安全設計說明</h2>
     <div class="grid">
       <div><h3>密碼與多種算法</h3><p>當前服務使用 bcrypt 做單向密碼哈希，數據庫不保存明文密碼。安全增強可按部署標準遷移到 Argon2id；應以算法前綴和版本管理單一哈希方案，不把多個哈希串接，也不把可逆加密當成密碼保存方式。</p></div>
-      <div><h3>對稱密鑰與鑒權</h3><p>AkShare 內部回調可使用共享密鑰做 HMAC 風格簽名、時間戳和最大年齡校驗，防止請求被竄改或重放。共享密鑰只放環境變量或密鑰管理服務；它不能替代 HTTPS、用户登錄或券商交易授權。</p></div>
-      <div><h3>前後端訪問邊界</h3><p>React 只訪問內部 `/api/v1`；Go 中間件解析 HttpOnly session cookie，校驗過期、撤銷和用户狀態，再把 session actor 傳入 service/repository。用户不能靠修改前端參數讀取其他賬户的收藏、訂單或持倉。</p></div>
+      <div><h3>HMAC 共享密鑰鑒權</h3><p>AkShare 內部回調可使用共享密鑰做 HMAC 風格簽名、時間戳和最大年齡校驗，防止請求被竄改或重放。共享密鑰只放環境變量或密鑰管理服務；它不能替代 HTTPS、用户登錄或券商交易授權。</p></div>
+      <div><h3>前後端訪問鑒權與用戶數據隔離</h3><p>用戶註冊或登錄後，Go 後端生成隨機 session token，透過 <code>ux_session</code> HttpOnly cookie 交由瀏覽器自動攜帶；MySQL 只保存 token 的 SHA-256 摘要，不保存原始 token。受保護的 <code>/api/v1/*</code> 請求由 Go 中間件校驗 session 是否存在、過期或已撤銷，以及用戶是否仍為 active；失敗返回 <code>401 unauthenticated</code>。驗證成功後產生 session actor，service/repository 必須以該 actor 約束查詢，確保用戶不能靠修改前端參數讀取其他賬戶的收藏、訂單或持倉。這同時包含身份認證與資源授權；生產環境還應使用 HTTPS、<code>COOKIE_SECURE=true</code>，並補充 CSRF／Origin 校驗。</p></div>
       <div><h3>SQL 注入防護</h3><p>MySQL repository 使用 <code>database/sql</code> 佔位符和綁定參數，用户輸入不拼接進 SQL。必要的動態表名或欄名只從固定 allow-list 選取；SQL、密碼、token、數據庫憑據和原始供應商載荷不返回前端或寫入日志。</p></div>
     </div>
     <div class="callout warning" style="margin-top:16px">以上分為「當前代碼已具備」與「上線前加固建議」：bcrypt、opaque session、SHA-256 token digest、repository 參數化 SQL 和 AkShare 回調密鑰是現有基線；Argon2id 遷移、密鑰輪換、CSRF/origin 複核、限流、依賴掃描和外部安全審查仍需按部署環境完成。</div>
