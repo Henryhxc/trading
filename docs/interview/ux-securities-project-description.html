@@ -202,6 +202,18 @@
     <div class="callout case-study" style="margin-top:16px">
       <strong>操作案例：用 00700 騰訊比較「追趨勢」還是「等回調」</strong>
       <p>這是一個教育用的模擬案例，不是對騰訊未來價格的預測。假設投資者只想先研究 00700，預計觀察 6 個月，願意把這個想法的風險預算控制在 10%，並把費用和滑點計入。</p>
+      <div class="table-wrap" style="margin:14px 0">
+        <table>
+          <thead><tr><th>引擎及作用</th><th>用什麼資料／怎麼算</th><th>算出的結果代表什麼</th><th>對投資者有什麼用</th></tr></thead>
+          <tbody>
+            <tr><td><strong>趨勢動量</strong><br>判斷價格方向是否持續</td><td>使用 00700 的歷史日線 OHLCV 收盤價；比較 20／60 日收益與 MA20／MA60。若 <code>close &gt; MA20 &gt; MA60</code> 且動量分數高於門檻，記為偏多信號。</td><td>畫面例子「上行趨勢較強」表示趨勢條件符合；示例 +18.4% 收益和 -12.8% 回撤只展示如何閱讀指標。</td><td>用規則確認趨勢，不因單日上漲就追入；同時先評估自己能否承受回撤。</td></tr>
+            <tr><td><strong>多因子評分</strong><br>比較證券的多個特徵</td><td>使用可取得的估值、盈利質量、營收／盈利成長和歷史波動特徵；先去極值並轉成 z-score，再按 <code>0.25V + 0.25Q + 0.25G − 0.25Vol</code> 合成分數。</td><td>「質量 + 價值領先」是因子標籤，表示示例中質量和價值因子得分較突出；不是目標價或買入評級。</td><td>把單一新聞或估值倍數拆成幾個可比較維度，檢查動量之外是否有第二個獨立理由。</td></tr>
+            <tr><td><strong>均值回歸</strong><br>檢查短期偏離是否可能收斂</td><td>從日線收盤價計算 n 日均值、標準差和 <code>z = (close − MA_n) / σ_n</code>，並以成交量／RSI 等條件過濾；偏離達門檻才視為候選回歸信號。</td><td>「超賣反彈形態」表示價格偏離參考均值，不表示一定反彈；示例 -15.1% 回撤用來提示該方法在趨勢破位時可能持續失效。</td><td>協助區分「等回調再觀察」與「下跌趨勢仍在延續」，並預先設定失效位。</td></tr>
+            <tr><td><strong>風險平價配置</strong><br>控制單一持倉對組合風險的貢獻</td><td>需要組合中各資產的歷史波動率及相關性矩陣；先以反波動權重作初值，再按資產風險貢獻迭代調整，最後受 10% 風險預算限制。</td><td>「風險預算均衡」代表示例配置讓不同持倉的風險貢獻較接近；仍可能受相關性突升影響。</td><td>將研究結論連到倉位大小，避免因單一看好的股票佔用過多可承受風險。</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>實際運算會把行情來源與時間戳、參數、每日信號、目標倉位、交易費和滑點一起記錄。逐日淨收益形成資產曲線後，才計算整段收益、最大回撤、已完成交易勝率和換手。表內百分比目前仍是 UI 固定的模擬展示值，不能當作上述算法已經對騰訊歷史行情跑出的數字。</p>
       <ol>
         <li><strong>先跑趨勢動量：</strong>在左側選「趨勢動量」，證券選 00700、回看周期選 6 個月、風險預算設 10%，保留費用和滑點，按「運行比較」。原型會顯示「上行趨勢較強」以及示例收益 +18.4%、最大回撤 -12.8%、勝率 61%、換手 2.4x。這只說明該視角重視趨勢持續性，不代表下一段行情一定上升。</li>
         <li><strong>再跑多因子評分：</strong>在「引擎比較」勾選多因子評分，觀察它是否也支持同一標的。它會把價值、質量、成長和波動放在同一個可解釋評分中；如果因子信號與動量方向一致，投資者可以把它當作第二個確認，但仍要查看其 -9.6% 的示例最大回撤和因子輪換風險。</li>
@@ -274,7 +286,7 @@
       當日毛收益 2.00% → 當日淨收益 1.968% → HKD 100,000 變成 HKD 101,968
       後續每日重複上述步驟，將淨收益連乘，才得到整段窗口的收益和回撤。</div>
     </div>
-    <figure class="shot" style="margin-top:16px"><figcaption>多量化引擎工作台原型 <small>白底 USMART 工作台新增量化引擎欄目：左側選擇策略視角，中間調整標的、回看周期、風險預算與交易成本，下面同時呈現信號強度、收益／回撤指標、投資者幫助說明和可勾選的引擎比較表。截圖中的績效數字是展示用模擬資料，不是回測承諾。</small></figcaption><img src="../evidence/screenshots/ux-terminal/in-app/quant-engines-light.jpg?v=light-20261028" alt="USMART 多量化引擎白底工作台原型"></figure>
+    <figure class="shot" style="margin-top:16px"><figcaption>多量化引擎工作台完整頁面原型 <small>完整長頁截圖（原始文件為 1345 × 1455 像素），包含工作台導航、策略選擇、回看設定、信號與風險指標、圖表及完整引擎比較表。點擊圖片可開啟未縮放的原始尺寸；百分比仍為原型模擬展示值。</small></figcaption><a href="../evidence/screenshots/ux-terminal/in-app/quant-engines-fullpage-light.jpg" target="_blank" rel="noopener"><img class="full-resolution" src="../evidence/screenshots/ux-terminal/in-app/quant-engines-fullpage-light.jpg" alt="USMART 多量化引擎工作台完整頁面原尺寸截圖"></a></figure>
     <figure class="shot"><figcaption>USMART 盈立證券專案架構（draw.io）<small>結構圖按版心完整等比例顯示；點擊圖片可開啟 2905 × 1445 原始尺寸。可編輯源文件：<code>docs/evidence/diagrams/project-architecture.drawio</code>。</small></figcaption><a href="../evidence/diagrams/project-architecture.png" target="_blank" rel="noopener"><img class="full-resolution" src="../evidence/diagrams/project-architecture.png" alt="USMART 盈立證券專案架構 draw.io 結構圖"></a></figure>
     <p>後端 MVC 按 Controller → Service → Model/Domain → Repository → Integration 分層；React 前端按頁面、功能組件、API 與狀態拆分。Codex 協助把原型和 Spec 轉成程式碼、測試與文件，並依照明確的檢查項提供審查線索；人類工程師負責核實行為、批准整合和承擔交付責任。用戶的強項是原型圖和前端設計：由用戶定義工作流、佈局和視覺驗收，工程實現再把原型轉成共享契約、測試和可運行頁面。</p>
   </section>
