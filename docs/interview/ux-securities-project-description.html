@@ -211,6 +211,69 @@
       <p class="small"><strong>案例結論：</strong>量化引擎的價值是把「我覺得會漲」拆成可比較的假設、確認條件和失效條件；它幫助投資者形成紀律，但不會消除行情、數據延遲、模型錯誤或本金損失風險。</p>
     </div>
     <div class="callout warning" style="margin-top:16px"><strong>使用邊界：</strong>頁面中的收益、勝率、回撤和信號強度目前是原型展示用的模擬資料，並非真實回測結果，也不是投資建議。非官方行情可能延遲、缺漏或中斷；不要把「已準備」理解成真實交易許可，也不要在未核對行情時間、流動性、費用和個人風險承受力前放大倉位。</div>
+    <div class="callout" style="margin-top:16px">
+      <strong>算法怎麼產生結果：從 OHLCV 到畫面指標</strong>
+      <p>四個引擎共用同一條計算管線：先讀取按時間排序的 OHLCV（開、高、低、收、量），清理停牌／缺失值，計算日收益 <code>r_t = close_t / close_{t-1} - 1</code>，再依策略生成目標權重。每次調整持倉都會扣除交易費和滑點，最後才計算收益、回撤和勝率。</p>
+      <div class="diagram">輸入：symbol + lookback + riskBudget + fee/slippage
+      ↓
+      OHLCV → 清理與對齊 → returns / moving average / volatility / factors
+      ↓
+      生成 signal → 轉成 target weights → position sizing（受 riskBudget 約束）
+      ↓
+      gross return − turnover × fee − turnover × slippage = net return
+      ↓
+      equity curve → illustrative return / max drawdown / win rate / turnover</div>
+      <div class="table-wrap" style="margin-top:14px">
+        <table>
+          <thead><tr><th>引擎</th><th>核心計算</th><th>信號與持倉規則</th><th>適合解釋的問題</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong>趨勢動量</strong></td>
+              <td>計算 20／60 日累積收益和均線：<code>mom_n = close_t / close_{t-n} - 1</code>；用標準化後的短、中期動量加權得到分數。</td>
+              <td>當 <code>close &gt; MA20 &gt; MA60</code> 且動量分數超過門檻時持有；跌破均線或信號失效時減倉／退出。</td>
+              <td>行情是否有持續性？是否應避免逆勢入場？</td>
+            </tr>
+            <tr>
+              <td><strong>多因子評分</strong></td>
+              <td>對價值、質量、成長、低波動因子做去極值和 z-score：<code>score = .25V + .25Q + .25G + .25(−Vol)</code>。</td>
+              <td>按分數排序，選取前一組標的；每期重新排名，並以換手上限和流動性門檻避免過度交易。</td>
+              <td>多隻股票中，哪些特徵在同一套規則下較突出？</td>
+            </tr>
+            <tr>
+              <td><strong>均值回歸</strong></td>
+              <td>以 n 日均值和標準差計算偏離程度：<code>z_t = (close_t − MA_n) / σ_n</code>，同時檢查成交量和 RSI 避免把基本面破壞誤判為超賣。</td>
+              <td>例如 <code>z &lt; −1.5</code> 且 RSI &lt; 35 才建立小倉位；回到 <code>z &gt; −0.2</code> 或觸及失效位便退出。</td>
+              <td>這是可交易的短期回調，還是真正的趨勢跌破？</td>
+            </tr>
+            <tr>
+              <td><strong>風險平價配置</strong></td>
+              <td>用歷史波動和相關矩陣估計組合風險：先用 <code>1 / σ_i</code> 得到反波動權重，再迭代使各資產風險貢獻接近。</td>
+              <td>股票、現金和防禦性資產按風險貢獻配置；組合波動超過風險預算時縮小總倉位，而不是只追逐收益最高的資產。</td>
+              <td>如何讓單一想法不主導帳戶？在可承受損失內應配置多少？</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="small"><strong>重要：</strong>上表是實作規格，不代表目前畫面已連接真實回測服務。現在的 React 原型用固定的示例收益、回撤、勝率和換手展示交互；要得到可驗證的真實結果，後端需要接收 OHLCV、保存策略版本與參數，返回每次回測的交易明細、成本假設、資料來源和時間戳。</p>
+    </div>
+    <div class="callout" style="margin-top:16px">
+      <strong>指標怎麼算：畫面上的四個數字</strong>
+      <ol>
+        <li><strong>示例收益：</strong>把每日淨收益連乘，<code>return = Π(1 + netReturn_t) − 1</code>；不能用單日漲幅代替整段窗口收益。</li>
+        <li><strong>最大回撤：</strong>維護歷史最高資產曲線 <code>peak_t</code>，再取 <code>max(1 − equity_t / peak_t)</code>；它回答「從高點最多跌了多少」。</li>
+        <li><strong>勝率：</strong><code>winningTrades / completedTrades</code>；未平倉交易不能偷偷算成盈利，否則會高估策略表現。</li>
+        <li><strong>組合換手：</strong>每次再平衡計算 <code>Σ|targetWeight − previousWeight|</code>，再按策略週期累計；換手越高，費用和滑點對結果越敏感。</li>
+      </ol>
+      <p class="small">以案例的 00700 為例，若回看窗口有 120 個交易日，算法會逐日生成信號、套用持倉、扣除成本並形成 120 個 equity 點，最後才得到一組收益／回撤／勝率／換手，而不是直接從股票名稱推導一個百分比。</p>
+      <div class="diagram">簡化數字例子（只示範計算，不代表 00700 真實數據）
+      close_t = 100，close_{t-20} = 95，close_{t-60} = 88
+      mom20 = 100 / 95 − 1 = 5.26%，mom60 = 100 / 88 − 1 = 13.64%
+      若 MA20 = 98、MA60 = 94，則 close_t &gt; MA20 &gt; MA60，趨勢條件成立
+      本次調整 turnover = 40%，費用 = 0.03%，滑點 = 0.05%
+      成本 = 40% × (0.03% + 0.05%) = 0.032%
+      當日毛收益 2.00% → 當日淨收益 1.968% → HKD 100,000 變成 HKD 101,968
+      後續每日重複上述步驟，將淨收益連乘，才得到整段窗口的收益和回撤。</div>
+    </div>
     <figure class="shot" style="margin-top:16px"><figcaption>多量化引擎工作台原型 <small>白底 USMART 工作台新增量化引擎欄目：左側選擇策略視角，中間調整標的、回看周期、風險預算與交易成本，下面同時呈現信號強度、收益／回撤指標、投資者幫助說明和可勾選的引擎比較表。截圖中的績效數字是展示用模擬資料，不是回測承諾。</small></figcaption><img src="../evidence/screenshots/ux-terminal/in-app/quant-engines-light.jpg?v=light-20261028" alt="USMART 多量化引擎白底工作台原型"></figure>
     <figure class="shot"><figcaption>USMART 盈立證券專案架構（draw.io）<small>結構圖按版心完整等比例顯示；點擊圖片可開啟 2905 × 1445 原始尺寸。可編輯源文件：<code>docs/evidence/diagrams/project-architecture.drawio</code>。</small></figcaption><a href="../evidence/diagrams/project-architecture.png" target="_blank" rel="noopener"><img class="full-resolution" src="../evidence/diagrams/project-architecture.png" alt="USMART 盈立證券專案架構 draw.io 結構圖"></a></figure>
     <p>後端 MVC 按 Controller → Service → Model/Domain → Repository → Integration 分層；React 前端按頁面、功能組件、API 與狀態拆分。Codex 協助把原型和 Spec 轉成程式碼、測試與文件，並依照明確的檢查項提供審查線索；人類工程師負責核實行為、批准整合和承擔交付責任。用戶的強項是原型圖和前端設計：由用戶定義工作流、佈局和視覺驗收，工程實現再把原型轉成共享契約、測試和可運行頁面。</p>
