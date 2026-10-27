@@ -20,13 +20,13 @@ export function CandlestickChart({ items, interval }: Props) {
     if (!host.current) return;
     const instance = createChart(host.current, {
       height: 340, width: host.current.clientWidth || 600,
-      layout: { background: { type: ColorType.Solid, color: "#0d1726" }, textColor: "#aabbd1", attributionLogo: true, fontFamily: "Inter, Segoe UI, sans-serif", fontSize: 11 },
-      grid: { vertLines: { color: "#1a283b" }, horzLines: { color: "#1a283b" } },
-      rightPriceScale: { borderColor: "#2a3a50", scaleMargins: { top: 0.08, bottom: 0.25 } },
-      timeScale: { borderColor: "#2a3a50", rightOffset: 3, minBarSpacing: 1 },
+      layout: { background: { type: ColorType.Solid, color: "#fbfdff" }, textColor: "#667085", attributionLogo: true, fontFamily: "Inter, Segoe UI, sans-serif", fontSize: 11 },
+      grid: { vertLines: { color: "#e3ebf2" }, horzLines: { color: "#e3ebf2" } },
+      rightPriceScale: { borderColor: "#d6e1eb", scaleMargins: { top: 0.08, bottom: 0.25 } },
+      timeScale: { borderColor: "#d6e1eb", rightOffset: 3, minBarSpacing: 1 },
       localization: { locale: language === "zh" ? "zh-HK" : "en-HK", timeFormatter: (time: Time) => typeof time === "number" ? new Date(time * 1000).toLocaleString(language === "zh" ? "zh-HK" : "en-HK", { timeZone: "Asia/Hong_Kong", hour12: false }) : String(time) },
     });
-    const candleSeries = instance.addSeries(CandlestickSeries, { upColor: "#22c55e", downColor: "#f87171", borderVisible: false, wickUpColor: "#22c55e", wickDownColor: "#f87171" });
+    const candleSeries = instance.addSeries(CandlestickSeries, { upColor: "#0c9b62", downColor: "#e05262", borderVisible: false, wickUpColor: "#0c9b62", wickDownColor: "#e05262" });
     const volumeSeries = instance.addSeries(HistogramSeries, { priceFormat: { type: "volume" }, priceScaleId: "volume" });
     volumeSeries.priceScale().applyOptions({ scaleMargins: { top: 0.82, bottom: 0 } });
     instance.subscribeCrosshairMove((event) => {

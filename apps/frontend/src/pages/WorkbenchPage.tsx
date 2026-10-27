@@ -106,7 +106,7 @@ export function WorkbenchPage() {
   async function refreshAfterOrder() { await Promise.all([portfolio.refresh(), loadWatchlist(), loadDirectory()]); }
   return <main className="workbench-shell">
     <header className="workbench-header">
-      <div className="terminal-brand"><span className="logo-plaque"><img src="/ux-securities-logo.png" alt="UX Securities Limited" /></span><span className="terminal-caption">{t("HK EQUITIES")}<span>{t("Personal trading terminal")}</span></span></div>
+      <div className="terminal-brand"><span className="logo-plaque"><img src="/usmart-logo.png" alt="USMART 盈立證券" /></span><span className="terminal-caption">{t("HK EQUITIES")}<span>{t("Personal trading terminal")}</span></span></div>
       <div className="header-actions"><LanguageToggle /><span className="session-mode">{t("PAPER ACCOUNT")}</span><span className="session-name">{session.user?.username}</span><button className="quiet-button" onClick={() => void signOut()}>{t("Sign out")}</button></div>
     </header>
     <nav className="workbench-navigation" aria-label={t("Workspace sections")} role="tablist">

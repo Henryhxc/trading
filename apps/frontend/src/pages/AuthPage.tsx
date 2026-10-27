@@ -50,7 +50,7 @@ export function AuthPage({ mode }: { mode: AuthMode }) {
     return (
       <main className="auth-layout terminal-auth">
         <LanguageToggle />
-        <img className="brand-logo terminal-auth-logo" src="/ux-securities-logo.png" alt="UX Securities Limited" />
+        <img className="brand-logo terminal-auth-logo" src="/usmart-logo.png" alt="USMART 盈立證券" />
         <section className="account-panel" aria-live="polite">
           <p className="eyebrow">{t("PERSONAL ACCOUNT")}</p>
           <h1>{t("Welcome, {name}", { name: session.user.username })}</h1>
@@ -66,10 +66,10 @@ export function AuthPage({ mode }: { mode: AuthMode }) {
   return (
     <main className="auth-layout terminal-auth">
       <LanguageToggle />
-      <img className="brand-logo terminal-auth-logo" src="/ux-securities-logo.png" alt="UX Securities Limited" />
+      <img className="brand-logo terminal-auth-logo" src="/usmart-logo.png" alt="USMART 盈立證券" />
       <section className="auth-panel">
         <div className="auth-heading">
-          <p className="eyebrow">{t("UX SECURITIES LIMITED")}</p>
+          <p className="eyebrow">{t("USMART 盈立證券")}</p>
           <h1>{t(mode === "login" ? "Sign in" : "Create your account")}</h1>
           <p className="subheading">{t("Hong Kong market workspace")}</p>
         </div>

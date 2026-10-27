@@ -3,7 +3,7 @@ WORKDIR /app
 COPY apps/frontend/package.json apps/frontend/package-lock.json* ./
 RUN npm ci --no-audit --no-fund
 COPY apps/frontend/ ./
-RUN chmod 644 ./public/ux-securities-logo.png
+RUN find ./public -type f -name '*.png' -exec chmod 644 {} +
 RUN npm run build
 
 FROM nginx:1.27-alpine

@@ -2,15 +2,15 @@
 
 :root {
   font-family: Inter, "Segoe UI", Arial, sans-serif;
-  color: #0B0B0D;
-  background: #f5f6f8;
+  color: #171821;
+  background: #ffffff;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
-  --ux-primary: #1D41A9;
-  --ux-accent: #2857E2;
-  --ux-ink: #0B0B0D;
+  --ux-primary: #0787F9;
+  --ux-accent: #36A0FF;
+  --ux-ink: #171821;
   --ux-surface: #FFFFFF;
-  --ux-muted: #6B7280;
+  --ux-muted: #667085;
 }
 * { box-sizing: border-box; }
 body { margin: 0; min-width: 320px; min-height: 100vh; }
@@ -55,43 +55,43 @@ footer { margin-top: auto; padding-top: 44px; color: var(--ux-muted); font-size:
 }
 
 .terminal-auth {
-  --auth-bg: #0a111d;
-  --auth-surface: #101b2b;
-  --auth-raised: #152238;
-  --auth-line: #26374e;
-  --auth-text: #dbe5f3;
-  --auth-muted: #9fb1c9;
-  --auth-blue: #82a5ff;
+  --auth-bg: #ffffff;
+  --auth-surface: #ffffff;
+  --auth-raised: #f2f7fb;
+  --auth-line: #d8e2ec;
+  --auth-text: #171821;
+  --auth-muted: #667085;
+  --auth-blue: #0787f9;
   color: var(--auth-text);
   background: var(--auth-bg);
-  color-scheme: dark;
+  color-scheme: light;
 }
 .terminal-auth .brand-logo { margin-bottom: 40px; }
 .terminal-auth .auth-panel, .terminal-auth .account-panel {
   color: var(--auth-text);
   background: var(--auth-surface);
   border-color: var(--auth-line);
-  box-shadow: none;
+  box-shadow: 0 14px 36px rgb(25 65 105 / 8%);
 }
 .terminal-auth .eyebrow { color: var(--auth-blue); }
 .terminal-auth .subheading, .terminal-auth .account-email,
 .terminal-auth footer, .terminal-auth .security-note { color: var(--auth-muted); }
-.terminal-auth .mode-switch { border: 1px solid var(--auth-line); background: var(--auth-bg); }
+.terminal-auth .mode-switch { border: 1px solid var(--auth-line); background: #f2f7fb; }
 .terminal-auth .mode { color: var(--auth-muted); }
-.terminal-auth .mode.active { color: #c2d2ff; background: var(--auth-raised); box-shadow: none; }
+.terminal-auth .mode.active { color: #056cc7; background: #ffffff; box-shadow: 0 1px 3px rgb(25 65 105 / 12%); }
 .terminal-auth label { color: var(--auth-text); }
 .terminal-auth input {
   color: var(--auth-text);
-  background: var(--auth-bg);
-  border-color: #34465e;
+  background: #ffffff;
+  border-color: var(--auth-line);
 }
 .terminal-auth input::placeholder { color: var(--auth-muted); }
-.terminal-auth .primary-button { background: #2857e2; border-color: #2857e2; }
-.terminal-auth .primary-button:hover:not(:disabled) { background: #416cf0; border-color: #416cf0; }
+.terminal-auth .primary-button { background: #0787f9; border-color: #0787f9; }
+.terminal-auth .primary-button:hover:not(:disabled) { background: #36a0ff; border-color: #36a0ff; }
 .terminal-auth .security-note { border-top-color: var(--auth-line); }
-.terminal-auth > .language-toggle { border-color: var(--auth-line); background: var(--auth-surface); }
+.terminal-auth > .language-toggle { border-color: var(--auth-line); background: #f2f7fb; }
 .terminal-auth > .language-toggle button { color: var(--auth-muted); }
-.terminal-auth > .language-toggle button.active { color: #101827; background: #a9c0ff; box-shadow: none; }
+.terminal-auth > .language-toggle button.active { color: #055b9f; background: #dff1ff; box-shadow: none; }
 @media (max-width: 520px) {
   .terminal-auth .brand-logo { margin-bottom: 30px; }
 }
