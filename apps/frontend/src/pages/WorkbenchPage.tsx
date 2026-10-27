@@ -13,8 +13,9 @@ import { cashApi, type CashMovement } from "../shared/api/cash";
 import { TradingPanel } from "./TradingPanel";
 import { LanguageToggle, useI18n } from "../app/I18nProvider";
 import { QuantAssistant } from "../features/assistant/QuantAssistant";
+import { QuantEnginesPanel } from "../features/quant/QuantEnginesPanel";
 
-type WorkbenchView = "market" | "favorites" | "positions" | "orders" | "financing" | "cash" | "deposit" | "withdraw" | "cash-history" | "exchange";
+type WorkbenchView = "market" | "favorites" | "positions" | "orders" | "financing" | "quant-engines" | "cash" | "deposit" | "withdraw" | "cash-history" | "exchange";
 
 export function WorkbenchPage() {
   const session = useSession();
@@ -115,6 +116,7 @@ export function WorkbenchPage() {
       <button role="tab" aria-selected={view === "positions"} className={view === "positions" ? "active" : ""} onClick={() => switchView("positions")}>{t("My positions")} <span>{portfolio.positions.length}</span></button>
       <button role="tab" aria-selected={view === "orders"} className={view === "orders" ? "active" : ""} onClick={() => switchView("orders")}>{t("Order history")}</button>
       <button role="tab" aria-selected={view === "financing"} className={view === "financing" ? "active" : ""} onClick={() => switchView("financing")}>{t("Financing")}</button>
+      <button role="tab" aria-selected={view === "quant-engines"} className={view === "quant-engines" ? "active" : ""} onClick={() => switchView("quant-engines")}>{t("Quant engines")}</button>
       <button role="tab" aria-selected={view === "cash"} className={view === "cash" ? "active" : ""} onClick={() => switchView("cash")}>{t("Cash overview")}</button>
       <button role="tab" aria-selected={view === "deposit"} className={view === "deposit" ? "active" : ""} onClick={() => switchView("deposit")}>{t("Deposit")}</button>
       <button role="tab" aria-selected={view === "withdraw"} className={view === "withdraw" ? "active" : ""} onClick={() => switchView("withdraw")}>{t("Withdraw")}</button>
@@ -122,7 +124,7 @@ export function WorkbenchPage() {
       <button role="tab" aria-selected={view === "exchange"} className={view === "exchange" ? "active" : ""} onClick={() => switchView("exchange")}>{t("Exchange")}</button>
       <p className="navigation-note">{t("HKD · Unofficial market data · Simulation only")}</p>
     </nav>
-    {view === "positions" ? <PortfolioPanel {...portfolio} onSelect={symbol => { select(symbol); switchView("market"); }} /> : view === "orders" ? <OrderHistoryPanel /> : view === "financing" ? <FinancingPanel account={portfolio.account} positions={portfolio.positions} /> : view === "cash" || view === "deposit" || view === "withdraw" || view === "cash-history" || view === "exchange" ? <CashMovementsPanel mode={view === "cash" ? "overview" : view === "cash-history" ? "history" : view} movements={cashMovements} account={portfolio.account} loading={cashLoading} error={cashError} /> : <section className="workbench-grid">
+    {view === "positions" ? <PortfolioPanel {...portfolio} onSelect={symbol => { select(symbol); switchView("market"); }} /> : view === "orders" ? <OrderHistoryPanel /> : view === "financing" ? <FinancingPanel account={portfolio.account} positions={portfolio.positions} /> : view === "quant-engines" ? <QuantEnginesPanel /> : view === "cash" || view === "deposit" || view === "withdraw" || view === "cash-history" || view === "exchange" ? <CashMovementsPanel mode={view === "cash" ? "overview" : view === "cash-history" ? "history" : view} movements={cashMovements} account={portfolio.account} loading={cashLoading} error={cashError} /> : <section className="workbench-grid">
       <MarketSidebar view={view === "favorites" ? "favorites" : "market"} query={query} setQuery={setQuery} items={items} watchlist={watchlist} owned={owned} active={active} loading={directoryLoading} error={directoryError || favoriteError} retry={() => { void loadDirectory(); void loadWatchlist(); }} select={select} move={(index, direction) => void moveFavorite(index, direction)} scrollRef={watchlistRef} onScroll={onScroll} />
       <QuotePanel active={active} item={items.find(item => item.symbol === active)} quote={quote} loading={loading} error={message} favorite={isFavorite} toggleFavorite={() => void toggleFavorite()} />
       <TradingPanel quote={quote} account={portfolio.account} accountError={portfolio.error} onRetry={() => void portfolio.refresh()} onOrderCreated={refreshAfterOrder} />

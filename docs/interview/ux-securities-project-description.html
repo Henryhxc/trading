@@ -165,6 +165,18 @@
       <div><h3>Spec 與 TDD</h3><p>先以業務語義和驗收標準寫 Spec，明確狀態、權限、數據可見性與失敗分支；實現行為變更時按 RED → 最小 GREEN → 定向測試 → 集成/E2E → 獨立審查推進。沒有執行的檢查明確記為待執行。</p></div>
       <div><h3>多 Agent 調度</h3><p>按業務邊界派工，例如行情/K 線、訂單/持倉、資金/多語言和 UI 驗收；共享 OpenAPI、文件責任清單、任務證據台賬與 review gate，避免多個 Agent 同時改寫同一模塊而缺乏集成責任。</p></div>
     </div>
+    <div class="callout" style="margin-top:16px">
+      <strong>多量化引擎原型：把信號轉成可核對的投資流程</strong>
+      <p>工作台新增「量化引擎」頁面，先以同一標的、回看周期、風險預算和成本假設比較四個獨立引擎：趨勢動量、多因子評分、均值回歸和風險平價配置。每個引擎都展示信號、示例收益、最大回撤、勝率、換手和主要失效風險；收益數字是模拟数据，不代表預測或真实回測結果。</p>
+      <ul>
+        <li><strong>趨勢動量：</strong>確認相對強弱和趨勢持續性，幫助投資者避免逆勢並定義規則化入場窗口；需要防範擁擠交易反轉。</li>
+        <li><strong>多因子評分：</strong>把價值、質量、成長和波動合成可解釋評分，幫助投資者一致比較股票；需要留意因子風格輪換。</li>
+        <li><strong>均值回歸：</strong>尋找價格或成交量偏離參考區間的狀態，幫助投資者為回調設定失效位；需要防範真正跌破後長時間超賣。</li>
+        <li><strong>風險平價配置：</strong>按風險貢獻配置股票、現金和防禦性資產，幫助投資者把倉位連到可承受損失；相關性突升時分散效果可能下降。</li>
+      </ul>
+      <p class="small">投資者使用順序：先比較不同假設 → 查看信號與回撤 → 設定風險預算 → 要求至少兩個獨立確認 → 再決定是否進入模擬下單。這個頁面只做研究與教育，不接真實券商，不自動產生投資建議。</p>
+    </div>
+    <figure class="shot" style="margin-top:16px"><figcaption>多量化引擎工作台原型 <small>白底 USMART 工作台新增量化引擎欄目：左側選擇策略視角，中間調整標的、回看周期、風險預算與交易成本，下面同時呈現信號強度、收益／回撤指標、投資者幫助說明和可勾選的引擎比較表。截圖中的績效數字是展示用模擬資料，不是回測承諾。</small></figcaption><img src="../evidence/screenshots/ux-terminal/in-app/quant-engines-light.jpg?v=light-20261028" alt="USMART 多量化引擎白底工作台原型"></figure>
     <figure class="shot"><figcaption>USMART 盈立證券專案架構（draw.io）<small>結構圖按版心完整等比例顯示；點擊圖片可開啟 2905 × 1445 原始尺寸。可編輯源文件：<code>docs/evidence/diagrams/project-architecture.drawio</code>。</small></figcaption><a href="../evidence/diagrams/project-architecture.png" target="_blank" rel="noopener"><img class="full-resolution" src="../evidence/diagrams/project-architecture.png" alt="USMART 盈立證券專案架構 draw.io 結構圖"></a></figure>
     <p>後端 MVC 按 Controller → Service → Model/Domain → Repository → Integration 分層；React 前端按頁面、功能組件、API 與狀態拆分。Codex 協助把原型和 Spec 轉成程式碼、測試與文件，並依照明確的檢查項提供審查線索；人類工程師負責核實行為、批准整合和承擔交付責任。用戶的強項是原型圖和前端設計：由用戶定義工作流、佈局和視覺驗收，工程實現再把原型轉成共享契約、測試和可運行頁面。</p>
   </section>
