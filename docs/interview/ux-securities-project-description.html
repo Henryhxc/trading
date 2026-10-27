@@ -176,6 +176,41 @@
       </ul>
       <p class="small">投資者使用順序：先比較不同假設 → 查看信號與回撤 → 設定風險預算 → 要求至少兩個獨立確認 → 再決定是否進入模擬下單。這個頁面只做研究與教育，不接真實券商，不自動產生投資建議。</p>
     </div>
+    <div class="callout" style="margin-top:16px">
+      <strong>量化引擎怎麼用：從登入到模擬研究的四步</strong>
+      <div class="structure-flow" aria-label="量化引擎使用流程" style="margin:14px 0 12px">
+        <span>登入工作台</span><b>→</b><span>選擇量化引擎</span><b>→</b><span>調整假設並比較</span><b>→</b><span>複核風險後模擬下單</span>
+      </div>
+      <ol>
+        <li><strong>進入頁面：</strong>登入後在工作台上方導航點擊「量化引擎」。左側「引擎目錄」可以切換四種分析視角；點擊某一引擎後，中間的信號、風險和投資者提示會同步更新。</li>
+        <li><strong>設定研究條件：</strong>先選擇證券（例如 <code>00700 · TENCENT</code>）和回看周期（3 個月、6 個月或 1 年），再用「風險預算」滑塊表達自己願意讓這個想法承擔的組合風險比例。勾選「計入費用和滑點」可讓比較更接近實際交易摩擦。</li>
+        <li><strong>閱讀結果：</strong>按「運行比較」後，先看「當前信號」和信號強度圖，再看示例收益、最大回撤、勝率和組合換手。收益不能脫離回撤閱讀：例如較高示例收益伴隨較深回撤，代表持有期間可能需要承受更大的波動。</li>
+        <li><strong>做決策前複核：</strong>在「引擎比較」勾選至少兩個獨立引擎，檢查它們是否支持同一方向、假設是否互相衝突、風險是否超出自己的承受範圍。完成研究後才回到「行情」頁面做模擬下單；量化引擎本身不會自動提交訂單。</li>
+      </ol>
+      <div class="table-wrap" style="margin-top:14px">
+        <table>
+          <thead><tr><th>畫面欄位</th><th>代表什麼</th><th>使用時要問自己</th></tr></thead>
+          <tbody>
+            <tr><td>示例收益</td><td>在原型假設下展示的收益數字</td><td>收益是否由足夠長的觀察窗口支持？是否只是單一情境？</td></tr>
+            <tr><td>最大回撤</td><td>示例窗口內從高點到低點的最大跌幅</td><td>如果真的出現這種跌幅，我仍能按計劃持有嗎？</td></tr>
+            <tr><td>勝率</td><td>示例交易中盈利結果所佔的比例</td><td>低勝率但高盈虧比，或高勝率但小利大虧，哪種更符合我？</td></tr>
+            <tr><td>組合換手</td><td>策略調整持倉的頻率提示</td><td>交易費用、滑點和自己能否持續執行是否被低估？</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="callout case-study" style="margin-top:16px">
+      <strong>操作案例：用 00700 騰訊比較「追趨勢」還是「等回調」</strong>
+      <p>這是一個教育用的模擬案例，不是對騰訊未來價格的預測。假設投資者只想先研究 00700，預計觀察 6 個月，願意把這個想法的風險預算控制在 10%，並把費用和滑點計入。</p>
+      <ol>
+        <li><strong>先跑趨勢動量：</strong>在左側選「趨勢動量」，證券選 00700、回看周期選 6 個月、風險預算設 10%，保留費用和滑點，按「運行比較」。原型會顯示「上行趨勢較強」以及示例收益 +18.4%、最大回撤 -12.8%、勝率 61%、換手 2.4x。這只說明該視角重視趨勢持續性，不代表下一段行情一定上升。</li>
+        <li><strong>再跑多因子評分：</strong>在「引擎比較」勾選多因子評分，觀察它是否也支持同一標的。它會把價值、質量、成長和波動放在同一個可解釋評分中；如果因子信號與動量方向一致，投資者可以把它當作第二個確認，但仍要查看其 -9.6% 的示例最大回撤和因子輪換風險。</li>
+        <li><strong>加入反向檢查：</strong>切換「均值回歸」，問的是「如果這次不是趨勢延續，而是短期超買後回調，計劃會怎樣？」它的示例回撤較深（-15.1%），提醒投資者不要只因一個上行信號就追價，也要先寫好失效位和退出條件。</li>
+        <li><strong>形成可執行結論：</strong>若兩個獨立引擎方向一致、回撤仍在 10% 風險預算可接受範圍內，下一步只做小額模擬訂單，並在訂單備註記錄「使用了哪些引擎、哪個條件會讓判斷失效」。若信號分歧或回撤超出承受範圍，就停留在研究，不下單。</li>
+      </ol>
+      <p class="small"><strong>案例結論：</strong>量化引擎的價值是把「我覺得會漲」拆成可比較的假設、確認條件和失效條件；它幫助投資者形成紀律，但不會消除行情、數據延遲、模型錯誤或本金損失風險。</p>
+    </div>
+    <div class="callout warning" style="margin-top:16px"><strong>使用邊界：</strong>頁面中的收益、勝率、回撤和信號強度目前是原型展示用的模擬資料，並非真實回測結果，也不是投資建議。非官方行情可能延遲、缺漏或中斷；不要把「已準備」理解成真實交易許可，也不要在未核對行情時間、流動性、費用和個人風險承受力前放大倉位。</div>
     <figure class="shot" style="margin-top:16px"><figcaption>多量化引擎工作台原型 <small>白底 USMART 工作台新增量化引擎欄目：左側選擇策略視角，中間調整標的、回看周期、風險預算與交易成本，下面同時呈現信號強度、收益／回撤指標、投資者幫助說明和可勾選的引擎比較表。截圖中的績效數字是展示用模擬資料，不是回測承諾。</small></figcaption><img src="../evidence/screenshots/ux-terminal/in-app/quant-engines-light.jpg?v=light-20261028" alt="USMART 多量化引擎白底工作台原型"></figure>
     <figure class="shot"><figcaption>USMART 盈立證券專案架構（draw.io）<small>結構圖按版心完整等比例顯示；點擊圖片可開啟 2905 × 1445 原始尺寸。可編輯源文件：<code>docs/evidence/diagrams/project-architecture.drawio</code>。</small></figcaption><a href="../evidence/diagrams/project-architecture.png" target="_blank" rel="noopener"><img class="full-resolution" src="../evidence/diagrams/project-architecture.png" alt="USMART 盈立證券專案架構 draw.io 結構圖"></a></figure>
     <p>後端 MVC 按 Controller → Service → Model/Domain → Repository → Integration 分層；React 前端按頁面、功能組件、API 與狀態拆分。Codex 協助把原型和 Spec 轉成程式碼、測試與文件，並依照明確的檢查項提供審查線索；人類工程師負責核實行為、批准整合和承擔交付責任。用戶的強項是原型圖和前端設計：由用戶定義工作流、佈局和視覺驗收，工程實現再把原型轉成共享契約、測試和可運行頁面。</p>
