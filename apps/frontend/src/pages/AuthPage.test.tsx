@@ -7,10 +7,10 @@ vi.mock("../app/SessionProvider", () => ({
 }));
 
 describe("AuthPage branding", () => {
-  it("uses the light terminal theme with the supplied USMART logo", () => {
+  it("uses the dark terminal theme without a company logo", () => {
     render(<AuthPage mode="login" />);
 
     expect(screen.getByRole("main").classList.contains("terminal-auth")).toBe(true);
-    expect(screen.getByRole("img", { name: "USMART 盈立證券" }).classList.contains("terminal-auth-logo")).toBe(true);
+    expect(screen.queryByRole("img")).toBeNull();
   });
 });

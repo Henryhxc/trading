@@ -2,21 +2,20 @@
 
 :root {
   font-family: Inter, "Segoe UI", Arial, sans-serif;
-  color: #171821;
-  background: #ffffff;
+  color: #0B0B0D;
+  background: #f5f6f8;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
-  --ux-primary: #0787F9;
-  --ux-accent: #36A0FF;
-  --ux-ink: #171821;
+  --ux-primary: #1D41A9;
+  --ux-accent: #2857E2;
+  --ux-ink: #0B0B0D;
   --ux-surface: #FFFFFF;
-  --ux-muted: #667085;
+  --ux-muted: #6B7280;
 }
 * { box-sizing: border-box; }
 body { margin: 0; min-width: 320px; min-height: 100vh; }
 button, input, select { font: inherit; }
 .auth-layout { min-height: 100vh; display: flex; align-items: center; flex-direction: column; padding: 64px 20px 28px; }
-.brand-logo { display: block; width: min(300px, 76vw); height: auto; object-fit: contain; margin: 0 auto 40px; }
 .auth-panel, .account-panel { width: min(100%, 440px); background: var(--ux-surface); border: 1px solid #e3e6eb; border-radius: 6px; padding: 32px; box-shadow: 0 12px 36px rgb(12 24 48 / 5%); }
 .eyebrow { margin: 0 0 10px; color: var(--ux-primary); font-size: 11px; font-weight: 700; letter-spacing: .08em; }
 h1 { margin: 0; font-size: 25px; line-height: 1.25; font-weight: 650; }
@@ -49,49 +48,44 @@ footer { margin-top: auto; padding-top: 44px; color: var(--ux-muted); font-size:
 @media (max-width: 520px) {
   .auth-layout { padding: 36px 16px 20px; }
   .auth-layout > .language-toggle { top: 10px; right: 12px; }
-  .brand-logo { width: min(260px, 76vw); margin-bottom: 30px; }
   .auth-panel, .account-panel { padding: 25px 20px; }
   footer { padding-top: 28px; max-width: 290px; }
 }
 
 .terminal-auth {
-  --auth-bg: #ffffff;
-  --auth-surface: #ffffff;
-  --auth-raised: #f2f7fb;
-  --auth-line: #d8e2ec;
-  --auth-text: #171821;
-  --auth-muted: #667085;
-  --auth-blue: #0787f9;
+  --auth-bg: #0a111d;
+  --auth-surface: #101b2b;
+  --auth-raised: #152238;
+  --auth-line: #26374e;
+  --auth-text: #dbe5f3;
+  --auth-muted: #9fb1c9;
+  --auth-blue: #82a5ff;
   color: var(--auth-text);
   background: var(--auth-bg);
-  color-scheme: light;
+  color-scheme: dark;
 }
-.terminal-auth .brand-logo { margin-bottom: 40px; }
 .terminal-auth .auth-panel, .terminal-auth .account-panel {
   color: var(--auth-text);
   background: var(--auth-surface);
   border-color: var(--auth-line);
-  box-shadow: 0 14px 36px rgb(25 65 105 / 8%);
+  box-shadow: none;
 }
 .terminal-auth .eyebrow { color: var(--auth-blue); }
 .terminal-auth .subheading, .terminal-auth .account-email,
 .terminal-auth footer, .terminal-auth .security-note { color: var(--auth-muted); }
-.terminal-auth .mode-switch { border: 1px solid var(--auth-line); background: #f2f7fb; }
+.terminal-auth .mode-switch { border: 1px solid var(--auth-line); background: var(--auth-bg); }
 .terminal-auth .mode { color: var(--auth-muted); }
-.terminal-auth .mode.active { color: #056cc7; background: #ffffff; box-shadow: 0 1px 3px rgb(25 65 105 / 12%); }
+.terminal-auth .mode.active { color: #c2d2ff; background: var(--auth-raised); box-shadow: none; }
 .terminal-auth label { color: var(--auth-text); }
 .terminal-auth input {
   color: var(--auth-text);
-  background: #ffffff;
-  border-color: var(--auth-line);
+  background: var(--auth-bg);
+  border-color: #34465e;
 }
 .terminal-auth input::placeholder { color: var(--auth-muted); }
-.terminal-auth .primary-button { background: #0787f9; border-color: #0787f9; }
-.terminal-auth .primary-button:hover:not(:disabled) { background: #36a0ff; border-color: #36a0ff; }
+.terminal-auth .primary-button { background: #2857e2; border-color: #2857e2; }
+.terminal-auth .primary-button:hover:not(:disabled) { background: #416cf0; border-color: #416cf0; }
 .terminal-auth .security-note { border-top-color: var(--auth-line); }
-.terminal-auth > .language-toggle { border-color: var(--auth-line); background: #f2f7fb; }
+.terminal-auth > .language-toggle { border-color: var(--auth-line); background: var(--auth-surface); }
 .terminal-auth > .language-toggle button { color: var(--auth-muted); }
-.terminal-auth > .language-toggle button.active { color: #055b9f; background: #dff1ff; box-shadow: none; }
-@media (max-width: 520px) {
-  .terminal-auth .brand-logo { margin-bottom: 30px; }
-}
+.terminal-auth > .language-toggle button.active { color: #101827; background: #a9c0ff; box-shadow: none; }

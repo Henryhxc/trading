@@ -15,7 +15,6 @@ const translations: Record<string, string> = {
   "Welcome, {name}": "欢迎，{name}",
   "Your secure session is active.": "当前登录会话有效。",
   "Sign out": "退出登录",
-  "USMART 盈立證券": "USMART 盈立證券",
   "Sign in": "登录",
   "Create your account": "创建账户",
   "Hong Kong market workspace": "港股交易工作台",

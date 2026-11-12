@@ -10,15 +10,15 @@
 .candle-periods button.selected { color: #fff; background: var(--ux-primary); border-color: var(--ux-accent); }
 .candle-periods button:hover { border-color: #536c8d; }
 .candle-meta { margin: 12px 0 10px; color: var(--terminal-muted); font-size: 11px; }
-.candle-status { display: inline-block; margin-left: 5px; padding: 3px 6px; border-radius: 3px; color: #6a4c9e; background: #f2ecff; font-size: 10px; text-transform: uppercase; }
-.candle-status.stale, .candle-status.unavailable { color: #9a5b08; background: #fff4df; }
-.candle-status.simulated { color: #056cc7; background: #e3f3ff; }
+.candle-status { display: inline-block; margin-left: 5px; padding: 3px 6px; border-radius: 3px; color: #d5b8ff; background: #29233e; font-size: 10px; text-transform: uppercase; }
+.candle-status.stale, .candle-status.unavailable { color: #f3bd78; background: #352a22; }
+.candle-status.simulated { color: #9dbbff; background: #1c2d50; }
 .candle-readout { display: flex; gap: 12px; flex-wrap: wrap; min-height: 28px; font-size: 11px; color: var(--terminal-muted); font-variant-numeric: tabular-nums; }
 .candle-readout b { color: var(--terminal-text); font-weight: 500; }
-.candle-up { color: #0c9b62; } .candle-down { color: #e05262; }
+.candle-up { color: #22c55e; } .candle-down { color: #f87171; }
 .candle-canvas { width: 100%; height: 340px; min-width: 0; overflow: hidden; }
 .candle-state { min-height: 240px; display: flex; align-items: center; justify-content: center; text-align: center; padding: 28px; font-size: 13px; line-height: 1.7; color: #aabbd1; }
-.candle-error { border-left: 3px solid #e05262; padding: 12px; background: #fff0f2; color: #a32639; font-size: 12px; }
+.candle-error { border-left: 3px solid #f87171; padding: 12px; background: #331f2b; color: #fda4af; font-size: 12px; }
 .candle-coverage, .candle-note { font-size: 11px; color: var(--terminal-muted); margin: 10px 0; line-height: 1.6; }
 .candle-note { color: #f3bd78; }
 .candle-footer { border-top: 1px solid var(--terminal-line); margin-top: 10px; padding-top: 10px; font-size: 10px; line-height: 1.7; color: var(--terminal-muted); }
